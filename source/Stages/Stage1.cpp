@@ -63,7 +63,10 @@ void Stage1::draw() const
 
 void Stage1::finalize()
 {
-
+	for (const auto& object : objects)
+	{
+		delete object;
+	}
 }
 
 Stage1* Stage1::GetInstance()
