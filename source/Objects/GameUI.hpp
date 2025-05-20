@@ -7,7 +7,7 @@ public:
 	~GameUI();
 
 	void update();
-	void draw()const;
+	void draw() const;
 
 	static GameUI* GetInstance();
 
