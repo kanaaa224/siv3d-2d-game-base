@@ -18,6 +18,10 @@ protected:
 
 	P2World world;
 
+	const double stepTime;
+
+	double accumulatedTime;
+
 private:
 	static Stage* instance;
 };
