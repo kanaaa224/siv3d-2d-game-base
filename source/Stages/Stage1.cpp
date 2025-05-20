@@ -26,13 +26,9 @@ void Stage1::initialize()
 
 void Stage1::update()
 {
-	constexpr double StepTime = (1.0 / 200.0);
-
-	double accumulatedTime = 0.0;
-
-	for (accumulatedTime += Scene::DeltaTime(); StepTime <= accumulatedTime; accumulatedTime -= StepTime)
+	for (accumulatedTime += Scene::DeltaTime(); stepTime <= accumulatedTime; accumulatedTime -= stepTime)
 	{
-		world.update(StepTime);
+		world.update(stepTime);
 	}
 
 	for (const auto& object : objects)

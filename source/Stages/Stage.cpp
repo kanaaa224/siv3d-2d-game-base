@@ -2,7 +2,7 @@
 
 Stage* Stage::instance = nullptr;
 
-Stage::Stage() {}
+Stage::Stage() : stepTime(1.0 / 200.0), accumulatedTime(0.0) {}
 
 void Stage::update() {}
 
