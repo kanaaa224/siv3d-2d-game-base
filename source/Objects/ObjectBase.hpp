@@ -14,5 +14,7 @@ public:
 	virtual void update() {}
 	virtual void draw() const {}
 
+	virtual void onHit(ObjectBase& object) { (void)object; }
+
 	P2Body& getBody() { return body; }
 };

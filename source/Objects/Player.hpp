@@ -1,4 +1,4 @@
-﻿# pragma once
+# pragma once
 
 # include "CharacterBase.hpp"
 
@@ -10,6 +10,9 @@ public:
 
 	void update() override;
 	void draw() const override;
+	
+	void onHit(ObjectBase& object) override;
+	void onHit(CharacterBase& object) override;
 
 private:
 	void initialize();

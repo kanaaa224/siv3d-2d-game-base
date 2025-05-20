@@ -1,6 +1,6 @@
-﻿# pragma once
+# pragma once
 
-# include "stage.hpp"
+# include "Stage.hpp"
 
 class Stage1 : public Stage
 {

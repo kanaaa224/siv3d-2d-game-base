@@ -27,7 +27,19 @@ void Player::update()
 
 void Player::draw() const
 {
-	TextureAsset(U"Player").resized(SizeF{ 100, 100 }).drawAt(body.getPos());
+	TextureAsset(U"Player").mirrored(body.getVelocity().x > 0.0).resized(SizeF{ 100, 100 }).drawAt(body.getPos());
+	
+	body.drawFrame();
+}
+
+void Player::onHit(ObjectBase& object)
+{
+	(void)object;
+}
+
+void Player::onHit(CharacterBase& object)
+{
+	(void)object;
 }
 
 void Player::finalize()

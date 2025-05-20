@@ -1,4 +1,4 @@
-﻿# include "Stage1.hpp"
+# include "Stage1.hpp"
 
 # include "../Objects/GameUI.hpp"
 # include "../Objects/Player.hpp"
@@ -29,6 +29,37 @@ void Stage1::update()
 	for (accumulatedTime += Scene::DeltaTime(); stepTime <= accumulatedTime; accumulatedTime -= stepTime)
 	{
 		world.update(stepTime);
+
+		for (const auto& [pair, collision] : world.getCollisions())
+		{
+			ObjectBase* objectA = nullptr;
+			ObjectBase* objectB = nullptr;
+
+			for (const auto& object : objects)
+			{
+					 if (object->getBody().id() == pair.a) objectA = object;
+				else if (object->getBody().id() == pair.b) objectB = object;
+
+				if (objectA && objectB) break;
+			}
+
+			if (objectA && objectB)
+			{
+				auto* characterA = dynamic_cast<CharacterBase*>(objectA);
+				auto* characterB = dynamic_cast<CharacterBase*>(objectB);
+
+				if (characterA && characterB)
+				{
+					characterA->onHit(*characterB);
+					characterB->onHit(*characterA);
+				}
+				else
+				{
+					objectA->onHit(*objectB);
+					objectB->onHit(*objectA);
+				}
+			}
+		}
 	}
 
 	for (const auto& object : objects)
