@@ -1,4 +1,4 @@
-# pragma once
+﻿# pragma once
 
 # include "Stage.hpp"
 
@@ -6,18 +6,15 @@ class Stage1 : public Stage
 {
 public:
 	Stage1();
-	~Stage1();
+	~Stage1() = default;
 
 	void update() override;
 	void draw() const override;
 
-	static Stage1* GetInstance();
+	static void NewInstance();
 
 private:
-	static Stage1* instance;
-
 	P2Body floor;
 
 	void initialize();
-	void finalize();
 };
