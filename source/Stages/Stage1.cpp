@@ -23,7 +23,7 @@ void Stage1::initialize()
 
 void Stage1::update()
 {
-	__super::update();
+	Stage::update();
 
 	GameUI* gameUI = GameUI::GetInstance();
 
@@ -34,7 +34,7 @@ void Stage1::draw() const
 {
 	ClearPrint();
 
-	__super::draw();
+	Stage::draw();
 
 	floor.draw();
 
