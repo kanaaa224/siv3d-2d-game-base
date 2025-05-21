@@ -28,7 +28,7 @@ void Stage::update()
 
 			for (const auto& object : objects)
 			{
-				if (object->getBody().id() == pair.a) objectA = object;
+				     if (object->getBody().id() == pair.a) objectA = object;
 				else if (object->getBody().id() == pair.b) objectB = object;
 
 				if (objectA && objectB) break;
@@ -84,7 +84,7 @@ void Stage::NewInstance()
 
 Stage* Stage::GetInstance()
 {
-	if (instance == nullptr) instance = new Stage();
+	if (instance == nullptr) NewInstance();
 
 	return instance;
 }
