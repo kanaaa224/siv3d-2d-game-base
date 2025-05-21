@@ -4,12 +4,24 @@
 
 Game::Game(const InitData& init) : IScene{ init }
 {
+	switch (getData().nowStage)
+	{
+	case 0:
+		Stage::NewInstance();
+		break;
 
+	case 1:
+		Stage1::NewInstance();
+		break;
+
+	default:
+		break;
+	}
 }
 
 void Game::update()
 {
-	Stage* stage = Stage1::GetInstance();
+	Stage* stage = Stage::GetInstance();
 
 	stage->update();
 
@@ -18,7 +30,7 @@ void Game::update()
 
 void Game::draw() const
 {
-	Stage* stage = Stage1::GetInstance();
+	Stage* stage = Stage::GetInstance();
 
 	stage->draw();
 }

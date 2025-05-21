@@ -31,9 +31,14 @@ void Player::update()
 
 	if (KeyEnter.down())
 	{
-		Stage* stage = Stage1::GetInstance();
+		Stage* stage = Stage::GetInstance();
 
 		stage->createObject<Box1>(Vec2{ 640, 100 });
+	}
+
+	if (body.getPos().y >= 1000) {
+		body.setPos(Vec2{ 320, 500 });
+		body.setVelocity(Vec2{});
 	}
 }
 

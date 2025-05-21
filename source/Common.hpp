@@ -12,7 +12,7 @@ enum class SceneState
 // 共有するデータ
 struct SceneData
 {
-
+	int nowStage = 1;
 };
 
 using App = SceneManager<SceneState, SceneData>;
