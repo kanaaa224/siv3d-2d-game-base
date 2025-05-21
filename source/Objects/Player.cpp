@@ -1,8 +1,13 @@
 ﻿# include "Player.hpp"
 
+# include "../Stages/Stage1.hpp"
+# include "./Box1.hpp"
+
 Player::Player(P2World& world, const Vec2& position) : CharacterBase(world, position)
 {
 	body = world.createRect(P2Dynamic, position, SizeF{ 100, 100 });
+
+	body.setFixedRotation(true);
 
 	this->initialize();
 }
@@ -23,6 +28,13 @@ void Player::update()
 	if (KeyD.pressed()) body.applyLinearImpulse(Vec2{  10, 0 });
 
 	if (KeySpace.down()) body.applyLinearImpulse(Vec2{ 0, -500 });
+
+	if (KeyEnter.down())
+	{
+		Stage* stage = Stage1::GetInstance();
+
+		stage->createObject<Box1>(Vec2{ 640, 100 });
+	}
 }
 
 void Player::draw() const
@@ -34,12 +46,9 @@ void Player::draw() const
 
 void Player::onHit(ObjectBase& object)
 {
-	(void)object;
-}
+	CharacterBase* character = dynamic_cast<CharacterBase*>(&object);
 
-void Player::onHit(CharacterBase& object)
-{
-	(void)object;
+	if (character) object.getBody().applyLinearImpulse(Vec2{ 0, -10 });
 }
 
 void Player::finalize()
