@@ -13,6 +13,9 @@ public:
 
 	static Stage* GetInstance();
 
+	template <class T, class... Args>
+	bool addObject(Args&&... args) { static_assert(std::is_base_of<ObjectBase, T>::value); objects << new T(world, std::forward<Args>(args)...); return true; }
+
 protected:
 	Array<ObjectBase*> objects;
 

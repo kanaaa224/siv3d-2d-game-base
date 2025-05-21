@@ -18,8 +18,8 @@ Stage1::~Stage1()
 
 void Stage1::initialize()
 {
-	objects << new StageBackground(world, Vec2{ 0, 0 });
-	objects << new Player(world, Vec2{ 320, 500 });
+	addObject<StageBackground>(Vec2{ 0, 0 });
+	addObject<Player>(Vec2{ 320, 500 });
 
 	floor = world.createRect(P2Static, Vec2{ 640, 600 }, SizeF{ 1000, 10 });
 }
@@ -62,7 +62,9 @@ void Stage1::update()
 		}
 	}
 
-	for (const auto& object : objects)
+	auto _objects_ = objects;
+
+	for (const auto& object : _objects_)
 	{
 		object->update();
 	}
