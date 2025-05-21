@@ -2,16 +2,14 @@
 
 # include "CharacterBase.hpp"
 
-class Player : public CharacterBase
+class Enemy1 : public CharacterBase
 {
 public:
-	Player(P2World& world, const Vec2& position);
-	~Player();
+	Enemy1(P2World& world, const Vec2& position);
+	~Enemy1();
 
 	void update() override;
 	void draw() const override;
-	
-	void onHit(ObjectBase& object) override;
 
 private:
 	void initialize();

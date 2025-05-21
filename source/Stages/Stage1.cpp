@@ -1,8 +1,10 @@
-# include "Stage1.hpp"
+﻿# include "Stage1.hpp"
 
 # include "../Objects/GameUI.hpp"
-# include "../Objects/Player.hpp"
 # include "../Objects/StageBackground.hpp"
+# include "../Objects/Box1.hpp"
+# include "../Objects/Enemy1.hpp"
+# include "../Objects/Player.hpp"
 
 Stage1* Stage1::instance = nullptr;
 
@@ -18,8 +20,10 @@ Stage1::~Stage1()
 
 void Stage1::initialize()
 {
-	addObject<StageBackground>(Vec2{ 0, 0 });
-	addObject<Player>(Vec2{ 320, 500 });
+	createObject<StageBackground>(Vec2{ 0, 0 });
+	createObject<Box1>(Vec2{ 640, 500 });
+	createObject<Enemy1>(Vec2{ 520, 500 });
+	createObject<Player>(Vec2{ 320, 500 });
 
 	floor = world.createRect(P2Static, Vec2{ 640, 600 }, SizeF{ 1000, 10 });
 }
@@ -37,7 +41,7 @@ void Stage1::update()
 
 			for (const auto& object : objects)
 			{
-					 if (object->getBody().id() == pair.a) objectA = object;
+				     if (object->getBody().id() == pair.a) objectA = object;
 				else if (object->getBody().id() == pair.b) objectB = object;
 
 				if (objectA && objectB) break;
@@ -45,19 +49,8 @@ void Stage1::update()
 
 			if (objectA && objectB)
 			{
-				auto* characterA = dynamic_cast<CharacterBase*>(objectA);
-				auto* characterB = dynamic_cast<CharacterBase*>(objectB);
-
-				if (characterA && characterB)
-				{
-					characterA->onHit(*characterB);
-					characterB->onHit(*characterA);
-				}
-				else
-				{
-					objectA->onHit(*objectB);
-					objectB->onHit(*objectA);
-				}
+				objectA->onHit(*objectB);
+				objectB->onHit(*objectA);
 			}
 		}
 	}
