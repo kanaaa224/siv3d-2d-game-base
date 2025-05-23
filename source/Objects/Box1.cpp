@@ -1,6 +1,5 @@
 ﻿# include "Box1.hpp"
-
-# include "../Stages/Stage1.hpp"
+# include "../Stages/Stage.hpp"
 
 Box1::Box1(P2World& world, const Vec2& position) : ObjectBase(world, position)
 {
@@ -21,10 +20,9 @@ void Box1::initialize()
 
 void Box1::update()
 {
-	if (body.getPos().y >= 1000) {
-		Stage* stage = Stage::GetInstance();
-
-		stage->deleteObject(this);
+	if (body.getPos().y >= 1000)
+	{
+		Stage::GetInstance()->deleteObject(this);
 	}
 }
 

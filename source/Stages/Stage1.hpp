@@ -16,5 +16,7 @@ public:
 private:
 	P2Body floor;
 
+	Camera2D camera;
+
 	void initialize();
 };

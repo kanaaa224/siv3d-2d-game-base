@@ -11,7 +11,11 @@ public:
 	void update() override;
 	void draw() const override;
 
+	void onHit(ObjectBase& object) override;
+
 private:
+	Vec2 start_position;
+
 	void initialize();
 	void finalize();
 };

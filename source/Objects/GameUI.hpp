@@ -1,4 +1,6 @@
-﻿# pragma once
+# pragma once
+
+# include <Siv3D.hpp>
 
 class GameUI
 {
@@ -9,11 +11,15 @@ public:
 	void update();
 	void draw() const;
 
+	void setPlayerHP(float hp) { player_hp = hp; }
+
 	static GameUI* GetInstance();
 
 private:
-	static GameUI* instance;
+	float player_hp;
 
 	void initialize();
 	void finalize();
+
+	static GameUI* instance;
 };
