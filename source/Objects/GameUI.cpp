@@ -2,7 +2,7 @@
 
 GameUI* GameUI::instance = nullptr;
 
-GameUI::GameUI()
+GameUI::GameUI() : player_hp(0)
 {
 	this->initialize();
 }
@@ -24,7 +24,7 @@ void GameUI::update()
 
 void GameUI::draw() const
 {
-
+	Print << U"Player HP: " << player_hp;
 }
 
 void GameUI::finalize()

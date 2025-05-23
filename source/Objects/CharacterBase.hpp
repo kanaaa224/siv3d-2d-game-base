@@ -13,4 +13,6 @@ public:
 
 	float getHP()    const { return hp; }
 	float getMaxHP() const { return max_hp; }
+
+	void addHP(float amount) { hp += amount; }
 };
