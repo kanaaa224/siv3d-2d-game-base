@@ -5,6 +5,8 @@
 # include "../Objects/Enemy1.hpp"
 # include "../Objects/Player.hpp"
 
+# define DEBUG
+
 Stage1::Stage1()
 {
 	this->initialize();
@@ -43,13 +45,16 @@ void Stage1::update()
 
 		player_hp = player->getHP();
 
+		double x = player->getBody().getPos().x;
 		double y = player->getBody().getPos().y;
 
+		int centerWidth  = (Scene::Width()  / 2);
 		int centerHeight = (Scene::Height() / 2);
 
+		if (centerWidth  > x) x = centerWidth;
 		if (centerHeight < y) y = centerHeight;
 
-		camera.setTargetCenter(Vec2{ player->getBody().getPos().x, y });
+		camera.setTargetCenter(Vec2{ x, y });
 	}
 	else
 	{
@@ -75,13 +80,17 @@ void Stage1::draw() const
 {
 	ClearPrint();
 
-	const auto t = camera.createTransformer();
+#ifdef DEBUG
+	Print << U"オブジェクト数: " << objects.size();
+#endif
 
-	Stage::draw();
+	{
+		const auto t = camera.createTransformer();
 
-	floor.draw();
+		Stage::draw();
 
-	Print << U"Objects: " << objects.size();
+		floor.draw();
+	}
 
 	GameUI::GetInstance()->draw();
 }
