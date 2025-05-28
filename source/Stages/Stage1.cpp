@@ -5,8 +5,6 @@
 # include "../Objects/Player.hpp"
 # include "../Objects/GameUI.hpp"
 
-# define DEBUG
-
 Stage1::Stage1()
 {
 	initialize();
@@ -80,9 +78,7 @@ void Stage1::draw() const
 {
 	ClearPrint();
 
-#ifdef DEBUG
 	Print << U"オブジェクト数: " << objects.size();
-#endif
 
 	{
 		const auto t = camera.createTransformer();
