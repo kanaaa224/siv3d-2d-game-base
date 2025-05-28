@@ -36,9 +36,6 @@ void Main()
 
 	while (System::Update())
 	{
-		if (not manager.update())
-		{
-			break;
-		}
+		if (not manager.update()) break;
 	}
 }

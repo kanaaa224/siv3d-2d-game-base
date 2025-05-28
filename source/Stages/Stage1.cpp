@@ -1,15 +1,15 @@
 ﻿# include "Stage1.hpp"
-# include "../Objects/GameUI.hpp"
 # include "../Objects/StageBackground.hpp"
 # include "../Objects/Box1.hpp"
 # include "../Objects/Enemy1.hpp"
 # include "../Objects/Player.hpp"
+# include "../Objects/GameUI.hpp"
 
 # define DEBUG
 
 Stage1::Stage1()
 {
-	this->initialize();
+	initialize();
 }
 
 void Stage1::initialize()

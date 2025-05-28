@@ -116,6 +116,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="source\main.cpp" />
+    <ClCompile Include="source\Objects\Base.cpp" />
     <ClCompile Include="source\Objects\Box1.cpp" />
     <ClCompile Include="source\Objects\Enemy1.cpp" />
     <ClCompile Include="source\Objects\GameUI.cpp" />
@@ -335,11 +336,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\Common.hpp" />
+    <ClInclude Include="source\Objects\Base.hpp" />
     <ClInclude Include="source\Objects\Box1.hpp" />
     <ClInclude Include="source\Objects\CharacterBase.hpp" />
     <ClInclude Include="source\Objects\Enemy1.hpp" />
     <ClInclude Include="source\Objects\GameUI.hpp" />
-    <ClInclude Include="source\Objects\ObjectBase.hpp" />
     <ClInclude Include="source\Objects\Player.hpp" />
     <ClInclude Include="source\Objects\StageBackground.hpp" />
     <ClInclude Include="source\Scene\Game.hpp" />

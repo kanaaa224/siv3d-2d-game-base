@@ -1,6 +1,5 @@
 ﻿# include "Enemy1.hpp"
-# include "../Stages/Stage.hpp"
-# include "./Player.hpp"
+# include "Player.hpp"
 
 Enemy1::Enemy1(P2World& world, const Vec2& position) : CharacterBase(world, position), start_position(position)
 {
@@ -8,17 +7,14 @@ Enemy1::Enemy1(P2World& world, const Vec2& position) : CharacterBase(world, posi
 
 	body.setFixedRotation(true);
 
-	this->initialize();
-}
-
-Enemy1::~Enemy1()
-{
-	this->finalize();
+	initialize();
 }
 
 void Enemy1::initialize()
 {
+	max_hp = 100;
 
+	hp = max_hp;
 }
 
 void Enemy1::update()
@@ -43,7 +39,7 @@ void Enemy1::onHit(ObjectBase& object)
 		{
 			object.getBody().applyLinearImpulse(Vec2{ 0, -300 });
 
-			Stage::GetInstance()->deleteObject(this);
+			this->applyDamage(25);
 		}
 		else
 		{
@@ -56,12 +52,7 @@ void Enemy1::onHit(ObjectBase& object)
 				object.getBody().applyLinearImpulse(Vec2{ 100, -100 });
 			}
 
-			player->addHP(-10);
+			player->applyDamage(10);
 		}
 	}
-}
-
-void Enemy1::finalize()
-{
-
 }

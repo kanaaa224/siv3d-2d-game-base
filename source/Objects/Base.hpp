@@ -4,9 +4,6 @@
 
 class ObjectBase
 {
-protected:
-	P2Body body;
-
 public:
 	ObjectBase(P2World& world, const Vec2& position) { (void)world; (void)position; }
 	virtual ~ObjectBase() = default;
@@ -17,4 +14,11 @@ public:
 	virtual void onHit(ObjectBase& object) { (void)object; }
 
 	P2Body& getBody() { return body; }
+
+	virtual void destroy() { deleteSelf(); }
+
+protected:
+	P2Body body;
+
+	void deleteSelf();
 };
