@@ -1,6 +1,6 @@
-# include "1.hpp"
+# include "2.hpp"
 
-Box1::Box1(P2World& world, const Vec2& position) : ObjectBase(world, position)
+Box2::Box2(P2World& world, const Vec2& position) : ObjectBase(world, position)
 {
 	body = world.createRect(
 		P2Dynamic,
@@ -8,18 +8,18 @@ Box1::Box1(P2World& world, const Vec2& position) : ObjectBase(world, position)
 		SizeF { 50, 50 },
 		P2Material {},
 		P2Filter {
-			.categoryBits = CollisionCategory::Box1,
+			.categoryBits = CollisionCategory::Box2,
 			.maskBits     = CollisionCategory::All
 		}
 	);
 }
 
-void Box1::update()
+void Box2::update()
 {
 	if (body.getPos().y >= 1000) deleteSelf();
 }
 
-void Box1::draw() const
+void Box2::draw() const
 {
 	body.drawFrame();
 }
