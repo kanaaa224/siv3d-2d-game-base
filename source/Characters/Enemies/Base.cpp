@@ -3,7 +3,16 @@
 
 EnemyBase::EnemyBase(P2World& world, const Vec2& position) : CharacterBase(world, position), start_position(position)
 {
-	body = world.createRect(P2Dynamic, position, SizeF{ 75, 100 });
+	body = world.createRect(
+		P2Dynamic,
+		position,
+		SizeF { 75, 100 },
+		P2Material {},
+		P2Filter {
+			.categoryBits = CollisionCategory::Enemy,
+			.maskBits     = CollisionCategory::All
+		}
+	);
 
 	body.setFixedRotation(true);
 

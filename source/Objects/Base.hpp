@@ -1,6 +1,6 @@
-﻿# pragma once
+# pragma once
 
-# include <Siv3D.hpp>
+# include "../Common.hpp"
 
 class ObjectBase
 {
