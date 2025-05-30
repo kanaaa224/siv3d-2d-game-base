@@ -1,9 +1,9 @@
-﻿# include "Stage1.hpp"
+# include "1.hpp"
 # include "../Objects/StageBackground.hpp"
-# include "../Objects/Box1.hpp"
-# include "../Objects/Enemy1.hpp"
-# include "../Objects/Player.hpp"
-# include "../Objects/GameUI.hpp"
+# include "../Objects/Boxes/1.hpp"
+# include "../Characters/Enemies/1.hpp"
+# include "../Characters/Player.hpp"
+# include "../GameUI.hpp"
 
 Stage1::Stage1()
 {
@@ -13,7 +13,7 @@ Stage1::Stage1()
 void Stage1::initialize()
 {
 	createObject<StageBackground>(Vec2{ 0, 0 });
-	createObject<Box1>(Vec2{   (Scene::Width() / 2) + 150, 500 });
+	createObject<Box1>  (Vec2{ (Scene::Width() / 2) + 150, 500 });
 	createObject<Enemy1>(Vec2{ (Scene::Width() / 2) - 150, 500 });
 	createObject<Player>(Vec2{ (Scene::Width() / 2),       500 });
 

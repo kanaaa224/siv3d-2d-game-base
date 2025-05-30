@@ -1,6 +1,6 @@
-﻿# pragma once
+# pragma once
 
-# include "../Objects/Base.hpp"
+# include "Objects/Base.hpp"
 
 class Stage
 {

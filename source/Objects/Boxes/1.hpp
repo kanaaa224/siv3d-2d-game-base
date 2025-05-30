@@ -1,6 +1,6 @@
-﻿# pragma once
+# pragma once
 
-# include "Base.hpp"
+# include "../Base.hpp"
 
 class Box1 : public ObjectBase
 {
