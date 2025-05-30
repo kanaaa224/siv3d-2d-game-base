@@ -1,6 +1,6 @@
-﻿# include "Player.hpp"
-# include "../Stages/Stage.hpp"
-# include "Box1.hpp"
+# include "Player.hpp"
+# include "../Stage.hpp"
+# include "../Objects/Boxes/1.hpp"
 
 Player::Player(P2World& world, const Vec2& position) : CharacterBase(world, position), mirrored(false)
 {

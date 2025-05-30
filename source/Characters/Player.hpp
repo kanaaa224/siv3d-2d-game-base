@@ -1,6 +1,6 @@
-﻿# pragma once
+# pragma once
 
-# include "CharacterBase.hpp"
+# include "Base.hpp"
 
 class Player : public CharacterBase
 {

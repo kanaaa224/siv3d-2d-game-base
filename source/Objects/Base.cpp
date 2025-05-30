@@ -1,5 +1,5 @@
-﻿# include "Base.hpp"
-# include "../Stages/Stage.hpp"
+# include "Base.hpp"
+# include "../Stage.hpp"
 
 void ObjectBase::deleteSelf()
 {

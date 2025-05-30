@@ -1,7 +1,7 @@
-﻿# include "Enemy1.hpp"
-# include "Player.hpp"
+# include "Base.hpp"
+# include "../Player.hpp"
 
-Enemy1::Enemy1(P2World& world, const Vec2& position) : CharacterBase(world, position), start_position(position)
+EnemyBase::EnemyBase(P2World& world, const Vec2& position) : CharacterBase(world, position), start_position(position)
 {
 	body = world.createRect(P2Dynamic, position, SizeF{ 75, 100 });
 
@@ -10,14 +10,14 @@ Enemy1::Enemy1(P2World& world, const Vec2& position) : CharacterBase(world, posi
 	initialize();
 }
 
-void Enemy1::initialize()
+void EnemyBase::initialize()
 {
 	max_hp = 100;
 
 	hp = max_hp;
 }
 
-void Enemy1::update()
+void EnemyBase::update()
 {
 	if (body.getPos().y >= 1000)
 	{
@@ -26,12 +26,12 @@ void Enemy1::update()
 	}
 }
 
-void Enemy1::draw() const
+void EnemyBase::draw() const
 {
 	body.drawFrame();
 }
 
-void Enemy1::onHit(ObjectBase& object)
+void EnemyBase::onHit(ObjectBase& object)
 {
 	if (Player* player = dynamic_cast<Player*>(&object))
 	{
