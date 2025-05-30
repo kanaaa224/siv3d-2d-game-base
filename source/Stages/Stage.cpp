@@ -51,11 +51,11 @@ void Stage::update()
 
 	if (!deletionObjects.isEmpty())
 	{
-		objects.remove_if([this](ObjectBase* obj)
+		objects.remove_if([this](ObjectBase* object)
 		{
-			if (deletionObjects.contains(obj))
+			if (deletionObjects.contains(object))
 			{
-				delete obj;
+				delete object;
 
 				return true;
 			}
