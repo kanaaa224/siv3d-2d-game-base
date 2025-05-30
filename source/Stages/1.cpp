@@ -3,7 +3,7 @@
 # include "../Objects/Boxes/1.hpp"
 # include "../Characters/Enemies/1.hpp"
 # include "../Characters/Player.hpp"
-# include "../GameUI.hpp"
+# include "../UI/PlayerHUD.hpp"
 
 Stage1::Stage1()
 {
@@ -28,7 +28,8 @@ void Stage1::update()
 
 	static Stopwatch respawnTimer{ StartImmediately::No };
 
-	float player_hp = 0;
+	float player_hp     = 0;
+	float player_max_hp = 0;
 
 	Player* player = nullptr;
 
@@ -41,7 +42,8 @@ void Stage1::update()
 	{
 		respawnTimer.reset();
 
-		player_hp = player->getHP();
+		player_hp     = player->getHP();
+		player_max_hp = player->getMaxHP();
 
 		double x = player->getBody().getPos().x;
 		double y = player->getBody().getPos().y;
@@ -68,10 +70,10 @@ void Stage1::update()
 
 	camera.update();
 
-	GameUI* gameUI = GameUI::GetInstance();
+	PlayerHUD* playerHUD = PlayerHUD::GetInstance();
 
-	gameUI->setPlayerHP(player_hp);
-	gameUI->update();
+	playerHUD->setPlayerHP(player_hp, player_max_hp);
+	playerHUD->update();
 }
 
 void Stage1::draw() const
@@ -88,7 +90,7 @@ void Stage1::draw() const
 		floor.draw();
 	}
 
-	GameUI::GetInstance()->draw();
+	PlayerHUD::GetInstance()->draw();
 }
 
 void Stage1::NewInstance()
