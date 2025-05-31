@@ -46,7 +46,7 @@ void EnemyBase::onHit(ObjectBase& object)
 	{
 		if (object.getBody().getPos().y < (body.getPos().y - 100))
 		{
-			object.getBody().applyLinearImpulse(Vec2{ 0, -300 });
+			object.getBody().applyLinearImpulse(Vec2{ 0, -200 });
 
 			this->applyDamage(25);
 		}
