@@ -28,7 +28,7 @@ void EnemyBase::initialize()
 
 void EnemyBase::update()
 {
-	if (body.getPos().y >= 1000)
+	if (body.getPos().y >= (Scene::Height() + 100))
 	{
 		body.setPos(start_position);
 		body.setVelocity(Vec2{});

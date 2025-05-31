@@ -3,7 +3,7 @@
 # include "../Objects/Boxes/1.hpp"
 # include "../Objects/Boxes/2.hpp"
 
-Player::Player(P2World& world, const Vec2& position) : CharacterBase(world, position), mirrored(false)
+Player::Player(P2World& world, const Vec2& position) : CharacterBase(world, position)
 {
 	body = world.createRect(
 		P2Dynamic,
@@ -39,13 +39,15 @@ void Player::update()
 
 	if (KeyH.down()) heal(10);
 
-	if (body.getPos().y >= 1000) die();
-	
-	if (not InRange(body.getVelocity().x, -1.0, 1.0)) mirrored = body.getVelocity().x > 0.0;
+	if (body.getPos().y >= (Scene::Height() + 100)) die();
 }
 
 void Player::draw() const
 {
+	static bool mirrored = false;
+
+	if (not InRange(body.getVelocity().x, -1.0, 1.0)) mirrored = body.getVelocity().x > 0.0;
+
 	TextureAsset(U"Player").mirrored(mirrored).resized(SizeF{ 100, 100 }).drawAt(body.getPos());
 
 	body.drawFrame();

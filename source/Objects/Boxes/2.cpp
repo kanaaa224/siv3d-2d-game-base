@@ -16,7 +16,7 @@ Box2::Box2(P2World& world, const Vec2& position) : ObjectBase(world, position)
 
 void Box2::update()
 {
-	if (body.getPos().y >= 1000) deleteSelf();
+	if (body.getPos().y >= (Scene::Height() + 100)) deleteSelf();
 }
 
 void Box2::draw() const

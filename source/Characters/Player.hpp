@@ -12,7 +12,5 @@ public:
 	void draw() const override;
 
 private:
-	bool mirrored;
-
 	void initialize();
 };
