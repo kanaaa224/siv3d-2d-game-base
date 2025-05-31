@@ -2,6 +2,7 @@
 # include "../Objects/StageBackground.hpp"
 # include "../Objects/Boxes/1.hpp"
 # include "../Objects/Boxes/2.hpp"
+# include "../Objects/Punipuni.hpp"
 # include "../Characters/Enemies/1.hpp"
 # include "../Characters/Player.hpp"
 # include "../UI/PlayerHUD.hpp"
@@ -14,10 +15,11 @@ Stage1::Stage1()
 void Stage1::initialize()
 {
 	createObject<StageBackground>(Vec2{ 0, 0 });
-	createObject<Box1>  (Vec2{ (Scene::Width() / 2) + 150, 500 });
-	createObject<Box2>  (Vec2{ (Scene::Width() / 2) + 150, 400 });
-	createObject<Enemy1>(Vec2{ (Scene::Width() / 2) - 150, 500 });
-	createObject<Player>(Vec2{ (Scene::Width() / 2),       500 });
+	createObject<Box1>    (Vec2{ (Scene::Width() / 2) + 150, 500 });
+	createObject<Box2>    (Vec2{ (Scene::Width() / 2) + 150, 400 });
+	createObject<Punipuni>(Vec2{ (Scene::Width() / 2),       200 });
+	createObject<Enemy1>  (Vec2{ (Scene::Width() / 2) - 150, 500 });
+	createObject<Player>  (Vec2{ (Scene::Width() / 2),       500 });
 
 	floor = world.createRect(P2Static, Vec2{ 640, 600 }, SizeF{ 1000, 10 }, P2Material{ .friction = 0.9 });
 

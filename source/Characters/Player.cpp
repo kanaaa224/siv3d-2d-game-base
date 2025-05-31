@@ -2,6 +2,7 @@
 # include "../Stage.hpp"
 # include "../Objects/Boxes/1.hpp"
 # include "../Objects/Boxes/2.hpp"
+# include "../Objects/Punipuni.hpp"
 
 Player::Player(P2World& world, const Vec2& position) : CharacterBase(world, position)
 {
@@ -34,8 +35,9 @@ void Player::update()
 	if (KeySpace.down()) body.applyLinearImpulse(Vec2{   0, -500 });
 	if (KeyD.pressed())  body.applyLinearImpulse(Vec2{  10,    0 });
 
-	if (Key1.pressed()) Stage::GetInstance()->createObject<Box1>(Vec2{ (Scene::Width() / 2), 0 });
-	if (Key2.pressed()) Stage::GetInstance()->createObject<Box2>(Vec2{ (Scene::Width() / 2), 0 });
+	if (Key1.pressed()) Stage::GetInstance()->createObject<Box1>    (Vec2{ (Scene::Width() / 2), 0 });
+	if (Key2.pressed()) Stage::GetInstance()->createObject<Box2>    (Vec2{ (Scene::Width() / 2), 0 });
+	if (Key3.pressed()) Stage::GetInstance()->createObject<Punipuni>(Vec2{ (Scene::Width() / 2), 0 });
 
 	if (KeyH.down()) heal(10);
 
