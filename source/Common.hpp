@@ -21,6 +21,7 @@ using App = SceneManager<SceneState, SceneData>;
 namespace CollisionCategory
 {
 	constexpr uint16 All     = 0xFFFF;
+	constexpr uint16 None    = 0x0000;
 	constexpr uint16 Default = 0x0001;
 	constexpr uint16 Player  = 0x0002;
 	constexpr uint16 Enemy   = 0x0004;
