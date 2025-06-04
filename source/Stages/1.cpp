@@ -14,16 +14,23 @@ Stage1::Stage1()
 
 void Stage1::initialize()
 {
+	const int width  = Scene::Width();
+	const int height = Scene::Height();
+	
+	const int halfWidth  = (width  / 2);
+	const int halfHeight = (height / 2);
+
 	createObject<StageBackground>(Vec2{ 0, 0 });
-	createObject<Box1>    (Vec2{ (Scene::Width() / 2) + 150, 500 });
-	createObject<Box2>    (Vec2{ (Scene::Width() / 2) + 150, 400 });
-	createObject<Punipuni>(Vec2{ (Scene::Width() / 2),       200 });
-	createObject<Enemy1>  (Vec2{ (Scene::Width() / 2) - 150, 500 });
-	createObject<Player>  (Vec2{ (Scene::Width() / 2),       500 });
 
-	floor = world.createRect(P2Static, Vec2{ 640, 600 }, SizeF{ 1000, 10 }, P2Material{ .friction = 0.9 });
+	createObject<Box1>    (Vec2{ halfWidth + 150, halfHeight       });
+	createObject<Box2>    (Vec2{ halfWidth + 150, halfHeight - 100 });
+	createObject<Punipuni>(Vec2{ halfWidth,       halfHeight - 200 });
+	createObject<Enemy1>  (Vec2{ halfWidth - 150, halfHeight       });
+	createObject<Player>  (Vec2{ halfWidth,       halfHeight       });
 
-	camera = Camera2D(Vec2{ (Scene::Width() / 2), (Scene::Height() / 2) }, 1.0, CameraControl::None_);
+	floor = world.createRect(P2Static, Vec2{ halfWidth, (height - 100) }, SizeF{ (width - 100), 10 }, P2Material{ .friction = 0.9 });
+
+	camera = Camera2D(Vec2{ halfWidth, halfHeight }, 1.0, CameraControl::None_);
 }
 
 void Stage1::update()
@@ -52,11 +59,11 @@ void Stage1::update()
 		double x = player->getBody().getPos().x;
 		double y = player->getBody().getPos().y;
 
-		int centerWidth  = (Scene::Width()  / 2);
-		int centerHeight = (Scene::Height() / 2);
+		const int halfWidth  = (Scene::Width()  / 2);
+		const int halfHeight = (Scene::Height() / 2);
 
-		if (centerWidth  > x) x = centerWidth;
-		if (centerHeight < y) y = centerHeight;
+		if (halfWidth  > x) x = halfWidth;
+		if (halfHeight < y) y = halfHeight;
 
 		camera.setTargetCenter(Vec2{ x, y });
 		
