@@ -10,7 +10,7 @@ void AssetsRegistration()
 	FontAsset(U"Title").setBufferThickness(4);
 
 	TextureAsset::Register({ U"Player",             { U"Player" } }, U"example/siv3d-kun.png");
-	TextureAsset::Register({ U"Stage 1 Background", { U"Stage"  } }, U"example/bay.jpg");
+	TextureAsset::Register({ U"Stage 1 Background", { U"Stage"  } }, U"example/texture/ground.jpg");
 }
 
 void Initialize()
