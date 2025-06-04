@@ -59,6 +59,14 @@ void Stage1::update()
 		if (centerHeight < y) y = centerHeight;
 
 		camera.setTargetCenter(Vec2{ x, y });
+		
+		for (const auto& object : objects)
+		{
+			if (StageBackground* stagebackground = dynamic_cast<StageBackground*>(object))
+			{
+				stagebackground->setCameraPosition(camera.getTargetCenter() - Scene::Center());
+			}
+		}
 	}
 	else
 	{
