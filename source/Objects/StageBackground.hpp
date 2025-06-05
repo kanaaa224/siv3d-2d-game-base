@@ -1,10 +1,11 @@
-# pragma once
+﻿# pragma once
 
 # include "Base.hpp"
 
 class StageBackground : public ObjectBase
 {
 public:
+	StageBackground(P2World& world) : StageBackground(world, Vec2{ 0, 0 }) {}
 	StageBackground(P2World& world, const Vec2& position);
 	~StageBackground() = default;
 
