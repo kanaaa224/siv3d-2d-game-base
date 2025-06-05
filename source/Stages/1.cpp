@@ -1,4 +1,4 @@
-# include "1.hpp"
+﻿# include "1.hpp"
 # include "../Objects/StageBackground.hpp"
 # include "../Objects/Boxes/1.hpp"
 # include "../Objects/Boxes/2.hpp"
@@ -20,7 +20,7 @@ void Stage1::initialize()
 	const int halfWidth  = (width  / 2);
 	const int halfHeight = (height / 2);
 
-	createObject<StageBackground>(Vec2{ 0, 0 });
+	createObject<StageBackground>();
 
 	createObject<Box1>    (Vec2{ halfWidth + 150, halfHeight       });
 	createObject<Box2>    (Vec2{ halfWidth + 150, halfHeight - 100 });
@@ -69,9 +69,9 @@ void Stage1::update()
 		
 		for (const auto& object : objects)
 		{
-			if (StageBackground* stagebackground = dynamic_cast<StageBackground*>(object))
+			if (StageBackground* stageBackground = dynamic_cast<StageBackground*>(object))
 			{
-				stagebackground->setCameraPosition(camera.getTargetCenter() - Scene::Center());
+				stageBackground->setCameraPosition(camera.getTargetCenter() - Scene::Center());
 			}
 		}
 	}
@@ -81,7 +81,7 @@ void Stage1::update()
 
 		if (respawnTimer.sF() >= 1.0)
 		{
-			createObject<Player>(Vec2{ (Scene::Width() / 2), 500 });
+			createObject<Player>(Vec2{ (Scene::Width() / 2), (Scene::Height() / 2) });
 
 			respawnTimer.reset();
 		}
