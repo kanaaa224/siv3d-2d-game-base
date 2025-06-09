@@ -1,4 +1,4 @@
-# include "Base.hpp"
+﻿# include "Base.hpp"
 # include "../Player.hpp"
 
 EnemyBase::EnemyBase(P2World& world, const Vec2& position) : CharacterBase(world, position), start_position(position)
@@ -31,7 +31,7 @@ void EnemyBase::update()
 	if (body.getPos().y >= (Scene::Height() + 100))
 	{
 		body.setPos(start_position);
-		body.setVelocity(Vec2{});
+		body.setVelocity({ 0, 0 });
 	}
 }
 
@@ -46,7 +46,7 @@ void EnemyBase::onHit(ObjectBase& object)
 	{
 		if (object.getBody().getPos().y < (body.getPos().y - 100))
 		{
-			object.getBody().applyLinearImpulse(Vec2{ 0, -200 });
+			object.getBody().applyLinearImpulse({ 0, -200 });
 
 			this->applyDamage(25);
 		}
@@ -54,11 +54,11 @@ void EnemyBase::onHit(ObjectBase& object)
 		{
 			if (object.getBody().getPos().x < body.getPos().x)
 			{
-				object.getBody().applyLinearImpulse(Vec2{ -100, -100 });
+				object.getBody().applyLinearImpulse({ -100, -100 });
 			}
 			else
 			{
-				object.getBody().applyLinearImpulse(Vec2{ 100, -100 });
+				object.getBody().applyLinearImpulse({ 100, -100 });
 			}
 
 			player->applyDamage(10);

@@ -1,4 +1,4 @@
-# pragma once
+﻿# pragma once
 
 # include "../Common.hpp"
 
@@ -11,7 +11,7 @@ public:
 	void update();
 	void draw() const;
 
-	void setPlayerHP(float hp, float max_hp) { player_hp = hp; player_max_hp = max_hp; }
+	void setPlayerHP(float hp = 0.0f, float max_hp = 0.0f) { player_hp = hp; player_max_hp = max_hp; }
 
 	static PlayerHUD* GetInstance();
 

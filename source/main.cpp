@@ -1,11 +1,11 @@
-# include "Common.hpp"
+﻿# include "Common.hpp"
 # include "Scenes/Title.hpp"
 # include "Scenes/Game.hpp"
 
 void AssetsRegistration()
 {
 	FontAsset::Register(U"Title", FontMethod::MSDF, 48, U"example/font/RocknRoll/RocknRollOne-Regular.ttf");
-	FontAsset::Register(U"Bold", FontMethod::MSDF, 48, Typeface::Bold);
+	FontAsset::Register(U"Bold",  FontMethod::MSDF, 48, Typeface::Bold);
 
 	FontAsset(U"Title").setBufferThickness(4);
 
@@ -26,15 +26,14 @@ void Main()
 
 	Initialize();
 
-	App manager;
+	SM sceneManager;
 
-	manager.add<Title>(SceneState::Title);
-	manager.add<Game>(SceneState::Game);
-
-	manager.init(SceneState::Title, 0.5s);
+	sceneManager.add<Title>(SceneState::Title);
+	sceneManager.add<Game> (SceneState::Game);
+	sceneManager.init      (SceneState::Title, 0.5s);
 
 	while (System::Update())
 	{
-		if (not manager.update()) break;
+		if (not sceneManager.update()) break;
 	}
 }

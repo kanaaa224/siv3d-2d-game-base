@@ -1,4 +1,4 @@
-# include "Player.hpp"
+﻿# include "Player.hpp"
 # include "../Stage.hpp"
 # include "../Objects/Boxes/1.hpp"
 # include "../Objects/Boxes/2.hpp"
@@ -31,9 +31,9 @@ void Player::initialize()
 
 void Player::update()
 {
-	if (KeyA.pressed())  body.applyLinearImpulse(Vec2{ -10,    0 });
-	if (KeySpace.down()) body.applyLinearImpulse(Vec2{   0, -500 });
-	if (KeyD.pressed())  body.applyLinearImpulse(Vec2{  10,    0 });
+	if (KeyA.pressed())  body.applyLinearImpulse({ -10,    0 });
+	if (KeySpace.down()) body.applyLinearImpulse({   0, -500 });
+	if (KeyD.pressed())  body.applyLinearImpulse({  10,    0 });
 
 	if (Key1.pressed()) Stage::GetInstance()->createObject<Box1>    (Vec2{ (Scene::Width() / 2), 0 });
 	if (Key2.pressed()) Stage::GetInstance()->createObject<Box2>    (Vec2{ (Scene::Width() / 2), 0 });
@@ -50,7 +50,7 @@ void Player::draw() const
 
 	if (not InRange(body.getVelocity().x, -1.0, 1.0)) mirrored = body.getVelocity().x > 0.0;
 
-	TextureAsset(U"Player").mirrored(mirrored).resized(SizeF{ 100, 100 }).drawAt(body.getPos());
+	TextureAsset(U"Player").mirrored(mirrored).resized({ 100, 100 }).drawAt(body.getPos());
 
 	body.drawFrame();
 }
