@@ -1,11 +1,11 @@
-# pragma once
+﻿# pragma once
 
 # include "Base.hpp"
 
 class Punipuni : public ObjectBase
 {
 public:
-	Punipuni(P2World& world, const Vec2& position);
+	Punipuni(P2World& world, const Vec2& position = { 0, 0 });
 	~Punipuni() = default;
 
 	void update() override;

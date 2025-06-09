@@ -1,4 +1,4 @@
-# pragma once
+﻿# pragma once
 
 # include <Siv3D.hpp> // Siv3D v0.6.16
 
@@ -15,7 +15,7 @@ struct SceneData
 	int current_stage = 1;
 };
 
-using App = SceneManager<SceneState, SceneData>;
+using SM = SceneManager<SceneState, SceneData>;
 
 // 物理衝突処理用のカテゴリ（最大16個）
 namespace CollisionCategory

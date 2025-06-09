@@ -1,4 +1,4 @@
-# include "Punipuni.hpp"
+﻿# include "Punipuni.hpp"
 
 namespace
 {
@@ -71,7 +71,7 @@ void Punipuni::update()
 {
 	if (body.getPos().y >= (Scene::Height() + 100)) deleteSelf();
 	
-	if (KeyP.down()) body.applyLinearImpulse(Vec2{ 0, -500 });
+	if (KeyP.down()) body.applyLinearImpulse({ 0, -500 });
 }
 
 void Punipuni::draw() const

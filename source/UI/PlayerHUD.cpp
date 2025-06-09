@@ -1,8 +1,8 @@
-# include "PlayerHUD.hpp"
+﻿# include "PlayerHUD.hpp"
 
 PlayerHUD* PlayerHUD::instance = nullptr;
 
-PlayerHUD::PlayerHUD() : player_hp(0), player_max_hp(0) {}
+PlayerHUD::PlayerHUD() : player_hp(0.0f), player_max_hp(0.0f) {}
 
 void PlayerHUD::update() {}
 

@@ -14,23 +14,17 @@ Stage1::Stage1()
 
 void Stage1::initialize()
 {
-	const int width  = Scene::Width();
-	const int height = Scene::Height();
-	
-	const int halfWidth  = (width  / 2);
-	const int halfHeight = (height / 2);
-
 	createObject<StageBackground>();
 
-	createObject<Box1>    (Vec2{ halfWidth + 150, halfHeight       });
-	createObject<Box2>    (Vec2{ halfWidth + 150, halfHeight - 100 });
-	createObject<Punipuni>(Vec2{ halfWidth,       halfHeight - 200 });
-	createObject<Enemy1>  (Vec2{ halfWidth - 150, halfHeight       });
-	createObject<Player>  (Vec2{ halfWidth,       halfHeight       });
+	createObject<Box1>    (Scene::Center() + Vec2{  150,    0 });
+	createObject<Box2>    (Scene::Center() + Vec2{  150, -100 });
+	createObject<Punipuni>(Scene::Center() + Vec2{    0, -200 });
+	createObject<Enemy1>  (Scene::Center() + Vec2{ -150,    0 });
+	createObject<Player>  (Scene::Center());
 
-	floor = world.createRect(P2Static, Vec2{ halfWidth, (height - 100) }, SizeF{ (width - 100), 10 }, P2Material{ .friction = 0.9 });
+	floor = world.createRect(P2Static, { Scene::Center().x, (Scene::Height() - 100) }, SizeF{ (Scene::Width() - 100), 10 }, P2Material{ .friction = 0.9 });
 
-	camera = Camera2D(Vec2{ halfWidth, halfHeight }, 1.0, CameraControl::None_);
+	camera = Camera2D(Scene::Center(), 1.0, CameraControl::None_);
 }
 
 void Stage1::update()
@@ -59,13 +53,12 @@ void Stage1::update()
 		double x = player->getBody().getPos().x;
 		double y = player->getBody().getPos().y;
 
-		const int halfWidth  = (Scene::Width()  / 2);
-		const int halfHeight = (Scene::Height() / 2);
+		const Point center = Scene::Center();
 
-		if (halfWidth  > x) x = halfWidth;
-		if (halfHeight < y) y = halfHeight;
+		if (center.x > x) x = center.x;
+		if (center.y < y) y = center.y;
 
-		camera.setTargetCenter(Vec2{ x, y });
+		camera.setTargetCenter({ x, y });
 		
 		for (const auto& object : objects)
 		{
@@ -81,7 +74,7 @@ void Stage1::update()
 
 		if (respawnTimer.sF() >= 1.0)
 		{
-			createObject<Player>(Vec2{ (Scene::Width() / 2), (Scene::Height() / 2) });
+			createObject<Player>(Scene::Center());
 
 			respawnTimer.reset();
 		}

@@ -1,11 +1,11 @@
-# pragma once
+﻿# pragma once
 
 # include "../Base.hpp"
 
 class EnemyBase : public CharacterBase
 {
 public:
-	EnemyBase(P2World& world, const Vec2& position);
+	EnemyBase(P2World& world, const Vec2& position = { 0, 0 });
 	~EnemyBase() = default;
 
 	virtual void update() override;
