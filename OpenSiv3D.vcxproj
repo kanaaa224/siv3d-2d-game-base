@@ -121,6 +121,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="source\Characters\Enemies\1.cpp" />
+    <ClCompile Include="source\Characters\Enemies\2.cpp" />
     <ClCompile Include="source\Characters\Enemies\Base.cpp" />
     <ClCompile Include="source\Characters\Player.cpp" />
     <ClCompile Include="source\main.cpp" />
@@ -345,6 +346,7 @@
   <ItemGroup>
     <ClInclude Include="source\Characters\Base.hpp" />
     <ClInclude Include="source\Characters\Enemies\1.hpp" />
+    <ClInclude Include="source\Characters\Enemies\2.hpp" />
     <ClInclude Include="source\Characters\Enemies\Base.hpp" />
     <ClInclude Include="source\Characters\Player.hpp" />
     <ClInclude Include="source\Common.hpp" />
