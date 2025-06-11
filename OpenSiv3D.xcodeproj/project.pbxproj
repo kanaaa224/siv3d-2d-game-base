@@ -35,21 +35,22 @@
 		2C5C471126B4F08E005E8C85 /* libzlib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C5C471026B4F08E005E8C85 /* libzlib.a */; };
 		2C6906D82298140F00A427D0 /* engine in Resources */ = {isa = PBXBuildFile; fileRef = 2C6906D72298140F00A427D0 /* engine */; };
 		2CD8412C283263B2005013A6 /* libboost_filesystem.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CD8412B283263B2005013A6 /* libboost_filesystem.a */; };
-		C70372B32DF0E894009BF22C /* StageBackground.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C70372A12DF0E894009BF22C /* StageBackground.cpp */; };
-		C70372B42DF0E894009BF22C /* PlayerHUD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C70372AC2DF0E894009BF22C /* PlayerHUD.cpp */; };
-		C70372B52DF0E894009BF22C /* 1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C70372A92DF0E894009BF22C /* 1.cpp */; };
-		C70372B62DF0E894009BF22C /* Punipuni.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C703729F2DF0E894009BF22C /* Punipuni.cpp */; };
-		C70372B72DF0E894009BF22C /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C70372A42DF0E894009BF22C /* Game.cpp */; };
-		C70372B82DF0E894009BF22C /* Stage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C70372B12DF0E894009BF22C /* Stage.cpp */; };
-		C70372B92DF0E894009BF22C /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C70372AF2DF0E894009BF22C /* main.cpp */; };
-		C70372BA2DF0E894009BF22C /* Base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C703729D2DF0E894009BF22C /* Base.cpp */; };
-		C70372BB2DF0E894009BF22C /* 1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C703728F2DF0E894009BF22C /* 1.cpp */; };
-		C70372BC2DF0E894009BF22C /* Title.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C70372A62DF0E894009BF22C /* Title.cpp */; };
-		C70372BD2DF0E894009BF22C /* 1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C70372982DF0E894009BF22C /* 1.cpp */; };
-		C70372BE2DF0E894009BF22C /* Base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C70372912DF0E894009BF22C /* Base.cpp */; };
-		C70372BF2DF0E894009BF22C /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C70372952DF0E894009BF22C /* Player.cpp */; };
-		C70372C02DF0E894009BF22C /* 2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C703729A2DF0E894009BF22C /* 2.cpp */; };
 		C7464DF12DDB37A10002D2EB /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = C7464DF02DDB37A10002D2EB /* icon.icns */; };
+		C76148FD2DF966C90043808A /* Stage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C76148FB2DF966C90043808A /* Stage.cpp */; };
+		C76148FE2DF966C90043808A /* Title.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C76148F02DF966C90043808A /* Title.cpp */; };
+		C76148FF2DF966C90043808A /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C76148DF2DF966C90043808A /* Player.cpp */; };
+		C76149002DF966C90043808A /* Base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C76148DB2DF966C90043808A /* Base.cpp */; };
+		C76149012DF966C90043808A /* 2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C76148E42DF966C90043808A /* 2.cpp */; };
+		C76149022DF966C90043808A /* 2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C76148D92DF966C90043808A /* 2.cpp */; };
+		C76149032DF966C90043808A /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C76148EE2DF966C90043808A /* Game.cpp */; };
+		C76149042DF966C90043808A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C76148F92DF966C90043808A /* main.cpp */; };
+		C76149052DF966C90043808A /* 1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C76148E22DF966C90043808A /* 1.cpp */; };
+		C76149062DF966C90043808A /* StageBackground.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C76148EB2DF966C90043808A /* StageBackground.cpp */; };
+		C76149072DF966C90043808A /* Punipuni.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C76148E92DF966C90043808A /* Punipuni.cpp */; };
+		C76149082DF966C90043808A /* 1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C76148D72DF966C90043808A /* 1.cpp */; };
+		C76149092DF966C90043808A /* Base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C76148E72DF966C90043808A /* Base.cpp */; };
+		C761490A2DF966C90043808A /* 1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C76148F32DF966C90043808A /* 1.cpp */; };
+		C761490B2DF966C90043808A /* PlayerHUD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C76148F62DF966C90043808A /* PlayerHUD.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,36 +84,38 @@
 		2C5C471026B4F08E005E8C85 /* libzlib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libzlib.a; path = ../../lib/macOS/zlib/libzlib.a; sourceTree = "<group>"; };
 		2C6906D72298140F00A427D0 /* engine */ = {isa = PBXFileReference; lastKnownFileType = folder; name = engine; path = App/engine; sourceTree = "<group>"; };
 		2CD8412B283263B2005013A6 /* libboost_filesystem.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_filesystem.a; path = ../../lib/macOS/boost/libboost_filesystem.a; sourceTree = "<group>"; };
-		C703728E2DF0E894009BF22C /* 1.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = 1.hpp; sourceTree = "<group>"; };
-		C703728F2DF0E894009BF22C /* 1.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = 1.cpp; sourceTree = "<group>"; };
-		C70372902DF0E894009BF22C /* Base.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Base.hpp; sourceTree = "<group>"; };
-		C70372912DF0E894009BF22C /* Base.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Base.cpp; sourceTree = "<group>"; };
-		C70372932DF0E894009BF22C /* Base.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Base.hpp; sourceTree = "<group>"; };
-		C70372942DF0E894009BF22C /* Player.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Player.hpp; sourceTree = "<group>"; };
-		C70372952DF0E894009BF22C /* Player.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
-		C70372972DF0E894009BF22C /* 1.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = 1.hpp; sourceTree = "<group>"; };
-		C70372982DF0E894009BF22C /* 1.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = 1.cpp; sourceTree = "<group>"; };
-		C70372992DF0E894009BF22C /* 2.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = 2.hpp; sourceTree = "<group>"; };
-		C703729A2DF0E894009BF22C /* 2.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = 2.cpp; sourceTree = "<group>"; };
-		C703729C2DF0E894009BF22C /* Base.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Base.hpp; sourceTree = "<group>"; };
-		C703729D2DF0E894009BF22C /* Base.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Base.cpp; sourceTree = "<group>"; };
-		C703729E2DF0E894009BF22C /* Punipuni.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Punipuni.hpp; sourceTree = "<group>"; };
-		C703729F2DF0E894009BF22C /* Punipuni.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Punipuni.cpp; sourceTree = "<group>"; };
-		C70372A02DF0E894009BF22C /* StageBackground.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = StageBackground.hpp; sourceTree = "<group>"; };
-		C70372A12DF0E894009BF22C /* StageBackground.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = StageBackground.cpp; sourceTree = "<group>"; };
-		C70372A32DF0E894009BF22C /* Game.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Game.hpp; sourceTree = "<group>"; };
-		C70372A42DF0E894009BF22C /* Game.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Game.cpp; sourceTree = "<group>"; };
-		C70372A52DF0E894009BF22C /* Title.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Title.hpp; sourceTree = "<group>"; };
-		C70372A62DF0E894009BF22C /* Title.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Title.cpp; sourceTree = "<group>"; };
-		C70372A82DF0E894009BF22C /* 1.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = 1.hpp; sourceTree = "<group>"; };
-		C70372A92DF0E894009BF22C /* 1.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = 1.cpp; sourceTree = "<group>"; };
-		C70372AB2DF0E894009BF22C /* PlayerHUD.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PlayerHUD.hpp; sourceTree = "<group>"; };
-		C70372AC2DF0E894009BF22C /* PlayerHUD.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerHUD.cpp; sourceTree = "<group>"; };
-		C70372AE2DF0E894009BF22C /* Common.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Common.hpp; sourceTree = "<group>"; };
-		C70372AF2DF0E894009BF22C /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		C70372B02DF0E894009BF22C /* Stage.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Stage.hpp; sourceTree = "<group>"; };
-		C70372B12DF0E894009BF22C /* Stage.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Stage.cpp; sourceTree = "<group>"; };
 		C7464DF02DDB37A10002D2EB /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = icon.icns; path = App/icon.icns; sourceTree = "<group>"; };
+		C76148D62DF966C90043808A /* 1.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = 1.hpp; sourceTree = "<group>"; };
+		C76148D72DF966C90043808A /* 1.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = 1.cpp; sourceTree = "<group>"; };
+		C76148D82DF966C90043808A /* 2.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = 2.hpp; sourceTree = "<group>"; };
+		C76148D92DF966C90043808A /* 2.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = 2.cpp; sourceTree = "<group>"; };
+		C76148DA2DF966C90043808A /* Base.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Base.hpp; sourceTree = "<group>"; };
+		C76148DB2DF966C90043808A /* Base.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Base.cpp; sourceTree = "<group>"; };
+		C76148DD2DF966C90043808A /* Base.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Base.hpp; sourceTree = "<group>"; };
+		C76148DE2DF966C90043808A /* Player.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Player.hpp; sourceTree = "<group>"; };
+		C76148DF2DF966C90043808A /* Player.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
+		C76148E12DF966C90043808A /* 1.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = 1.hpp; sourceTree = "<group>"; };
+		C76148E22DF966C90043808A /* 1.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = 1.cpp; sourceTree = "<group>"; };
+		C76148E32DF966C90043808A /* 2.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = 2.hpp; sourceTree = "<group>"; };
+		C76148E42DF966C90043808A /* 2.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = 2.cpp; sourceTree = "<group>"; };
+		C76148E62DF966C90043808A /* Base.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Base.hpp; sourceTree = "<group>"; };
+		C76148E72DF966C90043808A /* Base.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Base.cpp; sourceTree = "<group>"; };
+		C76148E82DF966C90043808A /* Punipuni.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Punipuni.hpp; sourceTree = "<group>"; };
+		C76148E92DF966C90043808A /* Punipuni.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Punipuni.cpp; sourceTree = "<group>"; };
+		C76148EA2DF966C90043808A /* StageBackground.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = StageBackground.hpp; sourceTree = "<group>"; };
+		C76148EB2DF966C90043808A /* StageBackground.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = StageBackground.cpp; sourceTree = "<group>"; };
+		C76148ED2DF966C90043808A /* Game.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Game.hpp; sourceTree = "<group>"; };
+		C76148EE2DF966C90043808A /* Game.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Game.cpp; sourceTree = "<group>"; };
+		C76148EF2DF966C90043808A /* Title.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Title.hpp; sourceTree = "<group>"; };
+		C76148F02DF966C90043808A /* Title.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Title.cpp; sourceTree = "<group>"; };
+		C76148F22DF966C90043808A /* 1.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = 1.hpp; sourceTree = "<group>"; };
+		C76148F32DF966C90043808A /* 1.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = 1.cpp; sourceTree = "<group>"; };
+		C76148F52DF966C90043808A /* PlayerHUD.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PlayerHUD.hpp; sourceTree = "<group>"; };
+		C76148F62DF966C90043808A /* PlayerHUD.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerHUD.cpp; sourceTree = "<group>"; };
+		C76148F82DF966C90043808A /* Common.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Common.hpp; sourceTree = "<group>"; };
+		C76148F92DF966C90043808A /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		C76148FA2DF966C90043808A /* Stage.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Stage.hpp; sourceTree = "<group>"; };
+		C76148FB2DF966C90043808A /* Stage.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Stage.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,7 +164,7 @@
 				2C1778851CE0A9EA00BB8AD0 /* Products */,
 				2CC7F9861F45930A0071A239 /* Frameworks */,
 				C7464DF02DDB37A10002D2EB /* icon.icns */,
-				C70372B22DF0E894009BF22C /* source */,
+				C76148FC2DF966C90043808A /* source */,
 			);
 			sourceTree = "<group>";
 		};
@@ -207,94 +210,96 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		C70372922DF0E894009BF22C /* Enemies */ = {
+		C76148DC2DF966C90043808A /* Enemies */ = {
 			isa = PBXGroup;
 			children = (
-				C703728E2DF0E894009BF22C /* 1.hpp */,
-				C703728F2DF0E894009BF22C /* 1.cpp */,
-				C70372902DF0E894009BF22C /* Base.hpp */,
-				C70372912DF0E894009BF22C /* Base.cpp */,
+				C76148D62DF966C90043808A /* 1.hpp */,
+				C76148D72DF966C90043808A /* 1.cpp */,
+				C76148D82DF966C90043808A /* 2.hpp */,
+				C76148D92DF966C90043808A /* 2.cpp */,
+				C76148DA2DF966C90043808A /* Base.hpp */,
+				C76148DB2DF966C90043808A /* Base.cpp */,
 			);
 			path = Enemies;
 			sourceTree = "<group>";
 		};
-		C70372962DF0E894009BF22C /* Characters */ = {
+		C76148E02DF966C90043808A /* Characters */ = {
 			isa = PBXGroup;
 			children = (
-				C70372922DF0E894009BF22C /* Enemies */,
-				C70372932DF0E894009BF22C /* Base.hpp */,
-				C70372942DF0E894009BF22C /* Player.hpp */,
-				C70372952DF0E894009BF22C /* Player.cpp */,
+				C76148DC2DF966C90043808A /* Enemies */,
+				C76148DD2DF966C90043808A /* Base.hpp */,
+				C76148DE2DF966C90043808A /* Player.hpp */,
+				C76148DF2DF966C90043808A /* Player.cpp */,
 			);
 			path = Characters;
 			sourceTree = "<group>";
 		};
-		C703729B2DF0E894009BF22C /* Boxes */ = {
+		C76148E52DF966C90043808A /* Boxes */ = {
 			isa = PBXGroup;
 			children = (
-				C70372972DF0E894009BF22C /* 1.hpp */,
-				C70372982DF0E894009BF22C /* 1.cpp */,
-				C70372992DF0E894009BF22C /* 2.hpp */,
-				C703729A2DF0E894009BF22C /* 2.cpp */,
+				C76148E12DF966C90043808A /* 1.hpp */,
+				C76148E22DF966C90043808A /* 1.cpp */,
+				C76148E32DF966C90043808A /* 2.hpp */,
+				C76148E42DF966C90043808A /* 2.cpp */,
 			);
 			path = Boxes;
 			sourceTree = "<group>";
 		};
-		C70372A22DF0E894009BF22C /* Objects */ = {
+		C76148EC2DF966C90043808A /* Objects */ = {
 			isa = PBXGroup;
 			children = (
-				C703729B2DF0E894009BF22C /* Boxes */,
-				C703729C2DF0E894009BF22C /* Base.hpp */,
-				C703729D2DF0E894009BF22C /* Base.cpp */,
-				C703729E2DF0E894009BF22C /* Punipuni.hpp */,
-				C703729F2DF0E894009BF22C /* Punipuni.cpp */,
-				C70372A02DF0E894009BF22C /* StageBackground.hpp */,
-				C70372A12DF0E894009BF22C /* StageBackground.cpp */,
+				C76148E52DF966C90043808A /* Boxes */,
+				C76148E62DF966C90043808A /* Base.hpp */,
+				C76148E72DF966C90043808A /* Base.cpp */,
+				C76148E82DF966C90043808A /* Punipuni.hpp */,
+				C76148E92DF966C90043808A /* Punipuni.cpp */,
+				C76148EA2DF966C90043808A /* StageBackground.hpp */,
+				C76148EB2DF966C90043808A /* StageBackground.cpp */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
 		};
-		C70372A72DF0E894009BF22C /* Scenes */ = {
+		C76148F12DF966C90043808A /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				C70372A32DF0E894009BF22C /* Game.hpp */,
-				C70372A42DF0E894009BF22C /* Game.cpp */,
-				C70372A52DF0E894009BF22C /* Title.hpp */,
-				C70372A62DF0E894009BF22C /* Title.cpp */,
+				C76148ED2DF966C90043808A /* Game.hpp */,
+				C76148EE2DF966C90043808A /* Game.cpp */,
+				C76148EF2DF966C90043808A /* Title.hpp */,
+				C76148F02DF966C90043808A /* Title.cpp */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
 		};
-		C70372AA2DF0E894009BF22C /* Stages */ = {
+		C76148F42DF966C90043808A /* Stages */ = {
 			isa = PBXGroup;
 			children = (
-				C70372A82DF0E894009BF22C /* 1.hpp */,
-				C70372A92DF0E894009BF22C /* 1.cpp */,
+				C76148F22DF966C90043808A /* 1.hpp */,
+				C76148F32DF966C90043808A /* 1.cpp */,
 			);
 			path = Stages;
 			sourceTree = "<group>";
 		};
-		C70372AD2DF0E894009BF22C /* UI */ = {
+		C76148F72DF966C90043808A /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				C70372AB2DF0E894009BF22C /* PlayerHUD.hpp */,
-				C70372AC2DF0E894009BF22C /* PlayerHUD.cpp */,
+				C76148F52DF966C90043808A /* PlayerHUD.hpp */,
+				C76148F62DF966C90043808A /* PlayerHUD.cpp */,
 			);
 			path = UI;
 			sourceTree = "<group>";
 		};
-		C70372B22DF0E894009BF22C /* source */ = {
+		C76148FC2DF966C90043808A /* source */ = {
 			isa = PBXGroup;
 			children = (
-				C70372962DF0E894009BF22C /* Characters */,
-				C70372A22DF0E894009BF22C /* Objects */,
-				C70372A72DF0E894009BF22C /* Scenes */,
-				C70372AA2DF0E894009BF22C /* Stages */,
-				C70372AD2DF0E894009BF22C /* UI */,
-				C70372AE2DF0E894009BF22C /* Common.hpp */,
-				C70372AF2DF0E894009BF22C /* main.cpp */,
-				C70372B02DF0E894009BF22C /* Stage.hpp */,
-				C70372B12DF0E894009BF22C /* Stage.cpp */,
+				C76148E02DF966C90043808A /* Characters */,
+				C76148EC2DF966C90043808A /* Objects */,
+				C76148F12DF966C90043808A /* Scenes */,
+				C76148F42DF966C90043808A /* Stages */,
+				C76148F72DF966C90043808A /* UI */,
+				C76148F82DF966C90043808A /* Common.hpp */,
+				C76148F92DF966C90043808A /* main.cpp */,
+				C76148FA2DF966C90043808A /* Stage.hpp */,
+				C76148FB2DF966C90043808A /* Stage.cpp */,
 			);
 			path = source;
 			sourceTree = "<group>";
@@ -367,20 +372,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C70372B32DF0E894009BF22C /* StageBackground.cpp in Sources */,
-				C70372B42DF0E894009BF22C /* PlayerHUD.cpp in Sources */,
-				C70372B52DF0E894009BF22C /* 1.cpp in Sources */,
-				C70372B62DF0E894009BF22C /* Punipuni.cpp in Sources */,
-				C70372B72DF0E894009BF22C /* Game.cpp in Sources */,
-				C70372B82DF0E894009BF22C /* Stage.cpp in Sources */,
-				C70372B92DF0E894009BF22C /* main.cpp in Sources */,
-				C70372BA2DF0E894009BF22C /* Base.cpp in Sources */,
-				C70372BB2DF0E894009BF22C /* 1.cpp in Sources */,
-				C70372BC2DF0E894009BF22C /* Title.cpp in Sources */,
-				C70372BD2DF0E894009BF22C /* 1.cpp in Sources */,
-				C70372BE2DF0E894009BF22C /* Base.cpp in Sources */,
-				C70372BF2DF0E894009BF22C /* Player.cpp in Sources */,
-				C70372C02DF0E894009BF22C /* 2.cpp in Sources */,
+				C76148FD2DF966C90043808A /* Stage.cpp in Sources */,
+				C76148FE2DF966C90043808A /* Title.cpp in Sources */,
+				C76148FF2DF966C90043808A /* Player.cpp in Sources */,
+				C76149002DF966C90043808A /* Base.cpp in Sources */,
+				C76149012DF966C90043808A /* 2.cpp in Sources */,
+				C76149022DF966C90043808A /* 2.cpp in Sources */,
+				C76149032DF966C90043808A /* Game.cpp in Sources */,
+				C76149042DF966C90043808A /* main.cpp in Sources */,
+				C76149052DF966C90043808A /* 1.cpp in Sources */,
+				C76149062DF966C90043808A /* StageBackground.cpp in Sources */,
+				C76149072DF966C90043808A /* Punipuni.cpp in Sources */,
+				C76149082DF966C90043808A /* 1.cpp in Sources */,
+				C76149092DF966C90043808A /* Base.cpp in Sources */,
+				C761490A2DF966C90043808A /* 1.cpp in Sources */,
+				C761490B2DF966C90043808A /* PlayerHUD.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
