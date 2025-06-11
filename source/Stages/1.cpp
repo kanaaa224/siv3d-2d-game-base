@@ -4,6 +4,7 @@
 # include "../Objects/Boxes/2.hpp"
 # include "../Objects/Punipuni.hpp"
 # include "../Characters/Enemies/1.hpp"
+# include "../Characters/Enemies/2.hpp"
 # include "../Characters/Player.hpp"
 # include "../UI/PlayerHUD.hpp"
 
@@ -20,6 +21,7 @@ void Stage1::initialize()
 	createObject<Box2>    (Scene::Center() + Vec2{  150, -100 });
 	createObject<Punipuni>(Scene::Center() + Vec2{    0, -200 });
 	createObject<Enemy1>  (Scene::Center() + Vec2{ -150,    0 });
+	createObject<Enemy2>  (Scene::Center() + Vec2{ -260,    0 });
 	createObject<Player>  (Scene::Center());
 
 	floor = world.createRect(P2Static, { Scene::Center().x, (Scene::Height() - 100) }, SizeF{ (Scene::Width() - 100), 10 }, P2Material{ .friction = 0.9 });

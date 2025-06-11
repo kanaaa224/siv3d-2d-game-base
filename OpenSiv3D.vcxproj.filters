@@ -144,6 +144,9 @@
     <ClCompile Include="source\Characters\Enemies\1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="source\Characters\Enemies\2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="source\Characters\Enemies\Base.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -849,6 +852,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="source\Characters\Enemies\1.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Characters\Enemies\2.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="source\Characters\Enemies\Base.hpp">

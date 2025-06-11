@@ -11,8 +11,6 @@ public:
 	virtual void update() override;
 	virtual void draw() const override;
 
-	virtual void onHit(ObjectBase& object) override;
-
 private:
 	Vec2 start_position;
 
