@@ -893,6 +893,9 @@
     <ClInclude Include="source\UI\PlayerHUD.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="source\Utils\Timer.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="source\Common.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
