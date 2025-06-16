@@ -79,7 +79,7 @@ void Stage1::update()
 	{
 		if (!player_respawned)
 		{
-			setTimeout([this] { player_spawn = true; }, 1000ms);
+			SetTimeout([this] { player_spawn = true; }, 1000ms);
 
 			player_respawned = true;
 		}
