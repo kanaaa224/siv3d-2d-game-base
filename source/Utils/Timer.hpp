@@ -7,7 +7,7 @@
 namespace TimerUtils
 {
 	template<typename Func>
-	inline void setTimeout(Func&& func, std::chrono::milliseconds delay)
+	inline void SetTimeout(Func&& func, std::chrono::milliseconds delay)
 	{
 		std::thread([func = std::forward<Func>(func), delay]() {
 			std::this_thread::sleep_for(delay);
@@ -16,7 +16,7 @@ namespace TimerUtils
 	}
 
 	template<typename Func>
-	inline void setInterval(Func&& func, std::chrono::milliseconds interval)
+	inline void SetInterval(Func&& func, std::chrono::milliseconds interval)
 	{
 		std::thread([func = std::forward<Func>(func), interval]() {
 			while (true) {
@@ -27,7 +27,7 @@ namespace TimerUtils
 	}
 
 	template<typename Func>
-	inline void waitTimeout(Func&& func, std::chrono::milliseconds delay)
+	inline void WaitTimeout(Func&& func, std::chrono::milliseconds delay)
 	{
 		std::this_thread::sleep_for(delay);
 		func();
