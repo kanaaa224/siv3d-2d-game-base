@@ -7,6 +7,10 @@
 # include "../Characters/Enemies/2.hpp"
 # include "../Characters/Player.hpp"
 # include "../UI/PlayerHUD.hpp"
+# include "../Utils/Timer.hpp"
+
+using namespace TimerUtils;
+using namespace std::chrono_literals;
 
 Stage1::Stage1()
 {
@@ -33,11 +37,6 @@ void Stage1::update()
 {
 	Stage::update();
 
-	static Stopwatch respawnTimer{ StartImmediately::No };
-
-	float player_hp     = 0;
-	float player_max_hp = 0;
-
 	Player* player = nullptr;
 
 	for (const auto& object : objects)
@@ -45,10 +44,14 @@ void Stage1::update()
 		if ((player = dynamic_cast<Player*>(object))) break;
 	}
 
+	float player_hp     = 0;
+	float player_max_hp = 0;
+
+	static bool player_respawned = false;
+	static bool player_spawn     = false;
+
 	if (player)
 	{
-		respawnTimer.reset();
-
 		player_hp     = player->getHP();
 		player_max_hp = player->getMaxHP();
 
@@ -69,16 +72,23 @@ void Stage1::update()
 				stageBackground->setCameraPosition(camera.getTargetCenter() - Scene::Center());
 			}
 		}
+
+		player_respawned = false;
 	}
 	else
 	{
-		if (!respawnTimer.isRunning()) respawnTimer.restart();
+		if (!player_respawned)
+		{
+			setTimeout([this] { player_spawn = true; }, 1000ms);
 
-		if (respawnTimer.sF() >= 1.0)
+			player_respawned = true;
+		}
+
+		if (player_spawn)
 		{
 			createObject<Player>(Scene::Center());
 
-			respawnTimer.reset();
+			player_spawn = false;
 		}
 	}
 
