@@ -141,25 +141,25 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\Characters\Enemies\1.cpp">
+    <ClCompile Include="source\Characters\Enemies\Enemy1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\Characters\Enemies\2.cpp">
+    <ClCompile Include="source\Characters\Enemies\Enemy2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\Characters\Enemies\Base.cpp">
+    <ClCompile Include="source\Characters\Enemies\EnemyBase.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\Characters\Player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\Objects\Boxes\1.cpp">
+    <ClCompile Include="source\Objects\Boxes\Box1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\Objects\Boxes\2.cpp">
+    <ClCompile Include="source\Objects\Boxes\Box2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\Objects\Base.cpp">
+    <ClCompile Include="source\Objects\ObjectBase.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\Objects\Punipuni.cpp">
@@ -174,7 +174,7 @@
     <ClCompile Include="source\Scenes\Title.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\Stages\1.cpp">
+    <ClCompile Include="source\Stages\Stage1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\UI\PlayerHUD.cpp">
@@ -851,28 +851,28 @@
     <ClInclude Include="stdafx.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\Characters\Enemies\1.hpp">
+    <ClInclude Include="source\Characters\Enemies\Enemy1.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\Characters\Enemies\2.hpp">
+    <ClInclude Include="source\Characters\Enemies\Enemy2.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\Characters\Enemies\Base.hpp">
+    <ClInclude Include="source\Characters\Enemies\EnemyBase.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\Characters\Base.hpp">
+    <ClInclude Include="source\Characters\CharacterBase.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="source\Characters\Player.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\Objects\Boxes\1.hpp">
+    <ClInclude Include="source\Objects\Boxes\Box1.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\Objects\Boxes\2.hpp">
+    <ClInclude Include="source\Objects\Boxes\Box2.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\Objects\Base.hpp">
+    <ClInclude Include="source\Objects\ObjectBase.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="source\Objects\Punipuni.hpp">
@@ -887,7 +887,7 @@
     <ClInclude Include="source\Scenes\Title.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\Stages\1.hpp">
+    <ClInclude Include="source\Stages\Stage1.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="source\UI\PlayerHUD.hpp">
