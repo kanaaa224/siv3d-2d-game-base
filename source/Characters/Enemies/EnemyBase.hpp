@@ -1,6 +1,6 @@
 ﻿# pragma once
 
-# include "../Base.hpp"
+# include "../CharacterBase.hpp"
 
 class EnemyBase : public CharacterBase
 {

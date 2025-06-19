@@ -120,20 +120,20 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="source\Characters\Enemies\1.cpp" />
-    <ClCompile Include="source\Characters\Enemies\2.cpp" />
-    <ClCompile Include="source\Characters\Enemies\Base.cpp" />
+    <ClCompile Include="source\Characters\Enemies\Enemy1.cpp" />
+    <ClCompile Include="source\Characters\Enemies\Enemy2.cpp" />
+    <ClCompile Include="source\Characters\Enemies\EnemyBase.cpp" />
     <ClCompile Include="source\Characters\Player.cpp" />
     <ClCompile Include="source\main.cpp" />
-    <ClCompile Include="source\Objects\Base.cpp" />
-    <ClCompile Include="source\Objects\Boxes\1.cpp" />
-    <ClCompile Include="source\Objects\Boxes\2.cpp" />
+    <ClCompile Include="source\Objects\Boxes\Box1.cpp" />
+    <ClCompile Include="source\Objects\Boxes\Box2.cpp" />
+    <ClCompile Include="source\Objects\ObjectBase.cpp" />
     <ClCompile Include="source\Objects\Punipuni.cpp" />
     <ClCompile Include="source\Objects\StageBackground.cpp" />
     <ClCompile Include="source\Scenes\Game.cpp" />
     <ClCompile Include="source\Scenes\Title.cpp" />
     <ClCompile Include="source\Stage.cpp" />
-    <ClCompile Include="source\Stages\1.cpp" />
+    <ClCompile Include="source\Stages\Stage1.cpp" />
     <ClCompile Include="source\UI\PlayerHUD.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -344,21 +344,21 @@
     <Xml Include="App\example\xml\test.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="source\Characters\Base.hpp" />
-    <ClInclude Include="source\Characters\Enemies\1.hpp" />
-    <ClInclude Include="source\Characters\Enemies\2.hpp" />
-    <ClInclude Include="source\Characters\Enemies\Base.hpp" />
+    <ClInclude Include="source\Characters\CharacterBase.hpp" />
+    <ClInclude Include="source\Characters\Enemies\Enemy1.hpp" />
+    <ClInclude Include="source\Characters\Enemies\Enemy2.hpp" />
+    <ClInclude Include="source\Characters\Enemies\EnemyBase.hpp" />
     <ClInclude Include="source\Characters\Player.hpp" />
     <ClInclude Include="source\Common.hpp" />
-    <ClInclude Include="source\Objects\Base.hpp" />
-    <ClInclude Include="source\Objects\Boxes\1.hpp" />
-    <ClInclude Include="source\Objects\Boxes\2.hpp" />
+    <ClInclude Include="source\Objects\Boxes\Box1.hpp" />
+    <ClInclude Include="source\Objects\Boxes\Box2.hpp" />
+    <ClInclude Include="source\Objects\ObjectBase.hpp" />
     <ClInclude Include="source\Objects\Punipuni.hpp" />
     <ClInclude Include="source\Objects\StageBackground.hpp" />
     <ClInclude Include="source\Scenes\Game.hpp" />
     <ClInclude Include="source\Scenes\Title.hpp" />
     <ClInclude Include="source\Stage.hpp" />
-    <ClInclude Include="source\Stages\1.hpp" />
+    <ClInclude Include="source\Stages\Stage1.hpp" />
     <ClInclude Include="source\UI\PlayerHUD.hpp" />
     <ClInclude Include="source\Utils\Timer.hpp" />
     <ClInclude Include="stdafx.h" />

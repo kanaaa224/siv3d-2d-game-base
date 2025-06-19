@@ -1,7 +1,7 @@
 ﻿# include "Player.hpp"
 # include "../Stage.hpp"
-# include "../Objects/Boxes/1.hpp"
-# include "../Objects/Boxes/2.hpp"
+# include "../Objects/Boxes/Box1.hpp"
+# include "../Objects/Boxes/Box2.hpp"
 # include "../Objects/Punipuni.hpp"
 
 Player::Player(P2World& world, const Vec2& position) : CharacterBase(world, position)
