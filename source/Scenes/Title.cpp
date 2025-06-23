@@ -1,6 +1,9 @@
 ﻿# include "Title.hpp"
 
-Title::Title(const InitData& init) : IScene{ init } {}
+Title::Title(const InitData& init) : IScene{ init }
+{
+	Window::SetStyle(WindowStyle::Sizable);
+}
 
 void Title::update()
 {
@@ -13,6 +16,10 @@ void Title::update()
 
 	     if (m_startButton.leftClicked()) changeScene(SceneState::Game, 0.5s);
 	else if (m_exitButton .leftClicked()) System::Exit();
+	
+	if (KeyF.down()) Window::SetFullscreen(!Window::GetState().fullscreen);
+	if (KeyM.down()) Window::Maximize();
+	if (KeyR.down()) Window::Restore();
 }
 
 void Title::draw() const
