@@ -1,35 +1,98 @@
 ﻿# pragma once
 
-# include <thread>
+# include <Siv3D.hpp>
 # include <chrono>
-# include <type_traits>
+# include <functional>
 
 namespace TimerUtils
 {
-	template<typename Func>
-	inline void SetTimeout(Func&& func, std::chrono::milliseconds delay)
+	using std::chrono::milliseconds;
+	using std::chrono::duration_cast;
+
+	struct Task
 	{
-		std::thread([func = std::forward<Func>(func), delay]() {
-			std::this_thread::sleep_for(delay);
-			func();
-		}).detach();
+		bool repeat = false;
+		bool done   = false;
+
+		double delayTime = 0.0;
+		double lastTime  = 0.0;
+
+		std::function<void()> func;
+	};
+
+	inline Array<Task>& GetTasks()
+	{
+		static Array<Task> tasks;
+
+		return tasks;
 	}
 
-	template<typename Func>
-	inline void SetInterval(Func&& func, std::chrono::milliseconds interval)
+	inline void ClearTasks()
 	{
-		std::thread([func = std::forward<Func>(func), interval]() {
-			while (true) {
-				std::this_thread::sleep_for(interval);
-				func();
+		GetTasks().clear();
+	}
+
+	inline double& GetRunningTime()
+	{
+		static double runningTime = 0.0;
+
+		return runningTime;
+	}
+
+	inline void Update()
+	{
+		auto& runningTime = GetRunningTime();
+
+		runningTime += Scene::DeltaTime();
+
+		for (auto& task : GetTasks())
+		{
+			if (!task.done && (runningTime - task.lastTime) >= task.delayTime)
+			{
+				task.lastTime = runningTime;
+
+				task.func();
+
+				if (!task.repeat) task.done = true;
 			}
-		}).detach();
+		}
+
+		GetTasks().remove_if([](const Task& t) { return t.done; });
 	}
 
 	template<typename Func>
-	inline void WaitTimeout(Func&& func, std::chrono::milliseconds delay)
+	inline void SetTimeout(Func&& func, milliseconds delay)
 	{
-		std::this_thread::sleep_for(delay);
+		GetTasks().push_back({
+			.repeat = false,
+			.done   = false,
+
+			.delayTime = delay.count() / 1000.0,
+			.lastTime  = GetRunningTime(),
+
+			.func = std::forward<Func>(func)
+		});
+	}
+
+	template<typename Func>
+	inline void SetInterval(Func&& func, milliseconds interval)
+	{
+		GetTasks().push_back({
+			.repeat = true,
+			.done   = false,
+
+			.delayTime = interval.count() / 1000.0,
+			.lastTime  = GetRunningTime(),
+
+			.func = std::forward<Func>(func)
+		});
+	}
+
+	template<typename Func>
+	inline void WaitTimeout(Func&& func, milliseconds delay)
+	{
+		System::Sleep(delay.count());
+
 		func();
 	}
 }

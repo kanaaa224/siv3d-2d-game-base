@@ -14,6 +14,8 @@ using namespace std::chrono_literals;
 
 Stage1::Stage1()
 {
+	TimerUtils::ClearTasks();
+
 	initialize();
 }
 
@@ -79,7 +81,7 @@ void Stage1::update()
 	{
 		if (!player_respawned)
 		{
-			SetTimeout([this] { player_spawn = true; }, 1000ms);
+			SetTimeout([this] { player_spawn = true; }, 1s);
 
 			player_respawned = true;
 		}
@@ -98,6 +100,8 @@ void Stage1::update()
 
 	playerHUD->setPlayerHP(player_hp, player_max_hp);
 	playerHUD->update();
+	
+	TimerUtils::Update();
 }
 
 void Stage1::draw() const
