@@ -1,5 +1,5 @@
 ﻿# include "Player.hpp"
-# include "../Stage.hpp"
+# include "../Stages/Stage.hpp"
 # include "../Objects/Boxes/Box1.hpp"
 # include "../Objects/Boxes/Box2.hpp"
 # include "../Objects/Punipuni.hpp"

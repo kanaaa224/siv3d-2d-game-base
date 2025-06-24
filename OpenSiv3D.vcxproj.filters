@@ -174,6 +174,9 @@
     <ClCompile Include="source\Scenes\Title.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="source\Stages\Stage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="source\Stages\Stage1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -181,9 +184,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\Stage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -887,6 +887,9 @@
     <ClInclude Include="source\Scenes\Title.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="source\Stages\Stage.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="source\Stages\Stage1.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -897,9 +900,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="source\Common.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Stage.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

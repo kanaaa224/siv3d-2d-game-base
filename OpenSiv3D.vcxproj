@@ -132,7 +132,7 @@
     <ClCompile Include="source\Objects\StageBackground.cpp" />
     <ClCompile Include="source\Scenes\Game.cpp" />
     <ClCompile Include="source\Scenes\Title.cpp" />
-    <ClCompile Include="source\Stage.cpp" />
+    <ClCompile Include="source\Stages\Stage.cpp" />
     <ClCompile Include="source\Stages\Stage1.cpp" />
     <ClCompile Include="source\UI\PlayerHUD.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -357,7 +357,7 @@
     <ClInclude Include="source\Objects\StageBackground.hpp" />
     <ClInclude Include="source\Scenes\Game.hpp" />
     <ClInclude Include="source\Scenes\Title.hpp" />
-    <ClInclude Include="source\Stage.hpp" />
+    <ClInclude Include="source\Stages\Stage.hpp" />
     <ClInclude Include="source\Stages\Stage1.hpp" />
     <ClInclude Include="source\UI\PlayerHUD.hpp" />
     <ClInclude Include="source\Utils\Timer.hpp" />
