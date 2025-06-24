@@ -33,6 +33,8 @@ void Stage1::initialize()
 	floor = world.createRect(P2Static, { Scene::Center().x, (Scene::Height() - 100) }, SizeF{ (Scene::Width() - 100), 10 }, P2Material{ .friction = 0.9 });
 
 	camera = Camera2D(Scene::Center(), 1.0, CameraControl::None_);
+
+	SetInterval([this] { createObject<Box2>(Scene::Center() + Vec2{ 250, -100 }); }, 3s);
 }
 
 void Stage1::update()
