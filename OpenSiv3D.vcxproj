@@ -124,7 +124,7 @@
     <ClCompile Include="source\Characters\Enemies\Enemy2.cpp" />
     <ClCompile Include="source\Characters\Enemies\EnemyBase.cpp" />
     <ClCompile Include="source\Characters\Player.cpp" />
-    <ClCompile Include="source\main.cpp" />
+    <ClCompile Include="source\Main.cpp" />
     <ClCompile Include="source\Objects\Boxes\Box1.cpp" />
     <ClCompile Include="source\Objects\Boxes\Box2.cpp" />
     <ClCompile Include="source\Objects\ObjectBase.cpp" />
