@@ -8,6 +8,7 @@ namespace TimerUtils
 {
 	using std::chrono::milliseconds;
 	using std::chrono::duration_cast;
+	using namespace std::chrono_literals;
 
 	struct Task
 	{
@@ -61,7 +62,7 @@ namespace TimerUtils
 	}
 
 	template<typename Func>
-	inline void SetTimeout(Func&& func, milliseconds delay)
+	inline void SetTimeout(Func&& func, milliseconds delay = 0s)
 	{
 		GetTasks().push_back({
 			.repeat = false,
@@ -75,7 +76,7 @@ namespace TimerUtils
 	}
 
 	template<typename Func>
-	inline void SetInterval(Func&& func, milliseconds interval)
+	inline void SetInterval(Func&& func, milliseconds interval = 0s)
 	{
 		GetTasks().push_back({
 			.repeat = true,
@@ -88,11 +89,13 @@ namespace TimerUtils
 		});
 	}
 
+#ifdef _DEBUG
 	template<typename Func>
-	inline void WaitTimeout(Func&& func, milliseconds delay)
+	inline void WaitTimeout(Func&& func, milliseconds delay = 0s)
 	{
 		System::Sleep(delay.count());
 
 		func();
 	}
+#endif
 }

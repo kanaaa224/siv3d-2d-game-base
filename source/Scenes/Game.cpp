@@ -18,18 +18,19 @@ Game::Game(const InitData& init) : IScene{ init }
 	}
 }
 
+Game::~Game()
+{
+	Stage::DeleteInstance();
+}
+
 void Game::update()
 {
-	Stage* stage = Stage::GetInstance();
-
-	stage->update();
+	Stage::GetInstance()->update();
 
 	if (MouseL.down()) changeScene(SceneState::Title, 0.5s);
 }
 
 void Game::draw() const
 {
-	Stage* stage = Stage::GetInstance();
-
-	stage->draw();
+	Stage::GetInstance()->draw();
 }

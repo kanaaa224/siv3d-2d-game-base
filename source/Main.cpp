@@ -22,6 +22,10 @@ void Initialize()
 
 void Main()
 {
+#ifdef _DEBUG
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+#endif
+
 	AssetsRegistration();
 
 	Initialize();
@@ -32,8 +36,5 @@ void Main()
 	sceneManager.add<Game> (SceneState::Game);
 	sceneManager.init      (SceneState::Title, 0.5s);
 
-	while (System::Update())
-	{
-		if (not sceneManager.update()) break;
-	}
+	while (System::Update()) if (not sceneManager.update()) break;
 }

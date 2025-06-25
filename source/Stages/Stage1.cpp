@@ -43,10 +43,7 @@ void Stage1::update()
 
 	Player* player = nullptr;
 
-	for (const auto& object : objects)
-	{
-		if ((player = dynamic_cast<Player*>(object))) break;
-	}
+	for (const auto& object : objects) if ((player = dynamic_cast<Player*>(object))) break;
 
 	float player_hp     = 0;
 	float player_max_hp = 0;
@@ -125,7 +122,7 @@ void Stage1::draw() const
 
 void Stage1::NewInstance()
 {
-	if (instance != nullptr) delete instance;
+	DeleteInstance();
 
 	instance = new Stage1();
 }

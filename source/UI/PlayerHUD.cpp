@@ -1,8 +1,11 @@
 ﻿# include "PlayerHUD.hpp"
 
-PlayerHUD* PlayerHUD::instance = nullptr;
+PlayerHUD* PlayerHUD::GetInstance()
+{
+	static PlayerHUD instance;
 
-PlayerHUD::PlayerHUD() : player_hp(0.0f), player_max_hp(0.0f) {}
+	return &instance;
+}
 
 void PlayerHUD::update() {}
 
@@ -11,9 +14,8 @@ void PlayerHUD::draw() const
 	Print << U"Player HP: " << player_hp << U" / " << player_max_hp;
 }
 
-PlayerHUD* PlayerHUD::GetInstance()
+void PlayerHUD::setPlayerHP(float hp, float max_hp)
 {
-	if (instance == nullptr) instance = new PlayerHUD();
-
-	return instance;
+	player_hp     = hp;
+	player_max_hp = max_hp;
 }
