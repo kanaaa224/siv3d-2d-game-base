@@ -1,15 +1,10 @@
 ﻿# include "Stage.hpp"
 
-Stage* Stage::instance = nullptr;
-
 Stage::Stage() : stepTime(1.0 / 200.0), accumulatedTime(0.0) {}
 
 Stage::~Stage()
 {
-	for (const auto& object : objects)
-	{
-		delete object;
-	}
+	for (const auto& object : objects) delete object;
 
 	objects.clear();
 	deletionObjects.clear();
@@ -44,10 +39,7 @@ void Stage::update()
 
 	auto _objects_ = objects;
 
-	for (const auto& object : _objects_)
-	{
-		object->update();
-	}
+	for (const auto& object : _objects_) object->update();
 
 	if (!deletionObjects.isEmpty())
 	{
@@ -69,15 +61,24 @@ void Stage::update()
 
 void Stage::draw() const
 {
-	for (const auto& object : objects)
+	for (const auto& object : objects) object->draw();
+}
+
+Stage* Stage::instance = nullptr;
+
+void Stage::DeleteInstance()
+{
+	if (instance != nullptr)
 	{
-		object->draw();
+		delete instance;
+
+		instance = nullptr;
 	}
 }
 
 void Stage::NewInstance()
 {
-	if (instance != nullptr) delete instance;
+	DeleteInstance();
 
 	instance = new Stage();
 }

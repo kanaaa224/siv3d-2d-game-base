@@ -78,10 +78,7 @@ void Punipuni::draw() const
 {
 	Array<Vec2> vertices;
 
-	for (const auto& b : aroundBodies)
-	{
-		vertices << b.getPos();
-	}
+	for (const auto& b : aroundBodies) vertices << b.getPos();
 
 	Polygon(ChaikinSmooth(vertices)).calculateBuffer(outerRadius).drawFrame();
 }
