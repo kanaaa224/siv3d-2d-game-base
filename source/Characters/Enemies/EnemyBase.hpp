@@ -2,6 +2,8 @@
 
 # include "../CharacterBase.hpp"
 
+# define ENEMY_MAX_HP 100
+
 class EnemyBase : public CharacterBase
 {
 public:

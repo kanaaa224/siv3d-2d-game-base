@@ -2,6 +2,8 @@
 
 # include "CharacterBase.hpp"
 
+# define PLAYER_MAX_HP 100
+
 class Player : public CharacterBase
 {
 public:

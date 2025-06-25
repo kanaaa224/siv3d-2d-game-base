@@ -16,6 +16,11 @@ Game::Game(const InitData& init) : IScene{ init }
 	default:
 		break;
 	}
+	
+	Stage::GetInstance()->setSceneFunctions(
+		[this](SceneState s, Duration d) { changeScene(s, d); },
+		[this]() -> SceneData& { return getData(); }
+	);
 }
 
 Game::~Game()
@@ -26,8 +31,6 @@ Game::~Game()
 void Game::update()
 {
 	Stage::GetInstance()->update();
-
-	if (MouseL.down()) changeScene(SceneState::Title, 0.5s);
 }
 
 void Game::draw() const

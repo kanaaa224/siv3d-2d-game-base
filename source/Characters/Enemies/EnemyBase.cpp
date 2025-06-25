@@ -8,9 +8,7 @@ EnemyBase::EnemyBase(P2World& world, const Vec2& position) : CharacterBase(world
 
 void EnemyBase::initialize()
 {
-	max_hp = 100;
-
-	hp = max_hp;
+	hp = max_hp = ENEMY_MAX_HP;
 }
 
 void EnemyBase::update()

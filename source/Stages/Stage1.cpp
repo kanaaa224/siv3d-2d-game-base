@@ -101,6 +101,9 @@ void Stage1::update()
 	playerHUD->update();
 	
 	TimerUtils::Update();
+	
+	if (MouseL.down()) sceneChange(SceneState::Title, 0.5s);
+	if (Key0.down())   sceneData().current_stage = 0;
 }
 
 void Stage1::draw() const
