@@ -46,17 +46,21 @@ namespace TimerUtils
 
 		runningTime += Scene::DeltaTime();
 
+		Array<std::function<void()>> pendingCalls;
+
 		for (auto& task : GetTasks())
 		{
 			if (!task.done && (runningTime - task.lastTime) >= task.delayTime)
 			{
 				task.lastTime = runningTime;
 
-				task.func();
+				pendingCalls.push_back(task.func);
 
 				if (!task.repeat) task.done = true;
 			}
 		}
+
+		for (const auto& func : pendingCalls) func();
 
 		GetTasks().remove_if([](const Task& t) { return t.done; });
 	}
