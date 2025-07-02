@@ -71,7 +71,7 @@ void Punipuni::update()
 {
 	if (body.getPos().y >= (Scene::Height() + 100)) deleteSelf();
 	
-	if (KeyP.down()) body.applyLinearImpulse({ 0, -500 });
+	if (KeyU.down()) body.applyLinearImpulse({ 0, -500 });
 }
 
 void Punipuni::draw() const
