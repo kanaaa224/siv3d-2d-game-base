@@ -360,7 +360,7 @@
     <ClInclude Include="source\Stages\Stage.hpp" />
     <ClInclude Include="source\Stages\Stage1.hpp" />
     <ClInclude Include="source\UI\PlayerHUD.hpp" />
-    <ClInclude Include="source\Utils\Timer.hpp" />
+    <ClInclude Include="source\Utils\TimerUtils.hpp" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>

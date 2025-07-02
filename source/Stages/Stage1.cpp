@@ -7,15 +7,13 @@
 # include "../Characters/Enemies/Enemy2.hpp"
 # include "../Characters/Player.hpp"
 # include "../UI/PlayerHUD.hpp"
-# include "../Utils/Timer.hpp"
+# include "../Utils/TimerUtils.hpp"
 
 using namespace TimerUtils;
 using namespace std::chrono_literals;
 
 Stage1::Stage1()
 {
-	TimerUtils::ClearTasks();
-
 	initialize();
 }
 
@@ -99,8 +97,6 @@ void Stage1::update()
 
 	playerHUD->setPlayerHP(player_hp, player_max_hp);
 	playerHUD->update();
-	
-	TimerUtils::Update();
 	
 	if (MouseL.down()) sceneChange(SceneState::Title, 0.5s);
 	if (Key0.down())   sceneData().current_stage = 0;

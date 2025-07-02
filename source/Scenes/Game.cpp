@@ -1,8 +1,11 @@
 ﻿# include "Game.hpp"
 # include "../Stages/Stage1.hpp"
+# include "../Utils/TimerUtils.hpp"
 
 Game::Game(const InitData& init) : IScene{ init }
 {
+	TimerUtils::ClearTasks();
+
 	switch (getData().current_stage)
 	{
 	case 0:
@@ -30,7 +33,15 @@ Game::~Game()
 
 void Game::update()
 {
+	static bool pause = false;
+
+	if (KeyP.down()) pause = !pause;
+
+	if (pause) return;
+
 	Stage::GetInstance()->update();
+
+	TimerUtils::Update();
 }
 
 void Game::draw() const
