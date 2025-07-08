@@ -1,4 +1,4 @@
-﻿# pragma once
+# pragma once
 
 # include "ObjectBase.hpp"
 
@@ -9,9 +9,9 @@ public:
 	~StageBackground() = default;
 
 	void draw() const override;
-	
+
 	void setCameraPosition(Vec2 pos = { 0, 0 }) { camera_position = pos; }
-	
+
 private:
 	Vec2 camera_position;
 };

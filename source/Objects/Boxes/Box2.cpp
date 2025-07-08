@@ -1,4 +1,4 @@
-﻿# include "Box2.hpp"
+# include "Box2.hpp"
 
 Box2::Box2(P2World& world, const Vec2& position) : ObjectBase(world, position)
 {

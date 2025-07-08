@@ -1,4 +1,4 @@
-﻿# include "Punipuni.hpp"
+# include "Punipuni.hpp"
 
 namespace
 {
@@ -70,7 +70,7 @@ Punipuni::Punipuni(P2World& world, const Vec2& position) : ObjectBase(world, pos
 void Punipuni::update()
 {
 	if (body.getPos().y >= (Scene::Height() + 100)) deleteSelf();
-	
+
 	if (KeyU.down()) body.applyLinearImpulse({ 0, -500 });
 }
 

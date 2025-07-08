@@ -1,4 +1,4 @@
-﻿# include "Title.hpp"
+# include "Title.hpp"
 
 Title::Title(const InitData& init) : IScene{ init }
 {
@@ -16,7 +16,7 @@ void Title::update()
 
 	     if (m_startButton.leftClicked()) changeScene(SceneState::Game, 0.5s);
 	else if (m_exitButton .leftClicked()) System::Exit();
-	
+
 	if (KeyF.down()) Window::SetFullscreen(!Window::GetState().fullscreen);
 	if (KeyM.down()) Window::Maximize();
 	if (KeyR.down()) Window::Restore();
