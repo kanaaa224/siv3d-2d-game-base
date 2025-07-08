@@ -1,4 +1,4 @@
-﻿# pragma once
+# pragma once
 
 # include "ObjectBase.hpp"
 
@@ -10,7 +10,7 @@ public:
 
 	void update() override;
 	void draw() const override;
-	
+
 private:
 	Array<P2Body> aroundBodies;
 	Array<P2DistanceJoint> joints;

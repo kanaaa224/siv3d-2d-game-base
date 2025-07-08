@@ -1,4 +1,4 @@
-﻿# include "Game.hpp"
+# include "Game.hpp"
 # include "../Stages/Stage1.hpp"
 # include "../Utils/TimerUtils.hpp"
 
@@ -19,7 +19,7 @@ Game::Game(const InitData& init) : IScene{ init }
 	default:
 		break;
 	}
-	
+
 	Stage::GetInstance()->setSceneFunctions(
 		[this](SceneState s, Duration d) { changeScene(s, d); },
 		[this]() -> SceneData& { return getData(); }

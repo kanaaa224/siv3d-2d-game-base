@@ -1,4 +1,4 @@
-﻿# include "Player.hpp"
+# include "Player.hpp"
 # include "../Stages/Stage.hpp"
 # include "../Objects/Boxes/Box1.hpp"
 # include "../Objects/Boxes/Box2.hpp"
@@ -40,7 +40,7 @@ void Player::update()
 	if (Key3.pressed()) Stage::GetInstance()->createObject<Punipuni>(Vec2{ (Scene::Width() / 2), 0 });
 	if (Key4.pressed()) Stage::GetInstance()->createObject<Enemy1>  (Vec2{ (Scene::Width() / 2), 0 });
 	if (Key5.pressed()) Stage::GetInstance()->createObject<Enemy2>  (Vec2{ (Scene::Width() / 2), 0 });
-	
+
 	if (KeyQ.down()) Stage::GetInstance()->sceneChange(SceneState::Title, 0.5s);
 
 	if (KeyH.down()) heal(10);

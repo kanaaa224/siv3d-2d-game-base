@@ -1,4 +1,4 @@
-﻿# include "Stage1.hpp"
+# include "Stage1.hpp"
 # include "../Objects/StageBackground.hpp"
 # include "../Objects/Boxes/Box1.hpp"
 # include "../Objects/Boxes/Box2.hpp"
@@ -63,7 +63,7 @@ void Stage1::update()
 		if (center.y < y) y = center.y;
 
 		camera.setTargetCenter({ x, y });
-		
+
 		for (const auto& object : objects)
 		{
 			if (StageBackground* stageBackground = dynamic_cast<StageBackground*>(object))
@@ -97,7 +97,7 @@ void Stage1::update()
 
 	playerHUD->setPlayerHP(player_hp, player_max_hp);
 	playerHUD->update();
-	
+
 	if (MouseL.down()) sceneChange(SceneState::Title, 0.5s);
 	if (Key0.down())   sceneData().current_stage = 0;
 }
