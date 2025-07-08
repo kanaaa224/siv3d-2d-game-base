@@ -21,7 +21,7 @@ Enemy2::Enemy2(P2World& world, const Vec2& position) : EnemyBase(world, position
 	body.setFixedRotation(true);
 }
 
-void Enemy2::onHit(ObjectBase& object)
+void Enemy2::onHit(ObjectBase& object, const P2Collision& collision)
 {
 	if (Player* player = dynamic_cast<Player*>(&object))
 	{

@@ -8,5 +8,5 @@ public:
 	Enemy1(P2World& world, const Vec2& position = { 0, 0 });
 	~Enemy1() = default;
 
-	virtual void onHit(ObjectBase& object) override;
+	virtual void onHit(ObjectBase& object, const P2Collision& collision) override;
 };
