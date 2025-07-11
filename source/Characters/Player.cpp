@@ -11,7 +11,7 @@ Player::Player(P2World& world, const Vec2& position) : CharacterBase(world, posi
 	body = world.createRect(
 		P2Dynamic,
 		position,
-		SizeF { 100, 100 },
+		SizeF { 75, 100 },
 		P2Material {},
 		P2Filter {
 			.categoryBits = CollisionCategory::Player,
@@ -54,7 +54,9 @@ void Player::draw() const
 
 	if (not InRange(body.getVelocity().x, -1.0, 1.0)) mirrored = body.getVelocity().x > 0.0;
 
-	TextureAsset(U"Player").mirrored(mirrored).resized({ 100, 100 }).drawAt(body.getPos());
+	TextureAsset(U"Player").mirrored(mirrored).resized({ 105, 105 }).rotated(body.getAngle()).drawAt(body.getPos());
 
+#ifdef _DEBUG
 	body.drawFrame();
+#endif
 }

@@ -21,7 +21,14 @@ Enemy2::Enemy2(P2World& world, const Vec2& position) : EnemyBase(world, position
 	body.setFixedRotation(true);
 }
 
-void Enemy2::onHit(ObjectBase& object, const P2Collision& collision)
+void Enemy2::draw() const
+{
+	TextureAsset(U"Enemy 2").resized({ 105, 105 }).rotated(body.getAngle()).drawAt(body.getPos());
+
+	EnemyBase::draw();
+}
+
+void Enemy2::onHit(ObjectBase& object, const P2Collision&)
 {
 	if (Player* player = dynamic_cast<Player*>(&object))
 	{
