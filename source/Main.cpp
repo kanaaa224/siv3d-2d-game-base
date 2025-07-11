@@ -9,7 +9,11 @@ void AssetsRegistration()
 
 	FontAsset(U"Title").setBufferThickness(4);
 
-	TextureAsset::Register({ U"Player",             { U"Player" } }, U"example/svg/cat.svg");
+	TextureAsset::Register({ U"Player",             { U"Player" } }, Emoji(U"🐈"));
+	TextureAsset::Register({ U"Enemy 1",            { U"Enemy"  } }, Emoji(U"👻"));
+	TextureAsset::Register({ U"Enemy 2",            { U"Enemy"  } }, Emoji(U"🌪️"));
+	TextureAsset::Register({ U"Box 1",              { U"Object" } }, Emoji(U"🧱"));
+	TextureAsset::Register({ U"Box 2",              { U"Object" } }, Emoji(U"⃣"));
 	TextureAsset::Register({ U"Stage 1 Background", { U"Stage"  } }, U"example/texture/ground.jpg");
 }
 

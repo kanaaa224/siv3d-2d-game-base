@@ -80,5 +80,5 @@ void Punipuni::draw() const
 
 	for (const auto& b : aroundBodies) vertices << b.getPos();
 
-	Polygon(ChaikinSmooth(vertices)).calculateBuffer(outerRadius).drawFrame();
+	Polygon(ChaikinSmooth(vertices)).calculateBuffer(outerRadius).draw();
 }

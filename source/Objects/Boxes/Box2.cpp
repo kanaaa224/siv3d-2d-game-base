@@ -21,5 +21,9 @@ void Box2::update()
 
 void Box2::draw() const
 {
+	TextureAsset(U"Box 2").resized({ 55, 55 }).rotated(body.getAngle()).drawAt(body.getPos());
+
+#ifdef _DEBUG
 	body.drawFrame();
+#endif
 }

@@ -22,5 +22,7 @@ void EnemyBase::update()
 
 void EnemyBase::draw() const
 {
+#ifdef _DEBUG
 	body.drawFrame();
+#endif
 }

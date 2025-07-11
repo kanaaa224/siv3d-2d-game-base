@@ -350,6 +350,11 @@
     <ClInclude Include="source\Characters\Enemies\EnemyBase.hpp" />
     <ClInclude Include="source\Characters\Player.hpp" />
     <ClInclude Include="source\Common.hpp" />
+    <ClInclude Include="source\Effects\BubbleEffect.hpp" />
+    <ClInclude Include="source\Effects\ScoreEffect.hpp" />
+    <ClInclude Include="source\Effects\SparkEffect.hpp" />
+    <ClInclude Include="source\Effects\TouchEffect.hpp" />
+    <ClInclude Include="source\Effects\VerticalFlare.hpp" />
     <ClInclude Include="source\Objects\Boxes\Box1.hpp" />
     <ClInclude Include="source\Objects\Boxes\Box2.hpp" />
     <ClInclude Include="source\Objects\ObjectBase.hpp" />
