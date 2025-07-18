@@ -1,4 +1,4 @@
-# include "Stage.hpp"
+﻿# include "Stage.hpp"
 
 Stage::Stage() : stepTime(1.0 / 200.0), accumulatedTime(0.0) {}
 
