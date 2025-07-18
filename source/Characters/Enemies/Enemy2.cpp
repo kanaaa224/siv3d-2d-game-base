@@ -1,4 +1,4 @@
-# include "Enemy2.hpp"
+﻿# include "Enemy2.hpp"
 # include "../Player.hpp"
 
 Enemy2::Enemy2(P2World& world, const Vec2& position) : EnemyBase(world, position)

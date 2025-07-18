@@ -1,4 +1,4 @@
-# include "StageBackground.hpp"
+﻿# include "StageBackground.hpp"
 
 StageBackground::StageBackground(P2World& world, const Vec2& position) : ObjectBase(world, position) {}
 

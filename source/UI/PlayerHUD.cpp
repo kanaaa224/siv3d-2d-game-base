@@ -1,4 +1,4 @@
-# include "PlayerHUD.hpp"
+﻿# include "PlayerHUD.hpp"
 
 PlayerHUD* PlayerHUD::GetInstance()
 {

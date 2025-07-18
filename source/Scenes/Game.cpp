@@ -1,4 +1,4 @@
-# include "Game.hpp"
+﻿# include "Game.hpp"
 # include "../Stages/Stage1.hpp"
 # include "../Utils/TimerUtils.hpp"
 
