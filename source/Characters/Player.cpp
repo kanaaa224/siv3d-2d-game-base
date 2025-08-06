@@ -8,14 +8,27 @@
 
 Player::Player(P2World& world, const Vec2& position) : CharacterBase(world, position)
 {
-	body = world.createRect(
+	body = world.createPolygon(
 		P2Dynamic,
 		position,
-		SizeF { 75, 100 },
-		P2Material {},
-		P2Filter {
+		Polygon{
+			{
+				Vec2{ -10,  50 },
+				Vec2{ -30,  30 },
+				Vec2{ -30, -30 },
+				Vec2{ -10, -50 },
+				Vec2{  10, -50 },
+				Vec2{  30, -30 },
+				Vec2{  30,  30 },
+				Vec2{  10,  50 }
+			}
+		},
+		P2Material{
+			.friction = 0.5
+		},
+		P2Filter{
 			.categoryBits = CollisionCategory::Player,
-			.maskBits     = CollisionCategory::All & ~CollisionCategory::Box2
+			.maskBits     = CollisionCategory::All
 		}
 	);
 
@@ -31,19 +44,7 @@ void Player::initialize()
 
 void Player::update()
 {
-	if (KeyA.pressed())  body.applyLinearImpulse({ -10,    0 });
-	if (KeySpace.down()) body.applyLinearImpulse({   0, -500 });
-	if (KeyD.pressed())  body.applyLinearImpulse({  10,    0 });
-
-	if (Key1.pressed()) Stage::GetInstance()->createObject<Box1>    (Vec2{ (Scene::Width() / 2), 0 });
-	if (Key2.pressed()) Stage::GetInstance()->createObject<Box2>    (Vec2{ (Scene::Width() / 2), 0 });
-	if (Key3.pressed()) Stage::GetInstance()->createObject<Punipuni>(Vec2{ (Scene::Width() / 2), 0 });
-	if (Key4.pressed()) Stage::GetInstance()->createObject<Enemy1>  (Vec2{ (Scene::Width() / 2), 0 });
-	if (Key5.pressed()) Stage::GetInstance()->createObject<Enemy2>  (Vec2{ (Scene::Width() / 2), 0 });
-
-	if (KeyQ.down()) Stage::GetInstance()->sceneChange(SceneState::Title, 0.5s);
-
-	if (KeyH.down()) heal(10);
+	handleInput();
 
 	if (body.getPos().y >= (Scene::Height() + 100)) die();
 }
@@ -59,4 +60,50 @@ void Player::draw() const
 #ifdef _DEBUG
 	body.drawFrame();
 #endif
+}
+
+void Player::handleInput()
+{
+	if (KeyA.pressed()) moveLeft();
+	if (KeyD.pressed()) moveRight();
+
+	if (KeySpace.down() || KeyW.down()) jump();
+
+	size_t playerIndex = 0;
+
+	auto controller = XInput(playerIndex);
+
+	if (controller.isConnected())
+	{
+		const double stickDeadZone = 0.2;
+
+		if (controller.buttonLeft .pressed() || controller.leftThumbX < -stickDeadZone) moveLeft();
+		if (controller.buttonRight.pressed() || controller.leftThumbX >  stickDeadZone) moveRight();
+
+		if (controller.buttonA.down() || controller.buttonUp.down() || controller.leftThumbY > stickDeadZone) jump();
+	}
+
+	if (Key1.pressed()) Stage::GetInstance()->createObject<Box1>    (Vec2{ (Scene::Width() / 2), 0 });
+	if (Key2.pressed()) Stage::GetInstance()->createObject<Box2>    (Vec2{ (Scene::Width() / 2), 0 });
+	if (Key3.pressed()) Stage::GetInstance()->createObject<Punipuni>(Vec2{ (Scene::Width() / 2), 0 });
+	if (Key4.pressed()) Stage::GetInstance()->createObject<Enemy1>  (Vec2{ (Scene::Width() / 2), 0 });
+	if (Key5.pressed()) Stage::GetInstance()->createObject<Enemy2>  (Vec2{ (Scene::Width() / 2), 0 });
+
+	if (KeyQ.down()) Stage::GetInstance()->sceneChange(SceneState::Title, 0.5s);
+	if (KeyH.down()) heal(10);
+}
+
+void Player::moveLeft()
+{
+	body.setVelocity({ -PLAYER_MOVE_POWER, body.getVelocity().y });
+}
+
+void Player::moveRight()
+{
+	body.setVelocity({ PLAYER_MOVE_POWER, body.getVelocity().y });
+}
+
+void Player::jump()
+{
+	body.setVelocity({ body.getVelocity().x, -PLAYER_JUMP_POWER });
 }

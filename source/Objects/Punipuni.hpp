@@ -6,7 +6,6 @@ class Punipuni : public ObjectBase
 {
 public:
 	Punipuni(P2World& world, const Vec2& position = { 0, 0 });
-	~Punipuni() = default;
 
 	void update() override;
 	void draw() const override;

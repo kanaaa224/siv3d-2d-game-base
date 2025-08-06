@@ -10,9 +10,9 @@ Enemy1::Enemy1(P2World& world, const Vec2& position) : EnemyBase(world, position
 	body = world.createRect(
 		P2Dynamic,
 		position,
-		SizeF { 75, 100 },
-		P2Material {},
-		P2Filter {
+		SizeF{ 75, 100 },
+		P2Material{},
+		P2Filter{
 			.categoryBits = CollisionCategory::Enemy,
 			.maskBits     = CollisionCategory::All
 		}
@@ -34,9 +34,9 @@ void Enemy1::onHit(ObjectBase& object, const P2Collision& collision)
 {
 	if (Player* player = dynamic_cast<Player*>(&object))
 	{
-		if (object.getBody().getPos().y < (body.getPos().y - 100))
+		if (Abs((object.getBody().getPos().y + 50) - collision.contact(0).point.y) < 10.0)
 		{
-			object.getBody().applyLinearImpulse({ 0, -200 });
+			object.getBody().applyLinearImpulse({ 0, -100 });
 
 			int damage = Random(5, 25);
 
@@ -44,6 +44,7 @@ void Enemy1::onHit(ObjectBase& object, const P2Collision& collision)
 
 			static Font font{ FontMethod::MSDF, 48, Typeface::Heavy, FontStyle::Italic };
 
+			effect.clear();
 			effect.add<ScoreEffect>(collision.contact(0).point, damage, font);
 			effect.add<SparkEffect>(collision.contact(0).point);
 		}
@@ -51,13 +52,13 @@ void Enemy1::onHit(ObjectBase& object, const P2Collision& collision)
 		{
 			if (object.getBody().getPos().x < body.getPos().x)
 			{
-				object.getBody().applyLinearImpulse({ -100, -100 });
+				object.getBody().applyLinearImpulse({ -100, -50 });
 
 				effect.add<TouchEffect>(collision.contact(0).point);
 			}
 			else
 			{
-				object.getBody().applyLinearImpulse({ 100, -100 });
+				object.getBody().applyLinearImpulse({ 100, -50 });
 
 				effect.add<BubbleEffect>(collision.contact(0).point, Random(0.0, 360.0));
 			}

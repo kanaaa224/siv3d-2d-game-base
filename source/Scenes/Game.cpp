@@ -1,6 +1,7 @@
 ﻿# include "Game.hpp"
 # include "../Stages/Stage1.hpp"
 # include "../Utils/TimerUtils.hpp"
+# include "../UI/PlayerHUD.hpp"
 
 Game::Game(const InitData& init) : IScene{ init }
 {
@@ -39,12 +40,16 @@ void Game::update()
 
 	if (pause) return;
 
-	Stage::GetInstance()->update();
+	Stage    ::GetInstance()->update();
+	PlayerHUD::GetInstance()->update();
 
 	TimerUtils::Update();
 }
 
 void Game::draw() const
 {
-	Stage::GetInstance()->draw();
+	ClearPrint();
+
+	Stage    ::GetInstance()->draw();
+	PlayerHUD::GetInstance()->draw();
 }

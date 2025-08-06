@@ -35,7 +35,7 @@ namespace
 
 Punipuni::Punipuni(P2World& world, const Vec2& position) : ObjectBase(world, position), centerRadius(25.0), outerRadius(15.0)
 {
-	P2Material material { .friction = 0.5 };
+	P2Material material{ .friction = 0.5 };
 
 	body = world.createCircle(P2Dynamic, position, Circle(centerRadius), material);
 
@@ -80,5 +80,5 @@ void Punipuni::draw() const
 
 	for (const auto& b : aroundBodies) vertices << b.getPos();
 
-	Polygon(ChaikinSmooth(vertices)).calculateBuffer(outerRadius).draw();
+	Polygon(ChaikinSmooth(vertices)).calculateBuffer(outerRadius).draw(Palette::White.withAlpha(150));
 }

@@ -6,7 +6,6 @@ class CharacterBase : public ObjectBase
 {
 public:
 	CharacterBase(P2World& world, const Vec2& position) : ObjectBase(world, position) {}
-	virtual ~CharacterBase() = default;
 
 	float getHP   () const { return hp; }
 	float getMaxHP() const { return max_hp; }

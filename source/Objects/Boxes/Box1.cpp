@@ -5,10 +5,10 @@ Box1::Box1(P2World& world, const Vec2& position) : ObjectBase(world, position)
 	body = world.createRect(
 		P2Dynamic,
 		position,
-		SizeF { 50, 50 },
-		P2Material {},
-		P2Filter {
-			.categoryBits = CollisionCategory::Box1,
+		SizeF{ 50, 50 },
+		P2Material{},
+		P2Filter{
+			.categoryBits = CollisionCategory::Box,
 			.maskBits     = CollisionCategory::All
 		}
 	);

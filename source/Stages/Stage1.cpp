@@ -93,19 +93,11 @@ void Stage1::update()
 
 	camera.update();
 
-	PlayerHUD* playerHUD = PlayerHUD::GetInstance();
-
-	playerHUD->setPlayerHP(player_hp, player_max_hp);
-	playerHUD->update();
-
-	if (MouseL.down()) sceneChange(SceneState::Title, 0.5s);
-	if (Key0.down())   sceneData().current_stage = 0;
+	PlayerHUD::GetInstance()->setPlayerHP(player_hp, player_max_hp);
 }
 
 void Stage1::draw() const
 {
-	ClearPrint();
-
 	Print << U"オブジェクト数: " << objects.size();
 
 	{
@@ -115,8 +107,6 @@ void Stage1::draw() const
 
 		floor.draw();
 	}
-
-	PlayerHUD::GetInstance()->draw();
 }
 
 void Stage1::NewInstance()

@@ -6,7 +6,6 @@ class StageBackground : public ObjectBase
 {
 public:
 	StageBackground(P2World& world, const Vec2& position = { 0, 0 });
-	~StageBackground() = default;
 
 	void draw() const override;
 

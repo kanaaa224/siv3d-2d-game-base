@@ -3,20 +3,28 @@
 
 Enemy2::Enemy2(P2World& world, const Vec2& position) : EnemyBase(world, position)
 {
-	SizeF size { 75, 100 };
+	SizeF size{ 75, 100 };
 
 	body = world.createRect(
 		P2Dynamic,
 		position,
 		size,
-		P2Material { .density = 0.0 },
-		P2Filter {
+		P2Material{
+			.density = 0.0
+		},
+		P2Filter{
 			.categoryBits = CollisionCategory::Enemy,
 			.maskBits     = CollisionCategory::All & ~CollisionCategory::Player
 		}
 	);
 
-	body.addRectSensor(RectF{ -(size / 2), size }, P2Filter{ .categoryBits = CollisionCategory::Enemy, .maskBits = CollisionCategory::Player });
+	body.addRectSensor(
+		RectF{ -(size / 2), size },
+		P2Filter{
+			.categoryBits = CollisionCategory::Enemy,
+			.maskBits     = CollisionCategory::Player
+		}
+	);
 
 	body.setFixedRotation(true);
 }

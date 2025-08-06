@@ -4,7 +4,7 @@ StageBackground::StageBackground(P2World& world, const Vec2& position) : ObjectB
 
 void StageBackground::draw() const
 {
-	const auto texture = TextureAsset(U"Stage 1 Background").resized(Scene::Size());
+	const auto texture = TextureAsset(U"Stage 1 BG").resized(Scene::Size());
 
 	const int width  = Scene::Width();
 	const int height = Scene::Height();
