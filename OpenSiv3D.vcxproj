@@ -129,6 +129,7 @@
     <ClCompile Include="source\Objects\Boxes\Box2.cpp" />
     <ClCompile Include="source\Objects\ObjectBase.cpp" />
     <ClCompile Include="source\Objects\Punipuni.cpp" />
+    <ClCompile Include="source\Objects\Scaffold.cpp" />
     <ClCompile Include="source\Objects\StageBackground.cpp" />
     <ClCompile Include="source\Scenes\Game.cpp" />
     <ClCompile Include="source\Scenes\Title.cpp" />
@@ -359,6 +360,7 @@
     <ClInclude Include="source\Objects\Boxes\Box2.hpp" />
     <ClInclude Include="source\Objects\ObjectBase.hpp" />
     <ClInclude Include="source\Objects\Punipuni.hpp" />
+    <ClInclude Include="source\Objects\Scaffold.hpp" />
     <ClInclude Include="source\Objects\StageBackground.hpp" />
     <ClInclude Include="source\Scenes\Game.hpp" />
     <ClInclude Include="source\Scenes\Title.hpp" />

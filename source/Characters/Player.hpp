@@ -3,8 +3,8 @@
 # include "CharacterBase.hpp"
 
 # define PLAYER_MAX_HP 100
-# define PLAYER_MOVE_POWER 250
-# define PLAYER_JUMP_POWER 600
+# define PLAYER_MOVE_POWER 275
+# define PLAYER_JUMP_POWER 625
 
 class Player : public CharacterBase
 {
@@ -20,4 +20,5 @@ private:
 	void moveLeft();
 	void moveRight();
 	void jump();
+	void descendScaffold();
 };

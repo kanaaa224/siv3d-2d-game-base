@@ -3,6 +3,7 @@
 # include "../Objects/Boxes/Box1.hpp"
 # include "../Objects/Boxes/Box2.hpp"
 # include "../Objects/Punipuni.hpp"
+# include "../Objects/Scaffold.hpp"
 # include "../Characters/Enemies/Enemy1.hpp"
 # include "../Characters/Enemies/Enemy2.hpp"
 # include "../Characters/Player.hpp"
@@ -33,6 +34,8 @@ void Stage1::initialize()
 	camera = Camera2D(Scene::Center(), 1.0, CameraControl::None_);
 
 	SetInterval([this] { createObject<Box2>(Scene::Center() + Vec2{ 250, -100 }); }, 3s);
+
+	for (int i = 1; i <= 50; i++) createObject<Scaffold>(Vec2{ Scene::Width() + i * 300, Scene::Height() - Random(200, 500) });
 }
 
 void Stage1::update()
@@ -99,6 +102,8 @@ void Stage1::update()
 void Stage1::draw() const
 {
 	Print << U"オブジェクト数: " << objects.size();
+
+	Print << U"タイマーイベント数: " << GetTasks().size();
 
 	{
 		const auto t = camera.createTransformer();

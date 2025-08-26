@@ -5,6 +5,10 @@
 # include "../Objects/Punipuni.hpp"
 # include "../Characters/Enemies/Enemy1.hpp"
 # include "../Characters/Enemies/Enemy2.hpp"
+# include "../Utils/TimerUtils.hpp"
+
+using namespace TimerUtils;
+using namespace std::chrono_literals;
 
 Player::Player(P2World& world, const Vec2& position) : CharacterBase(world, position)
 {
@@ -13,14 +17,8 @@ Player::Player(P2World& world, const Vec2& position) : CharacterBase(world, posi
 		position,
 		Polygon{
 			{
-				Vec2{ -10,  50 },
-				Vec2{ -30,  30 },
-				Vec2{ -30, -30 },
-				Vec2{ -10, -50 },
-				Vec2{  10, -50 },
-				Vec2{  30, -30 },
-				Vec2{  30,  30 },
-				Vec2{  10,  50 }
+				Vec2{ -10,  50 }, Vec2{ -30,  30 }, Vec2{ -30, -30 }, Vec2{ -10, -50 },
+				Vec2{  10, -50 }, Vec2{  30, -30 }, Vec2{  30,  30 }, Vec2{  10,  50 }
 			}
 		},
 		P2Material{
@@ -69,6 +67,8 @@ void Player::handleInput()
 
 	if (KeySpace.down() || KeyW.down()) jump();
 
+	if (KeyS.down()) descendScaffold();
+
 	size_t playerIndex = 0;
 
 	auto controller = XInput(playerIndex);
@@ -80,7 +80,8 @@ void Player::handleInput()
 		if (controller.buttonLeft .pressed() || controller.leftThumbX < -stickDeadZone) moveLeft();
 		if (controller.buttonRight.pressed() || controller.leftThumbX >  stickDeadZone) moveRight();
 
-		if (controller.buttonA.down() || controller.buttonUp.down() || controller.leftThumbY > stickDeadZone) jump();
+		if (controller.buttonA.down() || controller.buttonUp  .down() || controller.leftThumbY >  stickDeadZone) jump();
+		if (controller.buttonY.down() || controller.buttonDown.down() || controller.leftThumbY < -stickDeadZone) descendScaffold();
 	}
 
 	if (Key1.pressed()) Stage::GetInstance()->createObject<Box1>    (Vec2{ (Scene::Width() / 2), 0 });
@@ -106,4 +107,18 @@ void Player::moveRight()
 void Player::jump()
 {
 	body.setVelocity({ body.getVelocity().x, -PLAYER_JUMP_POWER });
+}
+
+void Player::descendScaffold()
+{
+	P2Filter filter = body.shape(0).getFilter();
+
+	if (!(filter.maskBits & CollisionCategory::Scaffold)) return;
+
+	body.shape(0).setFilter({
+		filter.categoryBits,
+		static_cast<uint16>(filter.maskBits & ~CollisionCategory::Scaffold)
+	});
+
+	SetTimeout([this, filter] { body.shape(0).setFilter(filter); }, 500ms);
 }
