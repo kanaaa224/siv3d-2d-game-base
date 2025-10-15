@@ -159,6 +159,12 @@
     <ClCompile Include="source\Objects\Boxes\Box2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="source\Objects\Bullet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Objects\Ground.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="source\Objects\ObjectBase.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -890,6 +896,12 @@
     <ClInclude Include="source\Objects\Boxes\Box2.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="source\Objects\Bullet.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Objects\Ground.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="source\Objects\ObjectBase.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -912,6 +924,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="source\Stages\Stage1.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\UI\HPBar.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="source\UI\PlayerHUD.hpp">

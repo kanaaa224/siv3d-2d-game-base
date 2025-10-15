@@ -127,6 +127,8 @@
     <ClCompile Include="source\Main.cpp" />
     <ClCompile Include="source\Objects\Boxes\Box1.cpp" />
     <ClCompile Include="source\Objects\Boxes\Box2.cpp" />
+    <ClCompile Include="source\Objects\Bullet.cpp" />
+    <ClCompile Include="source\Objects\Ground.cpp" />
     <ClCompile Include="source\Objects\ObjectBase.cpp" />
     <ClCompile Include="source\Objects\Punipuni.cpp" />
     <ClCompile Include="source\Objects\Scaffold.cpp" />
@@ -358,6 +360,8 @@
     <ClInclude Include="source\Effects\VerticalFlare.hpp" />
     <ClInclude Include="source\Objects\Boxes\Box1.hpp" />
     <ClInclude Include="source\Objects\Boxes\Box2.hpp" />
+    <ClInclude Include="source\Objects\Bullet.hpp" />
+    <ClInclude Include="source\Objects\Ground.hpp" />
     <ClInclude Include="source\Objects\ObjectBase.hpp" />
     <ClInclude Include="source\Objects\Punipuni.hpp" />
     <ClInclude Include="source\Objects\Scaffold.hpp" />
@@ -366,6 +370,7 @@
     <ClInclude Include="source\Scenes\Title.hpp" />
     <ClInclude Include="source\Stages\Stage.hpp" />
     <ClInclude Include="source\Stages\Stage1.hpp" />
+    <ClInclude Include="source\UI\HPBar.hpp" />
     <ClInclude Include="source\UI\PlayerHUD.hpp" />
     <ClInclude Include="source\Utils\TimerUtils.hpp" />
     <ClInclude Include="stdafx.h" />

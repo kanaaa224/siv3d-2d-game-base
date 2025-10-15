@@ -1,7 +1,10 @@
 ﻿# include "EnemyBase.hpp"
-# include "../Player.hpp"
+# include "../../Effects/BubbleEffect.hpp"
+# include "../../Utils/TimerUtils.hpp"
 
-EnemyBase::EnemyBase(P2World& world, const Vec2& position) : CharacterBase(world, position), start_position(position)
+using namespace TimerUtils;
+
+EnemyBase::EnemyBase(P2World& world, const Vec2& position) : CharacterBase(world, position), start_position(position), damaged(false)
 {
 	initialize();
 }
@@ -9,20 +12,39 @@ EnemyBase::EnemyBase(P2World& world, const Vec2& position) : CharacterBase(world
 void EnemyBase::initialize()
 {
 	hp = max_hp = ENEMY_MAX_HP;
+
+	effect.add<BubbleEffect>(start_position, Random(0.0, 360.0));
 }
 
 void EnemyBase::update()
 {
-	if (body.getPos().y >= (Scene::Height() + 100))
-	{
-		body.setPos(start_position);
-		body.setVelocity({ 0, 0 });
-	}
+	if (body) current_position = body.getPos();
+
+	if (current_position.y >= (Scene::Height() + 100)) die();
+
+	hpBar.damage(hpBar.getHP() - (int32)hp);
+	hpBar.update();
 }
 
 void EnemyBase::draw() const
 {
+	hpBar.draw({ current_position + Vec2{ -35, -75 }, SizeF{ 70, 7.5 } });
+
+	effect.update();
+
 #ifdef _DEBUG
 	body.drawFrame();
 #endif
+}
+
+void EnemyBase::onDamaged(float amount)
+{
+	if (!damaged)
+	{
+		CharacterBase::onDamaged(amount);
+
+		SetTimeout([this] { damaged = false; }, 500ms);
+
+		damaged = true;
+	}
 }

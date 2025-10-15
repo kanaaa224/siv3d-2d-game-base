@@ -1,16 +1,14 @@
 ﻿# include "Enemy1.hpp"
 # include "../Player.hpp"
-# include "../../Effects/SparkEffect.hpp"
-# include "../../Effects/ScoreEffect.hpp"
-# include "../../Effects/TouchEffect.hpp"
-# include "../../Effects/BubbleEffect.hpp"
 
 Enemy1::Enemy1(P2World& world, const Vec2& position) : EnemyBase(world, position)
 {
+	SizeF size{ 75, 100 };
+
 	body = world.createRect(
 		P2Dynamic,
 		position,
-		SizeF{ 75, 100 },
+		size,
 		P2Material{},
 		P2Filter{
 			.categoryBits = CollisionCategory::Enemy,
@@ -21,13 +19,18 @@ Enemy1::Enemy1(P2World& world, const Vec2& position) : EnemyBase(world, position
 	body.setFixedRotation(true);
 }
 
+void Enemy1::update()
+{
+	EnemyBase::update();
+
+	if (Abs(player_position.x - body.getPos().x) <= Scene::Width() / 2) body.setVelocity((player_position - current_position).normalized() * 50);
+}
+
 void Enemy1::draw() const
 {
-	TextureAsset(U"Enemy 1").resized({ 105, 105 }).rotated(body.getAngle()).drawAt(body.getPos());
+	TextureAsset(U"Enemy 1").resized({ 105, 105 }).rotated(body.getAngle()).drawAt(body.getPos(), damaged ? ColorF{ 1.0, 0.25, 0.25, 0.5 } : ColorF{ 1.0 });
 
 	EnemyBase::draw();
-
-	effect.update();
 }
 
 void Enemy1::onHit(ObjectBase& object, const P2Collision& collision)
@@ -37,31 +40,10 @@ void Enemy1::onHit(ObjectBase& object, const P2Collision& collision)
 		if (Abs((object.getBody().getPos().y + 50) - collision.contact(0).point.y) < 10.0)
 		{
 			object.getBody().applyLinearImpulse({ 0, -100 });
-
-			int damage = Random(5, 25);
-
-			this->applyDamage((float)damage);
-
-			static Font font{ FontMethod::MSDF, 48, Typeface::Heavy, FontStyle::Italic };
-
-			effect.clear();
-			effect.add<ScoreEffect>(collision.contact(0).point, damage, font);
-			effect.add<SparkEffect>(collision.contact(0).point);
 		}
 		else
 		{
-			if (object.getBody().getPos().x < body.getPos().x)
-			{
-				object.getBody().applyLinearImpulse({ -100, -50 });
-
-				effect.add<TouchEffect>(collision.contact(0).point);
-			}
-			else
-			{
-				object.getBody().applyLinearImpulse({ 100, -50 });
-
-				effect.add<BubbleEffect>(collision.contact(0).point, Random(0.0, 360.0));
-			}
+			object.getBody().applyLinearImpulse({ object.getBody().getPos().x < body.getPos().x ? -100 : 100, -50 });
 
 			player->applyDamage(10);
 		}

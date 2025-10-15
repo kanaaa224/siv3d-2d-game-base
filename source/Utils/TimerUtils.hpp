@@ -1,17 +1,20 @@
 ﻿# pragma once
 
-# include <Siv3D.hpp>
 # include <chrono>
 # include <functional>
+# include <vector>
+# include <algorithm>
 
 namespace TimerUtils
 {
 	using std::chrono::milliseconds;
-	using std::chrono::duration_cast;
+	using std::chrono::steady_clock;
 	using namespace std::chrono_literals;
 
 	struct Task
 	{
+		size_t id = 0;
+
 		bool repeat = false;
 		bool done   = false;
 
@@ -21,9 +24,9 @@ namespace TimerUtils
 		std::function<void()> func;
 	};
 
-	inline Array<Task>& GetTasks()
+	inline std::vector<Task>& GetTasks()
 	{
-		static Array<Task> tasks;
+		static std::vector<Task> tasks;
 
 		return tasks;
 	}
@@ -40,13 +43,34 @@ namespace TimerUtils
 		return runningTime;
 	}
 
+	inline steady_clock::time_point& GetLastClock()
+	{
+		static auto lastClock = steady_clock::now();
+
+		return lastClock;
+	}
+
+	inline size_t GenerateTaskID()
+	{
+		static std::atomic_size_t counter = 1;
+
+		return counter++;
+	}
+
 	inline void Update()
 	{
+		auto  now  = steady_clock::now();
+		auto& last = GetLastClock();
+
+		double delta = std::chrono::duration<double>(now - last).count();
+
+		last = now;
+
 		auto& runningTime = GetRunningTime();
 
-		runningTime += Scene::DeltaTime();
+		runningTime += delta;
 
-		Array<std::function<void()>> pendingCalls;
+		std::vector<std::function<void()>> pendingCalls;
 
 		for (auto& task : GetTasks())
 		{
@@ -62,42 +86,68 @@ namespace TimerUtils
 
 		for (const auto& func : pendingCalls) func();
 
-		GetTasks().remove_if([](const Task& t) { return t.done; });
+		auto& tasks = GetTasks();
+
+		tasks.erase(std::remove_if(tasks.begin(), tasks.end(), [](const Task& t) { return t.done; }), tasks.end());
 	}
 
 	template<typename Func>
-	inline void SetTimeout(Func&& func, milliseconds delay = 0s)
+	inline size_t SetTimeout(Func&& func, milliseconds delay = 0s)
 	{
+		size_t id = GenerateTaskID();
+
 		GetTasks().push_back({
-			.repeat = false,
-			.done   = false,
+			id, false, false,
 
-			.delayTime = delay.count() / 1000.0,
-			.lastTime  = GetRunningTime(),
+			delay.count() / 1000.0,
 
-			.func = std::forward<Func>(func)
+			GetRunningTime(),
+
+			std::forward<Func>(func)
 		});
+
+		return id;
 	}
 
 	template<typename Func>
-	inline void SetInterval(Func&& func, milliseconds interval = 0s)
+	inline size_t SetInterval(Func&& func, milliseconds interval = 0s)
 	{
+		size_t id = GenerateTaskID();
+
 		GetTasks().push_back({
-			.repeat = true,
-			.done   = false,
+			id, true, false,
 
-			.delayTime = interval.count() / 1000.0,
-			.lastTime  = GetRunningTime(),
+			interval.count() / 1000.0,
 
-			.func = std::forward<Func>(func)
+			GetRunningTime(),
+
+			std::forward<Func>(func)
 		});
+
+		return id;
+	}
+
+	inline void CancelTask(size_t id)
+	{
+		auto& tasks = GetTasks();
+
+		for (auto& task : tasks)
+		{
+			if (task.id == id)
+			{
+				task.done = true;
+
+				break;
+			}
+		}
 	}
 
 #ifdef _DEBUG
+#include <thread>
 	template<typename Func>
 	inline void WaitTimeout(Func&& func, milliseconds delay = 0s)
 	{
-		System::Sleep(delay.count());
+		std::this_thread::sleep_for(delay);
 
 		func();
 	}

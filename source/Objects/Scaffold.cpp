@@ -3,12 +3,9 @@
 # include "../Utils/TimerUtils.hpp"
 
 using namespace TimerUtils;
-using namespace std::chrono_literals;
 
-Scaffold::Scaffold(P2World& world, const Vec2& position) : ObjectBase(world, position)
+Scaffold::Scaffold(P2World& world, const Vec2& position, const SizeF& size) : ObjectBase(world, position)
 {
-	SizeF size{ Random(100, 500), 10 };
-
 	body = world.createRect(
 		P2Static,
 		position,

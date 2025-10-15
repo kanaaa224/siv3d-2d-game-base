@@ -14,9 +14,6 @@ void StageBackground::draw() const
 
 	for (int y = -1; y <= 2; ++y)
 	{
-		for (int x = -1; x <= 2; ++x)
-		{
-			texture.draw(baseX + x * width, baseY + y * height);
-		}
+		for (int x = -1; x <= 2; ++x) texture.draw(baseX + x * width, baseY + y * height);
 	}
 }

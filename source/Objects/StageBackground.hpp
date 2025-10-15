@@ -9,7 +9,7 @@ public:
 
 	void draw() const override;
 
-	void setCameraPosition(Vec2 pos = { 0, 0 }) { camera_position = pos; }
+	void setCameraPosition(const Vec2& position = { 0, 0 }) { camera_position = position; }
 
 private:
 	Vec2 camera_position;

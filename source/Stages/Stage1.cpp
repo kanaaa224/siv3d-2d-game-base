@@ -4,6 +4,7 @@
 # include "../Objects/Boxes/Box2.hpp"
 # include "../Objects/Punipuni.hpp"
 # include "../Objects/Scaffold.hpp"
+# include "../Objects/Ground.hpp"
 # include "../Characters/Enemies/Enemy1.hpp"
 # include "../Characters/Enemies/Enemy2.hpp"
 # include "../Characters/Player.hpp"
@@ -11,7 +12,6 @@
 # include "../Utils/TimerUtils.hpp"
 
 using namespace TimerUtils;
-using namespace std::chrono_literals;
 
 Stage1::Stage1()
 {
@@ -22,20 +22,24 @@ void Stage1::initialize()
 {
 	createObject<StageBackground>();
 
-	createObject<Box1>    (Scene::Center() + Vec2{  150,    0 });
-	createObject<Box2>    (Scene::Center() + Vec2{  150, -100 });
-	createObject<Punipuni>(Scene::Center() + Vec2{    0, -200 });
-	createObject<Enemy1>  (Scene::Center() + Vec2{ -150,    0 });
-	createObject<Enemy2>  (Scene::Center() + Vec2{ -260,    0 });
-	createObject<Player>  (Scene::Center());
+	createObject<Punipuni>(Scene::Center() + Vec2{ 0, -200 });
 
-	floor = world.createRect(P2Static, { Scene::Center().x, (Scene::Height() - 100) }, SizeF{ (Scene::Width() - 100), 10 }, P2Material{ .friction = 0.9 });
+	createObject<Player>(Scene::Center());
+
+	createObject<Ground>(Vec2{ Scene::Center().x, (Scene::Height() - 100) }, SizeF{ (Scene::Width() - 100), 10 });
 
 	camera = Camera2D(Scene::Center(), 1.0, CameraControl::None_);
 
-	SetInterval([this] { createObject<Box2>(Scene::Center() + Vec2{ 250, -100 }); }, 3s);
+	SetInterval([this] { createObject<Box1>(Scene::Center() + Vec2{ 150, -100 }); }, 2s);
+	SetInterval([this] { createObject<Box2>(Scene::Center() + Vec2{ 225, -100 }); }, 2s);
 
-	for (int i = 1; i <= 50; i++) createObject<Scaffold>(Vec2{ Scene::Width() + i * 300, Scene::Height() - Random(200, 500) });
+	SetInterval([this] { createObject<Enemy1>(Scene::Center() + Vec2{ -200, -200 }); }, 7s);
+	SetInterval([this] { createObject<Enemy2>(Scene::Center() + Vec2{ -375, -200 }); }, 5s);
+
+	for (int i = 1; i <= 50; i++) createObject<Scaffold>(Vec2{ Scene::Width() + i * 250, Scene::Center().y - (i % 2 ? 0 : 250) }, SizeF{ Random(200, 500), 10 });
+
+	for (int i = 1; i <= 50; i++) createObject<Enemy1>(Vec2{ Scene::Width() + i * 250, (Scene::Center().y - (i % 2 ? 0 : 250)) - 100 });
+	for (int i = 1; i <= 50; i++) createObject<Enemy2>(Vec2{ Scene::Width() + i * 250, (Scene::Center().y - (i % 2 ? 0 : 250)) - 100 });
 }
 
 void Stage1::update()
@@ -67,11 +71,18 @@ void Stage1::update()
 
 		camera.setTargetCenter({ x, y });
 
+		player->setCamera(&camera);
+
 		for (const auto& object : objects)
 		{
 			if (StageBackground* stageBackground = dynamic_cast<StageBackground*>(object))
 			{
 				stageBackground->setCameraPosition(camera.getTargetCenter() - Scene::Center());
+			}
+
+			if (EnemyBase* enemy = dynamic_cast<EnemyBase*>(object))
+			{
+				enemy->setPlayerPosition(player->getBody().getPos());
 			}
 		}
 
@@ -109,8 +120,6 @@ void Stage1::draw() const
 		const auto t = camera.createTransformer();
 
 		Stage::draw();
-
-		floor.draw();
 	}
 }
 

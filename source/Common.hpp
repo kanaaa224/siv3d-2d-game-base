@@ -27,4 +27,6 @@ namespace CollisionCategory
 	constexpr uint16 Enemy    = 1 << 2;
 	constexpr uint16 Box      = 1 << 3;
 	constexpr uint16 Scaffold = 1 << 4;
+	constexpr uint16 Ground   = 1 << 5;
+	constexpr uint16 Bullet   = 1 << 6;
 }
