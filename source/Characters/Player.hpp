@@ -29,8 +29,6 @@ private:
 
 	bool damaged;
 
-	Effect effect;
-
 	Vec2 aim;
 
 	void initialize();

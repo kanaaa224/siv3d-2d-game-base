@@ -1,5 +1,6 @@
 ﻿# include "EnemyBase.hpp"
 # include "../../Effects/BubbleEffect.hpp"
+# include "../../Effects/ScoreEffect.hpp"
 # include "../../Utils/TimerUtils.hpp"
 
 using namespace TimerUtils;
@@ -28,7 +29,7 @@ void EnemyBase::update()
 
 void EnemyBase::draw() const
 {
-	hpBar.draw({ current_position + Vec2{ -35, -75 }, SizeF{ 70, 7.5 } });
+	if (body) hpBar.draw({ current_position + Vec2{ -35, -75 }, SizeF{ 70, 7.5 } });
 
 	effect.update();
 
@@ -41,10 +42,23 @@ void EnemyBase::onDamaged(float amount)
 {
 	if (!damaged)
 	{
-		CharacterBase::onDamaged(amount);
+		addHP(-amount);
 
-		SetTimeout([this] { damaged = false; }, 500ms);
+		if (hp)
+		{
+			SetTimeout([this] { damaged = false; }, 500ms);
+		}
+		else
+		{
+			body.release();
+
+			SetTimeout([this] { die(); }, 3s);
+		}
 
 		damaged = true;
+
+		static Font font{ FontMethod::MSDF, 48, Typeface::Heavy, FontStyle::Italic };
+
+		effect.add<ScoreEffect>(current_position + Vec2{ 0, -75 }, amount, font);
 	}
 }

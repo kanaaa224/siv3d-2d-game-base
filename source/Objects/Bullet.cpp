@@ -1,7 +1,6 @@
 ﻿# include "Bullet.hpp"
 # include "../Effects/TouchEffect.hpp"
 # include "../Effects/SparkEffect.hpp"
-# include "../Effects/ScoreEffect.hpp"
 # include "../Characters/Enemies/EnemyBase.hpp"
 # include "../Utils/TimerUtils.hpp"
 
@@ -50,16 +49,7 @@ void Bullet::onHit(ObjectBase& object, const P2Collision& collision)
 
 		effect.add<SparkEffect>(collision.contact(0).point);
 
-		if (EnemyBase* enemy = dynamic_cast<EnemyBase*>(&object))
-		{
-			int damage = Random(50, 80);
-
-			enemy->applyDamage((float)damage);
-
-			static Font font{ FontMethod::MSDF, 48, Typeface::Heavy, FontStyle::Italic };
-
-			effect.add<ScoreEffect>(object.getBody().getPos() + Vec2{ 0, -75 }, damage, font);
-		}
+		if (EnemyBase* enemy = dynamic_cast<EnemyBase*>(&object)) enemy->applyDamage(Random(50.0, 80.0));
 	}
 
 	body.release();

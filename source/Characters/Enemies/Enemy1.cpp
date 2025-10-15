@@ -23,12 +23,12 @@ void Enemy1::update()
 {
 	EnemyBase::update();
 
-	if (Abs(player_position.x - body.getPos().x) <= Scene::Width() / 2) body.setVelocity((player_position - current_position).normalized() * 50);
+	if (Abs(player_position.x - current_position.x) <= Scene::Width() / 2) body.setVelocity((player_position - current_position).normalized() * 50);
 }
 
 void Enemy1::draw() const
 {
-	TextureAsset(U"Enemy 1").resized({ 105, 105 }).rotated(body.getAngle()).drawAt(body.getPos(), damaged ? ColorF{ 1.0, 0.25, 0.25, 0.5 } : ColorF{ 1.0 });
+	if (body) TextureAsset(U"Enemy 1").resized({ 105, 105 }).rotated(body.getAngle()).drawAt(current_position, damaged ? ColorF{ 1.0, 0.25, 0.25, 0.5 } : ColorF{ 1.0 });
 
 	EnemyBase::draw();
 }
@@ -43,7 +43,7 @@ void Enemy1::onHit(ObjectBase& object, const P2Collision& collision)
 		}
 		else
 		{
-			object.getBody().applyLinearImpulse({ object.getBody().getPos().x < body.getPos().x ? -100 : 100, -50 });
+			object.getBody().applyLinearImpulse({ object.getBody().getPos().x < current_position.x ? -100 : 100, -50 });
 
 			player->applyDamage(10);
 		}

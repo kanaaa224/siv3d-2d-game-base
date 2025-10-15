@@ -6,7 +6,6 @@
 # include "../Objects/Boxes/Box2.hpp"
 # include "../Objects/Punipuni.hpp"
 # include "../Objects/Bullet.hpp"
-# include "../Effects/ScoreEffect.hpp"
 # include "../Utils/TimerUtils.hpp"
 
 using namespace TimerUtils;
@@ -52,15 +51,13 @@ void Player::update()
 
 void Player::draw() const
 {
-	Line(body.getPos(), body.getPos() + aim * 100).draw();
+	Line(current_position, current_position + aim * 100).draw();
 
 	static bool mirrored = false;
 
 	if (not InRange(body.getVelocity().x, -1.0, 1.0)) mirrored = body.getVelocity().x > 0.0;
 
-	TextureAsset(U"Player").mirrored(mirrored).resized({ 105, 105 }).rotated(body.getAngle()).drawAt(body.getPos(), damaged ? ColorF{ 1.0, 0.25, 0.25, 0.5 } : ColorF{ 1.0 });
-
-	effect.update();
+	TextureAsset(U"Player").mirrored(mirrored).resized({ 105, 105 }).rotated(body.getAngle()).drawAt(current_position, damaged ? ColorF{ 1.0, 0.25, 0.25, 0.5 } : ColorF{ 1.0 });
 
 #ifdef _DEBUG
 	body.drawFrame();
@@ -71,17 +68,7 @@ void Player::onHit(ObjectBase& object, const P2Collision& collision)
 {
 	if (Enemy1* enemy1 = dynamic_cast<Enemy1*>(&object))
 	{
-		if (Abs((body.getPos().y + 50) - collision.contact(0).point.y) < 10.0)
-		{
-			int damage = Random(70, 90);
-
-			enemy1->applyDamage((float)damage);
-
-			static Font font{ FontMethod::MSDF, 48, Typeface::Heavy, FontStyle::Italic };
-
-			effect.clear();
-			effect.add<ScoreEffect>(collision.contact(0).point, damage, font);
-		}
+		if (Abs((current_position.y + 50) - collision.contact(0).point.y) < 10.0) enemy1->applyDamage(Random(70.0, 90.0));
 	}
 }
 
@@ -139,7 +126,7 @@ void Player::handleInput()
 
 		if (stage_camera) cursorPos = stage_camera->getMat3x2().inverse().transformPoint(cursorPos);
 
-		aim = (cursorPos - body.getPos()).normalized();
+		aim = (cursorPos - current_position).normalized();
 	}
 
 	if (d > 0ms && d <= PLAYER_MAX_JUMP_HOLD) jump(d < PLAYER_MIN_JUMP_HOLD ? 0.5 : 1.0);
@@ -187,7 +174,7 @@ void Player::descendScaffold()
 
 void Player::shoot()
 {
-	Vec2 pos = body.getPos() + aim * 100;
+	Vec2 pos = current_position + aim * 100;
 
 	Stage::GetInstance()->createObject<Bullet>(pos, aim);
 }
