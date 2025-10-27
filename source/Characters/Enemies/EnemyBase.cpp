@@ -59,6 +59,6 @@ void EnemyBase::onDamaged(float amount)
 
 		static Font font{ FontMethod::MSDF, 48, Typeface::Heavy, FontStyle::Italic };
 
-		effect.add<ScoreEffect>(current_position + Vec2{ 0, -75 }, amount, font);
+		effect.add<ScoreEffect>(current_position + Vec2{ 0, -75 }, (int)amount, font);
 	}
 }

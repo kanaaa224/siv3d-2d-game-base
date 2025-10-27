@@ -49,7 +49,7 @@ void Bullet::onHit(ObjectBase& object, const P2Collision& collision)
 
 		effect.add<SparkEffect>(collision.contact(0).point);
 
-		if (EnemyBase* enemy = dynamic_cast<EnemyBase*>(&object)) enemy->applyDamage(Random(50.0, 80.0));
+		if (EnemyBase* enemy = dynamic_cast<EnemyBase*>(&object)) enemy->applyDamage(Random(50.0f, 80.0f));
 	}
 
 	body.release();

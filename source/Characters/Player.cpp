@@ -68,7 +68,7 @@ void Player::onHit(ObjectBase& object, const P2Collision& collision)
 {
 	if (Enemy1* enemy1 = dynamic_cast<Enemy1*>(&object))
 	{
-		if (Abs((current_position.y + 50) - collision.contact(0).point.y) < 10.0) enemy1->applyDamage(Random(70.0, 90.0));
+		if (Abs((current_position.y + 50) - collision.contact(0).point.y) < 10.0) enemy1->applyDamage(Random(70.0f, 90.0f));
 	}
 }
 
