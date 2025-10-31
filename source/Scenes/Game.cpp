@@ -22,7 +22,7 @@ Game::Game(const InitData& init) : IScene{ init }
 	}
 
 	Stage::GetInstance()->setSceneFunctions(
-		[this](SceneState s, Duration d) { changeScene(s, d); },
+		[this](SceneState s, Duration d) { return changeScene(s, d); },
 		[this]() -> SceneData& { return getData(); }
 	);
 }

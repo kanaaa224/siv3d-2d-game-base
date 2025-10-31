@@ -20,14 +20,14 @@ public:
 	static Stage* GetInstance();
 
 	void setSceneFunctions(
-		const std::function<void(SceneState, Duration)>& changeSceneFunc,
+		const std::function<bool(SceneState, Duration)>& changeSceneFunc,
 		const std::function<SceneData&()>& getDataFunc
 	) {
 		sceneChange = changeSceneFunc;
 		sceneData   = getDataFunc;
 	}
 
-	std::function<void(SceneState, Duration)> sceneChange;
+	std::function<bool(SceneState, Duration)> sceneChange;
 	std::function<SceneData&()> sceneData;
 
 protected:
