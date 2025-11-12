@@ -25,6 +25,8 @@ void EnemyBase::update()
 
 	hpBar.damage(hpBar.getHP() - (int32)hp);
 	hpBar.update();
+
+	if (KeyE.down()) applyDamage(25);
 }
 
 void EnemyBase::draw() const
