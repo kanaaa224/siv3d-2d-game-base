@@ -117,7 +117,7 @@ void Stage1::draw() const
 	Print << U"タイマーイベント数: " << GetTasks().size();
 
 	{
-		const auto t = camera.createTransformer();
+		const auto t2d = camera.createTransformer();
 
 		Stage::draw();
 	}
