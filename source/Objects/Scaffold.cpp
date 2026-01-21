@@ -1,10 +1,7 @@
 ﻿# include "Scaffold.hpp"
 # include "../Characters/Player.hpp"
-# include "../Utils/TimerUtils.hpp"
 
-using namespace TimerUtils;
-
-Scaffold::Scaffold(P2World& world, const Vec2& position, const SizeF& size) : ObjectBase(world, position)
+Scaffold::Scaffold(P2World& world, const Vec2& position, const SizeF& size, bool passThrough) : ObjectBase(world, position), passThrough(passThrough)
 {
 	body = world.createRect(
 		P2Static,
@@ -30,7 +27,7 @@ Scaffold::Scaffold(P2World& world, const Vec2& position, const SizeF& size) : Ob
 
 void Scaffold::draw() const
 {
-	body.shape(0).draw(Palette::White);
+	body.shape(0).draw(passThrough ? Palette::White.withAlpha(128) : Palette::White);
 
 #ifdef _DEBUG
 	body.drawFrame();
@@ -41,17 +38,6 @@ void Scaffold::onHit(ObjectBase& object, const P2Collision&)
 {
 	if (Player* player = dynamic_cast<Player*>(&object))
 	{
-		if (object.getBody().getPos().y < body.getPos().y) return;
-
-		P2Filter filter = player->getBody().shape(0).getFilter();
-
-		if (!(filter.maskBits & CollisionCategory::Scaffold)) return;
-
-		player->getBody().shape(0).setFilter({
-			filter.categoryBits,
-			static_cast<uint16>(filter.maskBits & ~CollisionCategory::Scaffold)
-		});
-
-		SetTimeout([this, player, filter] { player->getBody().shape(0).setFilter(filter); }, 500ms);
+		if (object.getBody().getPos().y > body.getPos().y && passThrough) player->descendScaffold();
 	}
 }

@@ -4,9 +4,8 @@
 
 # define PLAYER_MAX_HP 100
 # define PLAYER_MOVE_POWER 275
-# define PLAYER_JUMP_POWER 625
-# define PLAYER_MAX_JUMP_HOLD 150ms
-# define PLAYER_MIN_JUMP_HOLD 100ms
+# define PLAYER_JUMP_POWER 500
+# define PLAYER_MAX_JUMP_HOLD 100ms
 
 class Player : public CharacterBase
 {
@@ -21,21 +20,32 @@ public:
 
 	void setCamera(const Camera2D* camera) { stage_camera = camera; }
 
+	void passThrough(uint16 category = CollisionCategory::None) { if (pass_through_category != CollisionCategory::None) return; pass_through_area = Rect{ 0 }; pass_through_category = category; }
+
+	void descendScaffold() { if (pass_through_category != CollisionCategory::None) return; descend_scaffold = true; passThrough(CollisionCategory::Scaffold); }
+
 private:
 	Vec2 current_position;
 	Vec2 start_position;
+	Vec2 aim;
+
+	P2Filter filter;
+
+	Rect pass_through_area;
+
+	uint16 pass_through_category;
 
 	const Camera2D* stage_camera = nullptr;
 
 	bool damaged;
+	bool descend_scaffold;
 
-	Vec2 aim;
+	mutable bool mirrored;
 
 	void initialize();
 	void handleInput();
 	void moveLeft();
 	void moveRight();
-	void jump(double power = 1.0);
-	void descendScaffold();
+	void jump(Duration duration = 1ms);
 	void shoot();
 };

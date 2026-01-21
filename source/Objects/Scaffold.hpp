@@ -2,12 +2,19 @@
 
 # include "ObjectBase.hpp"
 
+# define SCAFFOLD_DEFAULT_SIZE SizeF{ 500, 10 }
+
 class Scaffold : public ObjectBase
 {
 public:
-	Scaffold(P2World& world, const Vec2& position = { 0, 0 }, const SizeF& size = { 500, 10 });
+	Scaffold(P2World& world, const Vec2& position = { 0, 0 }, const SizeF& size = SCAFFOLD_DEFAULT_SIZE, bool passThrough = true);
 
 	void draw() const override;
 
 	virtual void onHit(ObjectBase& object, const P2Collision& collision) override;
+
+	bool canPassThrough() const { return passThrough; }
+
+private:
+	bool passThrough;
 };

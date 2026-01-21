@@ -36,7 +36,7 @@ void Stage1::initialize()
 	SetInterval([this] { createObject<Enemy1>(Scene::Center() + Vec2{ -200, -200 }); }, 7s);
 	SetInterval([this] { createObject<Enemy2>(Scene::Center() + Vec2{ -375, -200 }); }, 5s);
 
-	for (int i = 1; i <= 50; i++) createObject<Scaffold>(Vec2{ Scene::Width() + i * 250, Scene::Center().y - (i % 2 ? 0 : 250) }, SizeF{ Random(200, 500), 10 });
+	for (int i = 1; i <= 50; i++) createObject<Scaffold>(Vec2{ Scene::Width() + i * 250, Scene::Center().y - (i % 2 ? 0 : 250) }, SizeF{ Random(200, 500), 10 }, Random(1));
 
 	for (int i = 1; i <= 50; i++) createObject<Enemy1>(Vec2{ Scene::Width() + i * 250, (Scene::Center().y - (i % 2 ? 0 : 250)) - 100 });
 	for (int i = 1; i <= 50; i++) createObject<Enemy2>(Vec2{ Scene::Width() + i * 250, (Scene::Center().y - (i % 2 ? 0 : 250)) - 100 });
