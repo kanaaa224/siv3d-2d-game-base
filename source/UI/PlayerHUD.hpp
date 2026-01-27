@@ -10,10 +10,10 @@ public:
 	void update();
 	void draw() const;
 
-	void setPlayerHP(float hp, float max_hp);
+	void setPlayerHP(int32 hp, int32 max_hp) { player_hp = hp; player_max_hp = max_hp; }
 
 private:
-	PlayerHUD() = default;
+	PlayerHUD() : player_max_hp(0), player_hp(player_max_hp) {}
 
-	float player_hp = 0.0f, player_max_hp = 0.0f;
+	int32 player_max_hp, player_hp;
 };

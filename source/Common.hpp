@@ -12,7 +12,8 @@ enum class SceneState
 // シーン間で共有するデータ
 struct SceneData
 {
-	int current_stage = 1;
+	int32 current_stage = 1;
+	int32 level         = 0;
 };
 
 using SM = SceneManager<SceneState, SceneData>;
@@ -25,8 +26,8 @@ namespace CollisionCategory
 	constexpr uint16 Default  = 1 << 0;
 	constexpr uint16 Player   = 1 << 1;
 	constexpr uint16 Enemy    = 1 << 2;
-	constexpr uint16 Box      = 1 << 3;
+	constexpr uint16 Crate    = 1 << 3;
 	constexpr uint16 Scaffold = 1 << 4;
-	constexpr uint16 Ground   = 1 << 5;
+	constexpr uint16 Terrain  = 1 << 5;
 	constexpr uint16 Bullet   = 1 << 6;
 }

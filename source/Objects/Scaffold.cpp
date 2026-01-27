@@ -1,7 +1,7 @@
 ﻿# include "Scaffold.hpp"
 # include "../Characters/Player.hpp"
 
-Scaffold::Scaffold(P2World& world, const Vec2& position, const SizeF& size, bool passThrough) : ObjectBase(world, position), passThrough(passThrough)
+Scaffold::Scaffold(P2World& world, const Vec2& position, const SizeF& size, bool passThrough) : ObjectBase(world, position), pass_through(passThrough)
 {
 	body = world.createRect(
 		P2Static,
@@ -17,7 +17,7 @@ Scaffold::Scaffold(P2World& world, const Vec2& position, const SizeF& size, bool
 	);
 
 	body.addRectSensor(
-		RectF{ -(size / 2) - Vec2{ 0, 10 }, size + Vec2{ 0, 20 } },
+		RectF{ -(size / 2) - Vec2{ 10, 10 }, size + Vec2{ 20, 20 } },
 		P2Filter{
 			.categoryBits = CollisionCategory::Scaffold,
 			.maskBits     = CollisionCategory::Player
@@ -27,7 +27,7 @@ Scaffold::Scaffold(P2World& world, const Vec2& position, const SizeF& size, bool
 
 void Scaffold::draw() const
 {
-	body.shape(0).draw(passThrough ? Palette::White.withAlpha(128) : Palette::White);
+	body.shape(0).draw(pass_through ? Palette::White.withAlpha(128) : Palette::White);
 
 #ifdef _DEBUG
 	body.drawFrame();
@@ -38,6 +38,6 @@ void Scaffold::onHit(ObjectBase& object, const P2Collision&)
 {
 	if (Player* player = dynamic_cast<Player*>(&object))
 	{
-		if (object.getBody().getPos().y > body.getPos().y && passThrough) player->descendScaffold();
+		if (object.getBody().getPos().y > body.getPos().y && pass_through) player->descendScaffold();
 	}
 }

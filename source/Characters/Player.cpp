@@ -1,9 +1,8 @@
 ﻿# include "Player.hpp"
-# include "Enemies/Enemy1.hpp"
-# include "Enemies/Enemy2.hpp"
+# include "Enemy1.hpp"
+# include "Enemy2.hpp"
 # include "../Stages/Stage.hpp"
-# include "../Objects/Boxes/Box1.hpp"
-# include "../Objects/Boxes/Box2.hpp"
+# include "../Objects/Crate.hpp"
 # include "../Objects/Punipuni.hpp"
 # include "../Objects/Bullet.hpp"
 # include "../Objects/Scaffold.hpp"
@@ -11,15 +10,15 @@
 
 using namespace TimerUtils;
 
-Player::Player(P2World& world, const Vec2& position) : CharacterBase(world, position), start_position(position), pass_through_category(CollisionCategory::None), aim(Vec2{ 1, 0 }), damaged(false), descend_scaffold(false), mirrored(false)
+Player::Player(P2World& world, const Vec2& position) : CharacterBase(world, position), current_position(position), start_position(position), pass_through_category(CollisionCategory::None), aim(Vec2{ 1, 0 }), damaged(false), descend_scaffold(false), shooted(false), mirrored(false)
 {
 	body = world.createPolygon(
 		P2Dynamic,
 		position,
 		Polygon{
 			{
-				Vec2{ -10,  50 }, Vec2{ -30,  30 }, Vec2{ -30, -30 }, Vec2{ -10, -50 },
-				Vec2{  10, -50 }, Vec2{  30, -30 }, Vec2{  30,  30 }, Vec2{  10,  50 }
+				Vec2{ -20,  50 }, Vec2{ -30,  30 }, Vec2{ -30, -30 }, Vec2{ -20, -50 },
+				Vec2{  20, -50 }, Vec2{  30, -30 }, Vec2{  30,  30 }, Vec2{  20,  50 }
 			}
 		},
 		P2Material{
@@ -32,13 +31,6 @@ Player::Player(P2World& world, const Vec2& position) : CharacterBase(world, posi
 	);
 
 	body.setFixedRotation(true);
-
-	initialize();
-}
-
-void Player::initialize()
-{
-	hp = max_hp = PLAYER_MAX_HP;
 }
 
 void Player::update()
@@ -49,7 +41,7 @@ void Player::update()
 
 	if (pass_through_category != CollisionCategory::None)
 	{
-		if (pass_through_area == Rect{ 0 })
+		if (pass_through_area == RectF{ 0 })
 		{
 			pass_through_category = CollisionCategory::None;
 		}
@@ -64,7 +56,7 @@ void Player::update()
 					body.shape(0).setFilter(filter);
 
 					pass_through_category = CollisionCategory::None;
-					pass_through_area     = Rect{ 0 };
+					pass_through_area     = RectF{ 0 };
 
 					descend_scaffold = false;
 				}
@@ -85,6 +77,17 @@ void Player::draw() const
 
 #ifdef _DEBUG
 	body.drawFrame();
+
+	if (body)
+	{
+		if (auto pp = body.as<P2Polygon>(0))
+		{
+			Polygon p = pp->getPolygon();
+			RectF   r = p.boundingRect();
+
+			r.drawFrame(0.25);
+		}
+	}
 #endif
 }
 
@@ -92,10 +95,10 @@ void Player::onHit(ObjectBase& object, const P2Collision& collision)
 {
 	if (Enemy1* enemy1 = dynamic_cast<Enemy1*>(&object))
 	{
-		if (Abs((current_position.y + 50) - collision.contact(0).point.y) < 10.0) enemy1->applyDamage(Random(70.0f, 90.0f));
+		if (Abs((current_position.y + 50) - collision.contact(0).point.y) < 10.0) enemy1->applyDamage(Random(70, 90));
 	}
 
-	if (pass_through_category != CollisionCategory::None && pass_through_area == Rect{ 0 })
+	if (pass_through_category != CollisionCategory::None && pass_through_area == RectF{ 0 })
 	{
 		if (object.getBody().shape(0).getShapeType() != P2ShapeType::Rect) return;
 
@@ -113,7 +116,7 @@ void Player::onHit(ObjectBase& object, const P2Collision& collision)
 		{
 			Quad q = pr->getQuad();
 
-			pass_through_area = q.boundingRect().asRect();
+			pass_through_area = q.boundingRect();
 
 			filter = body.shape(0).getFilter();
 
@@ -127,7 +130,7 @@ void Player::onHit(ObjectBase& object, const P2Collision& collision)
 	}
 }
 
-void Player::onDamaged(float amount)
+void Player::onDamaged(int32 amount)
 {
 	if (!damaged)
 	{
@@ -150,64 +153,72 @@ void Player::handleInput()
 
 	if (KeyS.down()) descendScaffold();
 
-	if (KeyM.down() || MouseL.down()) shoot();
+	if (KeyM.pressed() || MouseL.pressed()) shoot();
 
-	size_t playerIndex = 0;
+	size_t player_index = 0;
 
-	auto controller = XInput(playerIndex);
+	auto controller = XInput(player_index);
 
 	if (controller.isConnected())
 	{
-		const double stickDeadZone = 0.2;
+		const double stick_dead_zone = 0.2;
 
-		if (controller.buttonLeft .pressed() || controller.leftThumbX < -stickDeadZone) moveLeft();
-		if (controller.buttonRight.pressed() || controller.leftThumbX >  stickDeadZone) moveRight();
+		if (controller.buttonLeft .pressed() || controller.leftThumbX < -stick_dead_zone) moveLeft();
+		if (controller.buttonRight.pressed() || controller.leftThumbX >  stick_dead_zone) moveRight();
 
 		if (d <= 0ms) d = controller.buttonA .pressedDuration();
 		if (d <= 0ms) d = controller.buttonUp.pressedDuration();
-		if (d <= 0ms) if (controller.leftThumbY > stickDeadZone) jump();
+		if (d <= 0ms) if (controller.leftThumbY > stick_dead_zone) jump();
 
-		if (controller.buttonY.down() || controller.buttonDown.down() || controller.leftThumbY < -stickDeadZone) descendScaffold();
+		if (controller.buttonY.down() || controller.buttonDown.down() || controller.leftThumbY < -stick_dead_zone) descendScaffold();
 
-		if (controller.buttonLB.down() || controller.buttonRB.down()) shoot();
+		if (controller.buttonLB.pressed() || controller.buttonRB.pressed()) shoot();
 
-		Vec2 stickAim{ controller.rightThumbX, -controller.rightThumbY };
+		Vec2 stick_aim{ controller.rightThumbX, -controller.rightThumbY };
 
-		if (stickAim.length() > stickDeadZone) aim = stickAim.normalized();
+		if (stick_aim.length() > stick_dead_zone) aim = stick_aim.normalized();
 	}
 	else
 	{
-		Vec2 cursorPos = Cursor::PosF();
+		Vec2 cursor = Cursor::PosF();
 
-		if (stage_camera) cursorPos = stage_camera->getMat3x2().inverse().transformPoint(cursorPos);
+		if (stage_camera) cursor = stage_camera->getMat3x2().inverse().transformPoint(cursor);
 
-		aim = (cursorPos - current_position).normalized();
+		aim = (cursor - current_position).normalized();
 	}
 
 	jump(d);
 
-	if (Key1.pressed()) Stage::GetInstance()->createObject<Box1>    (Vec2{ (Scene::Width() / 2), 0 });
-	if (Key2.pressed()) Stage::GetInstance()->createObject<Box2>    (Vec2{ (Scene::Width() / 2), 0 });
-	if (Key3.pressed()) Stage::GetInstance()->createObject<Punipuni>(Vec2{ (Scene::Width() / 2), 0 });
-	if (Key4.pressed()) Stage::GetInstance()->createObject<Enemy1>  (Vec2{ (Scene::Width() / 2), 0 });
-	if (Key5.pressed()) Stage::GetInstance()->createObject<Enemy2>  (Vec2{ (Scene::Width() / 2), 0 });
+	if (Key1.pressed()) Stage::GetInstance()->createObject<Crate>   (current_position - Vec2{ 0, 500 });
+	if (Key2.pressed()) Stage::GetInstance()->createObject<Crate>   (current_position - Vec2{ 0, 500 }, true);
+	if (Key3.pressed()) Stage::GetInstance()->createObject<Punipuni>(current_position - Vec2{ 0, 500 });
+	if (Key4.pressed()) Stage::GetInstance()->createObject<Enemy1>  (current_position - Vec2{ 0, 500 });
+	if (Key5.pressed()) Stage::GetInstance()->createObject<Enemy2>  (current_position - Vec2{ 0, 500 });
 
 	if (KeyQ.down()) Stage::GetInstance()->sceneChange(SceneState::Title, 0.5s);
 	if (KeyH.down()) heal(10);
+	if (KeyR.down()) body.release();
+	if (KeyC.down()) die();
 }
 
 void Player::moveLeft()
 {
+	if (damaged) return;
+
 	body.setVelocity({ -PLAYER_MOVE_POWER, body.getVelocity().y });
 }
 
 void Player::moveRight()
 {
+	if (damaged) return;
+
 	body.setVelocity({ PLAYER_MOVE_POWER, body.getVelocity().y });
 }
 
 void Player::jump(Duration duration)
 {
+	if (damaged) return;
+
 	if (duration <= 0ms) return;
 
 	if (duration >= PLAYER_MAX_JUMP_HOLD) return;
@@ -217,7 +228,13 @@ void Player::jump(Duration duration)
 
 void Player::shoot()
 {
-	Vec2 pos = current_position + aim * 100;
+	if (shooted) return;
 
-	Stage::GetInstance()->createObject<Bullet>(pos, aim);
+	shooted = true;
+
+	Vec2 p = current_position + aim * 100;
+
+	Stage::GetInstance()->createObject<Bullet>(p, aim);
+
+	SetTimeout([this] { shooted = false; }, 200ms);
 }

@@ -4,12 +4,10 @@
 
 void AssetsRegistration()
 {
-	TextureAsset::Register({ U"Player",     { U"Player" } }, Emoji(U"🐈"));
-	TextureAsset::Register({ U"Enemy 1",    { U"Enemy"  } }, Emoji(U"👻"));
-	TextureAsset::Register({ U"Enemy 2",    { U"Enemy"  } }, Emoji(U"🌪️"));
-	TextureAsset::Register({ U"Box 1",      { U"Object" } }, Emoji(U"🧱"));
-	TextureAsset::Register({ U"Box 2",      { U"Object" } }, Emoji(U"⃣"));
-	TextureAsset::Register({ U"Stage 1 BG", { U"Stage"  } }, U"example/texture/ground.jpg");
+	TextureAsset::Register({ U"Player",  { U"Character" } }, Emoji(U"🐈"));
+	TextureAsset::Register({ U"Enemy 1", { U"Character" } }, Emoji(U"👻"));
+	TextureAsset::Register({ U"Enemy 2", { U"Character" } }, Emoji(U"🌪️"));
+	TextureAsset::Register({ U"Crate",   { U"Object"    } }, Emoji(U"🧱"));
 }
 
 void Initialize()

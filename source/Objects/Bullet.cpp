@@ -1,12 +1,12 @@
 ﻿# include "Bullet.hpp"
 # include "../Effects/TouchEffect.hpp"
 # include "../Effects/SparkEffect.hpp"
-# include "../Characters/Enemies/EnemyBase.hpp"
+# include "../Characters/EnemyBase.hpp"
 # include "../Utils/TimerUtils.hpp"
 
 using namespace TimerUtils;
 
-Bullet::Bullet(P2World& world, const Vec2& position, const Vec2& direction, float size) : ObjectBase(world, position)
+Bullet::Bullet(P2World& world, const Vec2& position, const Vec2& direction, double size) : ObjectBase(world, position), hit(false)
 {
 	body = world.createCircle(
 		P2Dynamic,
@@ -17,7 +17,15 @@ Bullet::Bullet(P2World& world, const Vec2& position, const Vec2& direction, floa
 		},
 		P2Filter{
 			.categoryBits = CollisionCategory::Bullet,
-			.maskBits     = CollisionCategory::All
+			.maskBits     = CollisionCategory::All & ~CollisionCategory::Enemy
+		}
+	);
+
+	body.addCircleSensor(
+		Circle{ size },
+		P2Filter{
+			.categoryBits = CollisionCategory::Bullet,
+			.maskBits     = CollisionCategory::Enemy
 		}
 	);
 
@@ -26,6 +34,11 @@ Bullet::Bullet(P2World& world, const Vec2& position, const Vec2& direction, floa
 	body.applyLinearImpulse(direction.normalized() * 20);
 
 	effect.add<TouchEffect>(position);
+}
+
+void Bullet::update()
+{
+	if (body) current_position = body.getPos();
 }
 
 void Bullet::draw() const
@@ -39,18 +52,18 @@ void Bullet::draw() const
 #endif
 }
 
-void Bullet::onHit(ObjectBase& object, const P2Collision& collision)
+void Bullet::onHit(ObjectBase& object, const P2Collision&)
 {
 	if (object.getBody().getBodyType() == P2BodyType::Dynamic)
 	{
-		Vec2 diff = (object.getBody().getPos() - body.getPos()).normalized();
+		object.getBody().setVelocity(-object.getBody().getVelocity());
 
-		object.getBody().applyLinearImpulse(diff * 500);
-
-		effect.add<SparkEffect>(collision.contact(0).point);
-
-		if (EnemyBase* enemy = dynamic_cast<EnemyBase*>(&object)) enemy->applyDamage(Random(50.0f, 80.0f));
+		if (EnemyBase* enemy = dynamic_cast<EnemyBase*>(&object)) enemy->applyDamage(Random(20, 40));
 	}
 
-	body.release();
+	if (object.getBody().getBodyType() == P2BodyType::Static) body.release();
+
+	if (!hit) effect.add<SparkEffect>(current_position);
+
+	hit = true;
 }

@@ -1,9 +1,9 @@
 ﻿# include "Enemy1.hpp"
-# include "../Player.hpp"
+# include "Player.hpp"
 
 Enemy1::Enemy1(P2World& world, const Vec2& position) : EnemyBase(world, position)
 {
-	SizeF size{ 75, 100 };
+	SizeF size{ 50, 75 };
 
 	body = world.createRect(
 		P2Dynamic,
@@ -12,18 +12,24 @@ Enemy1::Enemy1(P2World& world, const Vec2& position) : EnemyBase(world, position
 		P2Material{},
 		P2Filter{
 			.categoryBits = CollisionCategory::Enemy,
-			.maskBits     = CollisionCategory::All
+			.maskBits     = CollisionCategory::All & ~CollisionCategory::Scaffold
 		}
 	);
 
 	body.setFixedRotation(true);
+	body.setGravityScale(0.0);
+
+	speed = Random(50, 70);
 }
 
 void Enemy1::update()
 {
 	EnemyBase::update();
 
-	if (Abs(player_position.x - current_position.x) <= Scene::Width() / 2) body.setVelocity((player_position - current_position).normalized() * 50);
+	if (!damaged)
+	{
+		if (Abs(player_position.x - current_position.x) <= Scene::Width() / 2) body.setVelocity((player_position - current_position).normalized() * speed);
+	}
 }
 
 void Enemy1::draw() const
@@ -43,9 +49,9 @@ void Enemy1::onHit(ObjectBase& object, const P2Collision& collision)
 		}
 		else
 		{
-			object.getBody().applyLinearImpulse({ object.getBody().getPos().x < current_position.x ? -100 : 100, -50 });
+			object.getBody().applyLinearImpulse({ object.getBody().getPos().x < current_position.x ? -100 : 100, Random(-10, 10) });
 
-			player->applyDamage(10);
+			player->applyDamage(Random(1, 5));
 		}
 	}
 }

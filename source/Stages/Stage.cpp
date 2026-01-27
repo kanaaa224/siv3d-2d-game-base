@@ -1,20 +1,20 @@
 ﻿# include "Stage.hpp"
 
-Stage::Stage() : stepTime(1.0 / 200.0), accumulatedTime(0.0) {}
+Stage::Stage() : step_time(1.0 / 200.0), accumulated_time(0.0) {}
 
 Stage::~Stage()
 {
 	for (const auto& object : objects) delete object;
 
-	objects.clear();
-	deletionObjects.clear();
+	objects         .clear();
+	objects_deletion.clear();
 }
 
 void Stage::update()
 {
-	for (accumulatedTime += Scene::DeltaTime(); stepTime <= accumulatedTime; accumulatedTime -= stepTime)
+	for (accumulated_time += Scene::DeltaTime(); step_time <= accumulated_time; accumulated_time -= step_time)
 	{
-		world.update(stepTime);
+		world.update(step_time);
 
 		for (const auto& [pair, collision] : world.getCollisions())
 		{
@@ -23,6 +23,8 @@ void Stage::update()
 
 			for (const auto& object : objects)
 			{
+				if (!object->getBody()) continue;
+
 				     if (object->getBody().id() == pair.a) objectA = object;
 				else if (object->getBody().id() == pair.b) objectB = object;
 
@@ -37,26 +39,23 @@ void Stage::update()
 		}
 	}
 
-	auto _objects_ = objects;
-
-	for (const auto& object : _objects_) object->update();
-
-	if (!deletionObjects.isEmpty())
+	if (!objects_deletion.isEmpty())
 	{
 		objects.remove_if([this](ObjectBase* object)
 		{
-			if (deletionObjects.contains(object))
-			{
-				delete object;
+			if (!objects_deletion.contains(object)) return false;
 
-				return true;
-			}
+			delete object;
 
-			return false;
+			return true;
 		});
 
-		deletionObjects.clear();
+		objects_deletion.clear();
 	}
+
+	Array<ObjectBase*> snapshot = objects;
+
+	for (const auto& object : snapshot) object->update();
 }
 
 void Stage::draw() const

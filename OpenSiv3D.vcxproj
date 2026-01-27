@@ -120,19 +120,20 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="source\Characters\Enemies\Enemy1.cpp" />
-    <ClCompile Include="source\Characters\Enemies\Enemy2.cpp" />
-    <ClCompile Include="source\Characters\Enemies\EnemyBase.cpp" />
+    <ClCompile Include="source\Characters\Enemy1.cpp" />
+    <ClCompile Include="source\Characters\Enemy2.cpp" />
+    <ClCompile Include="source\Characters\EnemyBase.cpp" />
     <ClCompile Include="source\Characters\Player.cpp" />
     <ClCompile Include="source\Main.cpp" />
-    <ClCompile Include="source\Objects\Boxes\Box1.cpp" />
-    <ClCompile Include="source\Objects\Boxes\Box2.cpp" />
+    <ClCompile Include="source\Objects\Crate.cpp" />
     <ClCompile Include="source\Objects\Bullet.cpp" />
     <ClCompile Include="source\Objects\Ground.cpp" />
     <ClCompile Include="source\Objects\ObjectBase.cpp" />
     <ClCompile Include="source\Objects\Punipuni.cpp" />
     <ClCompile Include="source\Objects\Scaffold.cpp" />
     <ClCompile Include="source\Objects\StageBackground.cpp" />
+    <ClCompile Include="source\Objects\Terrain.cpp" />
+    <ClCompile Include="source\Objects\Wall.cpp" />
     <ClCompile Include="source\Scenes\Game.cpp" />
     <ClCompile Include="source\Scenes\Title.cpp" />
     <ClCompile Include="source\Stages\Stage.cpp" />
@@ -348,9 +349,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\Characters\CharacterBase.hpp" />
-    <ClInclude Include="source\Characters\Enemies\Enemy1.hpp" />
-    <ClInclude Include="source\Characters\Enemies\Enemy2.hpp" />
-    <ClInclude Include="source\Characters\Enemies\EnemyBase.hpp" />
+    <ClInclude Include="source\Characters\Enemy1.hpp" />
+    <ClInclude Include="source\Characters\Enemy2.hpp" />
+    <ClInclude Include="source\Characters\EnemyBase.hpp" />
     <ClInclude Include="source\Characters\Player.hpp" />
     <ClInclude Include="source\Common.hpp" />
     <ClInclude Include="source\Effects\BubbleEffect.hpp" />
@@ -358,14 +359,15 @@
     <ClInclude Include="source\Effects\SparkEffect.hpp" />
     <ClInclude Include="source\Effects\TouchEffect.hpp" />
     <ClInclude Include="source\Effects\VerticalFlare.hpp" />
-    <ClInclude Include="source\Objects\Boxes\Box1.hpp" />
-    <ClInclude Include="source\Objects\Boxes\Box2.hpp" />
+    <ClInclude Include="source\Objects\Crate.hpp" />
     <ClInclude Include="source\Objects\Bullet.hpp" />
     <ClInclude Include="source\Objects\Ground.hpp" />
     <ClInclude Include="source\Objects\ObjectBase.hpp" />
     <ClInclude Include="source\Objects\Punipuni.hpp" />
     <ClInclude Include="source\Objects\Scaffold.hpp" />
     <ClInclude Include="source\Objects\StageBackground.hpp" />
+    <ClInclude Include="source\Objects\Terrain.hpp" />
+    <ClInclude Include="source\Objects\Wall.hpp" />
     <ClInclude Include="source\Scenes\Game.hpp" />
     <ClInclude Include="source\Scenes\Title.hpp" />
     <ClInclude Include="source\Stages\Stage.hpp" />

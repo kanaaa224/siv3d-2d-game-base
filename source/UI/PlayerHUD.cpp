@@ -16,9 +16,3 @@ void PlayerHUD::draw() const
 
 	if (SimpleGUI::Button(U"タイトルへ", Scene::Size() + Vec2{ -160, -(Scene::Height() - 10) }, 150)) Stage::GetInstance()->sceneChange(SceneState::Title, 0.5s);
 }
-
-void PlayerHUD::setPlayerHP(float hp, float max_hp)
-{
-	player_hp     = hp;
-	player_max_hp = max_hp;
-}

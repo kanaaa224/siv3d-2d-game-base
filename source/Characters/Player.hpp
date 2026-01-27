@@ -2,7 +2,6 @@
 
 # include "CharacterBase.hpp"
 
-# define PLAYER_MAX_HP 100
 # define PLAYER_MOVE_POWER 275
 # define PLAYER_JUMP_POWER 500
 # define PLAYER_MAX_JUMP_HOLD 100ms
@@ -16,11 +15,11 @@ public:
 	void draw() const override;
 
 	virtual void onHit(ObjectBase& object, const P2Collision& collision) override;
-	void onDamaged(float amount) override;
+	void onDamaged(int32 amount) override;
 
 	void setCamera(const Camera2D* camera) { stage_camera = camera; }
 
-	void passThrough(uint16 category = CollisionCategory::None) { if (pass_through_category != CollisionCategory::None) return; pass_through_area = Rect{ 0 }; pass_through_category = category; }
+	void passThrough(uint16 category = CollisionCategory::None) { if (pass_through_category != CollisionCategory::None) return; pass_through_area = RectF{ 0 }; pass_through_category = category; }
 
 	void descendScaffold() { if (pass_through_category != CollisionCategory::None) return; descend_scaffold = true; passThrough(CollisionCategory::Scaffold); }
 
@@ -31,7 +30,7 @@ private:
 
 	P2Filter filter;
 
-	Rect pass_through_area;
+	RectF pass_through_area;
 
 	uint16 pass_through_category;
 
@@ -39,10 +38,10 @@ private:
 
 	bool damaged;
 	bool descend_scaffold;
+	bool shooted;
 
 	mutable bool mirrored;
 
-	void initialize();
 	void handleInput();
 	void moveLeft();
 	void moveRight();

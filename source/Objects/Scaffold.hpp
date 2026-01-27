@@ -13,8 +13,8 @@ public:
 
 	virtual void onHit(ObjectBase& object, const P2Collision& collision) override;
 
-	bool canPassThrough() const { return passThrough; }
+	bool canPassThrough() const { return pass_through; }
 
 private:
-	bool passThrough;
+	bool pass_through;
 };

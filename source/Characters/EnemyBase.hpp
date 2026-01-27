@@ -1,9 +1,7 @@
 ﻿# pragma once
 
-# include "../CharacterBase.hpp"
-# include "../../UI/HPBar.hpp"
-
-# define ENEMY_MAX_HP 100
+# include "CharacterBase.hpp"
+# include "../UI/HPBar.hpp"
 
 class EnemyBase : public CharacterBase
 {
@@ -13,7 +11,7 @@ public:
 	virtual void update() override;
 	virtual void draw() const override;
 
-	void onDamaged(float amount) override;
+	void onDamaged(int32 amount) override;
 
 	void setPlayerPosition(const Vec2& position = { 0, 0 }) { player_position = position; }
 
@@ -22,11 +20,11 @@ protected:
 	Vec2 start_position;
 	Vec2 player_position;
 
-	HPBar hpBar{ ENEMY_MAX_HP };
+	HPBar hpBar{ DEFAULT_HP };
 
 	bool damaged;
 
 	Effect effect;
 
-	virtual void initialize();
+	int32 speed;
 };

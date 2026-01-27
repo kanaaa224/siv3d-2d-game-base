@@ -1,19 +1,12 @@
 ﻿# include "EnemyBase.hpp"
-# include "../../Effects/BubbleEffect.hpp"
-# include "../../Effects/ScoreEffect.hpp"
-# include "../../Utils/TimerUtils.hpp"
+# include "../Effects/BubbleEffect.hpp"
+# include "../Effects/ScoreEffect.hpp"
+# include "../Utils/TimerUtils.hpp"
 
 using namespace TimerUtils;
 
-EnemyBase::EnemyBase(P2World& world, const Vec2& position) : CharacterBase(world, position), start_position(position), damaged(false)
+EnemyBase::EnemyBase(P2World& world, const Vec2& position) : CharacterBase(world, position), current_position(position), start_position(position), damaged(false)
 {
-	initialize();
-}
-
-void EnemyBase::initialize()
-{
-	hp = max_hp = ENEMY_MAX_HP;
-
 	effect.add<BubbleEffect>(start_position, Random(0.0, 360.0));
 }
 
@@ -31,7 +24,7 @@ void EnemyBase::update()
 
 void EnemyBase::draw() const
 {
-	if (body) hpBar.draw({ current_position + Vec2{ -35, -75 }, SizeF{ 70, 7.5 } });
+	if (body) hpBar.draw({ current_position + Vec2{ -35, -75 }, SizeF{ 70.0, 7.5 } });
 
 	effect.update();
 
@@ -40,7 +33,7 @@ void EnemyBase::draw() const
 #endif
 }
 
-void EnemyBase::onDamaged(float amount)
+void EnemyBase::onDamaged(int32 amount)
 {
 	if (!damaged)
 	{
@@ -54,13 +47,13 @@ void EnemyBase::onDamaged(float amount)
 		{
 			body.release();
 
-			SetTimeout([this] { die(); }, 3s);
+			SetTimeout([this] { if (this) die(); }, 3s);
 		}
 
 		damaged = true;
 
 		static Font font{ FontMethod::MSDF, 48, Typeface::Heavy, FontStyle::Italic };
 
-		effect.add<ScoreEffect>(current_position + Vec2{ 0, -75 }, (int)amount, font);
+		effect.add<ScoreEffect>(current_position + Vec2{ 0, -75 }, (int32)amount, font);
 	}
 }

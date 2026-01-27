@@ -13,7 +13,7 @@ public:
 
 	template <class T, class... Args>
 	void createObject(Args&&... args) { static_assert(std::is_base_of<ObjectBase, T>::value); objects << new T(world, std::forward<Args>(args)...); }
-	void deleteObject(ObjectBase* object) { if (object && !deletionObjects.contains(object)) deletionObjects << object; }
+	void deleteObject(ObjectBase* object) { if (object && !objects_deletion.contains(object)) objects_deletion << object; }
 
 	static void DeleteInstance();
 	static void NewInstance();
@@ -28,17 +28,17 @@ public:
 	}
 
 	std::function<bool(SceneState, Duration)> sceneChange;
-	std::function<SceneData&()> sceneData;
+	std::function<SceneData&()>               sceneData;
 
 protected:
 	Array<ObjectBase*> objects;
-	Array<ObjectBase*> deletionObjects;
+	Array<ObjectBase*> objects_deletion;
 
 	P2World world;
 
-	const double stepTime;
+	const double step_time;
 
-	double accumulatedTime;
+	double accumulated_time;
 
 	static Stage* instance;
 };

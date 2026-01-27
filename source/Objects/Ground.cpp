@@ -1,26 +1,10 @@
-# include "Ground.hpp"
+﻿# include "Ground.hpp"
 
-Ground::Ground(P2World& world, const Vec2& position, const SizeF& size) : ObjectBase(world, position)
-{
-	body = world.createRect(
-		P2Static,
-		position,
-		size,
-		P2Material{
-			.friction = 0.9
-		},
-		P2Filter{
-			.categoryBits = CollisionCategory::Ground,
-			.maskBits     = CollisionCategory::All
-		}
-	);
-}
+Ground::Ground(P2World& world, const Vec2& position, const SizeF& size) : Terrain(world, position, size) {}
 
 void Ground::draw() const
 {
-	body.draw();
+	Terrain::draw();
 
-#ifdef _DEBUG
-	body.drawFrame();
-#endif
+	body.draw(Palette::White.withAlpha(64));
 }
