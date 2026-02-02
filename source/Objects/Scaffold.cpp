@@ -34,7 +34,7 @@ void Scaffold::draw() const
 #endif
 }
 
-void Scaffold::onHit(ObjectBase& object, const P2Collision&)
+void Scaffold::onCollision(ObjectBase& object, const P2Collision&)
 {
 	if (Player* player = dynamic_cast<Player*>(&object))
 	{

@@ -57,7 +57,7 @@ void Stage1::generate(int32 template_index = 0)
 		SetInterval([this, room] { if (player && room.intersects(player->getBody().getPos()) && objects.size() <= 200) createObject<Enemy1>(room.center() + Vec2{ Random(-500, 500), Random(-150, 150) }); }, Max(200ms, 1s - (200ms * level)));
 		SetInterval([this, room] { if (player && room.intersects(player->getBody().getPos()) && objects.size() <= 300) createObject<Enemy2>(room.center() + Vec2{ Random(-500, 500), Random(-150, 150) }); }, Max(400ms, 2s - (200ms * level)));
 		SetInterval([this, room] { if (player && room.intersects(player->getBody().getPos()) && objects.size() <= 200) createObject<Crate> (room.center() + Vec2{ Random(-500, 500), Random(-150, 150) }); }, Max(500ms, 3s - (300ms * level)));
-			
+
 		createObject<Scaffold>(room.center() + Vec2{  -900,  600 }, SizeF{ 400, 10 });
 		createObject<Scaffold>(room.center() + Vec2{  -300,  600 }, SizeF{ 400, 10 });
 		createObject<Scaffold>(room.center() + Vec2{   300,  600 }, SizeF{ 400, 10 });
@@ -92,7 +92,7 @@ void Stage1::generate(int32 template_index = 0)
 	case 2:
 		SetInterval([this, room] { if (player && room.intersects(player->getBody().getPos()) && objects.size() <= 200) createObject<Enemy1>  (room.center() + Vec2{ Random(-500, 500), Random(-150, 150) }); }, Max(200ms, 1s - (200ms * level)));
 		SetInterval([this, room] { if (player && room.intersects(player->getBody().getPos()) && objects.size() <= 200) createObject<Punipuni>(room.center() + Vec2{ Random(-500, 500), Random(-150, 150) }); }, 15s);
-			
+
 		createObject<Scaffold>(room.center() + Vec2{ -1300,  300 }, SizeF{ 300, 10 });
 		createObject<Scaffold>(room.center() + Vec2{  -900,  100 }, SizeF{ 300, 10 });
 		createObject<Scaffold>(room.center() + Vec2{  -500, -100 }, SizeF{ 300, 10 });
@@ -130,7 +130,7 @@ void Stage1::generate(int32 template_index = 0)
 		SetInterval([this, room] { if (player && room.intersects(player->getBody().getPos()) && objects.size() <= 200) createObject<Enemy1>(room.center() + Vec2{ Random(-500, 500), Random(-150, 150) }      ); }, Max(200ms, 1s - (200ms * level)));
 		SetInterval([this, room] { if (player && room.intersects(player->getBody().getPos()) && objects.size() <= 300) createObject<Enemy2>(room.center() + Vec2{ Random(-500, 500), Random(-150, 150) }      ); }, Max(400ms, 2s - (200ms * level)));
 		SetInterval([this, room] { if (player && room.intersects(player->getBody().getPos()) && objects.size() <= 200) createObject<Crate> (room.center() + Vec2{ Random(-500, 500), Random(-150, 150) }, true); }, Max(500ms, 3s - (300ms * level)));
-			
+
 		createObject<Scaffold>(room.center() + Vec2{ -1500,  600 }, SizeF{ 400, 10 });
 		createObject<Scaffold>(room.center() + Vec2{  -900,  600 }, SizeF{ 400, 10 });
 		createObject<Scaffold>(room.center() + Vec2{  -300,  600 }, SizeF{ 400, 10 });

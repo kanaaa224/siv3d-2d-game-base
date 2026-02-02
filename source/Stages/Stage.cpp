@@ -33,8 +33,8 @@ void Stage::update()
 
 			if (objectA && objectB)
 			{
-				objectA->onHit(*objectB, collision);
-				objectB->onHit(*objectA, collision);
+				objectA->handleCollision(*objectB, collision);
+				objectB->handleCollision(*objectA, collision);
 			}
 		}
 	}

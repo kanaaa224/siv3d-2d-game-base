@@ -11,14 +11,16 @@ public:
 	virtual void update() {}
 	virtual void draw() const {}
 
-	virtual void onHit(ObjectBase& object, const P2Collision& collision) { (void)object; (void)collision; }
-
 	P2Body& getBody() { return body; }
 
 	virtual void destroy() { deleteSelf(); }
+
+	virtual void handleCollision(ObjectBase& object, const P2Collision& collision) { onCollision(object, collision); }
 
 protected:
 	P2Body body;
 
 	void deleteSelf();
+
+	virtual void onCollision(ObjectBase& object, const P2Collision& collision) { (void)object; (void)collision; }
 };

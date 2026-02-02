@@ -7,8 +7,9 @@ class Enemy2 : public EnemyBase
 public:
 	Enemy2(P2World& world, const Vec2& position = { 0, 0 });
 
-	virtual void update() override;
-	virtual void draw() const override;
+	void update() override;
+	void draw() const override;
 
-	virtual void onHit(ObjectBase& object, const P2Collision& collision) override;
+private:
+	void onCollision(ObjectBase& object, const P2Collision& collision) override;
 };

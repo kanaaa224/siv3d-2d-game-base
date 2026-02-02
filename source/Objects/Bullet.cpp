@@ -52,7 +52,7 @@ void Bullet::draw() const
 #endif
 }
 
-void Bullet::onHit(ObjectBase& object, const P2Collision&)
+void Bullet::onCollision(ObjectBase& object, const P2Collision&)
 {
 	if (object.getBody().getBodyType() == P2BodyType::Dynamic)
 	{

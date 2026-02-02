@@ -10,9 +10,9 @@ public:
 	void update() override;
 	void draw() const override;
 
-	virtual void onHit(ObjectBase& object, const P2Collision& collision) override;
-
 private:
+	void onCollision(ObjectBase& object, const P2Collision& collision) override;
+
 	Effect effect;
 
 	Vec2 current_position;

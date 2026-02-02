@@ -91,7 +91,7 @@ void Player::draw() const
 #endif
 }
 
-void Player::onHit(ObjectBase& object, const P2Collision& collision)
+void Player::onCollision(ObjectBase& object, const P2Collision& collision)
 {
 	if (Enemy1* enemy1 = dynamic_cast<Enemy1*>(&object))
 	{

@@ -11,8 +11,6 @@ public:
 	virtual void update() override;
 	virtual void draw() const override;
 
-	void onDamaged(int32 amount) override;
-
 	void setPlayerPosition(const Vec2& position = { 0, 0 }) { player_position = position; }
 
 protected:
@@ -27,4 +25,7 @@ protected:
 	Effect effect;
 
 	int32 speed;
+
+private:
+	void onDamaged(int32 amount) override;
 };

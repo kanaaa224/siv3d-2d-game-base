@@ -20,7 +20,7 @@ public:
 protected:
 	int32 max_hp, hp;
 
-	void addHP(int32 amount) { hp += amount; hp = std::clamp(hp, 0, max_hp); }
+	virtual void addHP(int32 amount) { hp += amount; hp = std::clamp(hp, 0, max_hp); }
 
 	virtual void die() { destroy(); }
 

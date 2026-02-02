@@ -11,10 +11,10 @@ public:
 
 	void draw() const override;
 
-	virtual void onHit(ObjectBase& object, const P2Collision& collision) override;
-
 	bool canPassThrough() const { return pass_through; }
 
 private:
+	void onCollision(ObjectBase& object, const P2Collision& collision) override;
+
 	bool pass_through;
 };

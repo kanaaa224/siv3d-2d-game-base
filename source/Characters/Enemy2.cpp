@@ -49,7 +49,7 @@ void Enemy2::draw() const
 	EnemyBase::draw();
 }
 
-void Enemy2::onHit(ObjectBase& object, const P2Collision&)
+void Enemy2::onCollision(ObjectBase& object, const P2Collision&)
 {
 	if (dynamic_cast<Player*>(&object) || dynamic_cast<Crate*>(&object) || dynamic_cast<EnemyBase*>(&object)) object.getBody().applyLinearImpulse({ object.getBody().getPos().x < current_position.x ? -10 : 10, -10 });
 }

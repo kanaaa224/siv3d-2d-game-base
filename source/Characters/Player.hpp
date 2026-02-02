@@ -14,9 +14,6 @@ public:
 	void update() override;
 	void draw() const override;
 
-	virtual void onHit(ObjectBase& object, const P2Collision& collision) override;
-	void onDamaged(int32 amount) override;
-
 	void setCamera(const Camera2D* camera) { stage_camera = camera; }
 
 	void passThrough(uint16 category = CollisionCategory::None) { if (pass_through_category != CollisionCategory::None) return; pass_through_area = RectF{ 0 }; pass_through_category = category; }
@@ -24,6 +21,9 @@ public:
 	void descendScaffold() { if (pass_through_category != CollisionCategory::None) return; descend_scaffold = true; passThrough(CollisionCategory::Scaffold); }
 
 private:
+	void onCollision(ObjectBase& object, const P2Collision& collision) override;
+	void onDamaged(int32 amount) override;
+
 	Vec2 current_position;
 	Vec2 start_position;
 	Vec2 aim;
