@@ -2,13 +2,13 @@
 
 # include <Siv3D.hpp>
 
-struct Particle
-{
-	Vec2 start, velocity;
-};
-
 struct Effect4 : IEffect
 {
+	struct Particle
+	{
+		Vec2 start, velocity;
+	};
+
 	Array<Particle> particles;
 
 	explicit Effect4(const Vec2& position) : particles(Random(10, 25))

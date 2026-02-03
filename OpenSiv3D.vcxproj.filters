@@ -153,6 +153,9 @@
     <ClCompile Include="source\Characters\Player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="source\Objects\Blast.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="source\Objects\Bullet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -891,6 +894,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="source\Effects\Effect4.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Effects\Effect5.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Objects\Blast.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="source\Objects\Bullet.hpp">

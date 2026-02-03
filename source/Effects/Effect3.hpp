@@ -17,7 +17,7 @@ struct Effect3 : IEffect
 
 	Array<Spark> sparks;
 
-	Effect3(const Vec2& position, const Vec2& direction) : position(position), direction(direction)
+	explicit Effect3(const Vec2& position, const Vec2& direction) : position(position), direction(direction)
 	{
 		double baseAngle = std::atan2(direction.y, direction.x);
 

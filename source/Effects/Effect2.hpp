@@ -4,12 +4,15 @@
 
 struct Effect2 : IEffect
 {
-	Vec2   position;
+	Vec2 position;
+
 	String text;
-	Font   font;
+
+	Font font;
+
 	ColorF color;
 
-	Effect2(const Vec2& position, const String& text = U"", const Font& font = Font{ 20 }, const ColorF& color = Palette::White) : position(position), text(text), font(font), color(color) {}
+	explicit Effect2(const Vec2& position, const String& text = U"", const Font& font = Font{ 20 }, const ColorF& color = Palette::White) : position(position), text(text), font(font), color(color) {}
 
 	bool update(double t = 0.0) override
 	{

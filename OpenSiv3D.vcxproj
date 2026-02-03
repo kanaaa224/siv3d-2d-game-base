@@ -125,6 +125,7 @@
     <ClCompile Include="source\Characters\EnemyBase.cpp" />
     <ClCompile Include="source\Characters\Player.cpp" />
     <ClCompile Include="source\Main.cpp" />
+    <ClCompile Include="source\Objects\Blast.cpp" />
     <ClCompile Include="source\Objects\Bullet.cpp" />
     <ClCompile Include="source\Objects\Ceiling.cpp" />
     <ClCompile Include="source\Objects\Crate.cpp" />
@@ -359,6 +360,8 @@
     <ClInclude Include="source\Effects\Effect2.hpp" />
     <ClInclude Include="source\Effects\Effect3.hpp" />
     <ClInclude Include="source\Effects\Effect4.hpp" />
+    <ClInclude Include="source\Effects\Effect5.hpp" />
+    <ClInclude Include="source\Objects\Blast.hpp" />
     <ClInclude Include="source\Objects\Bullet.hpp" />
     <ClInclude Include="source\Objects\Ceiling.hpp" />
     <ClInclude Include="source\Objects\Crate.hpp" />

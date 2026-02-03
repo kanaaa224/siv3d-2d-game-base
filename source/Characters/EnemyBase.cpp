@@ -2,6 +2,8 @@
 # include "../Effects/Effect1.hpp"
 # include "../Effects/Effect2.hpp"
 # include "../Utils/TimerUtils.hpp"
+# include "../Stages/Stage.hpp"
+# include "../Objects/Blast.hpp"
 
 using namespace TimerUtils;
 
@@ -53,6 +55,8 @@ void EnemyBase::onDamaged(int32 amount)
 		else
 		{
 			body.release();
+
+			Stage::GetInstance()->createObject<Blast>(current_position, SizeF{ 150, 150 });
 
 			SetTimeout([this] { if (this) die(); }, 3s);
 		}

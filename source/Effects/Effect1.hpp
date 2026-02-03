@@ -17,7 +17,7 @@ struct Effect1 : IEffect
 
 	Array<Bubble> bubbles;
 
-	Effect1(const Vec2& position, double baseHue = Random(0.0, 360.0)) : position(position)
+	explicit Effect1(const Vec2& position, double baseHue = Random(0.0, 360.0)) : position(position)
 	{
 		for (int32 i = 0; i < 8; ++i)
 		{
