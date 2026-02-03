@@ -50,6 +50,6 @@ struct Effect3 : IEffect
 
 		for (auto& s : sparks) Circle(position + s.offset, 2.0).draw(s.color);
 
-		return !sparks.all([](const Spark& s) { return s.lifetime <= 0.0; });
+		return not sparks.all([](const Spark& s) { return s.lifetime <= 0.0; });
 	}
 };

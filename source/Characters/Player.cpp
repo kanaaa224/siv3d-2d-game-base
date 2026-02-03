@@ -51,7 +51,7 @@ void Player::update()
 			{
 				Polygon p = pp->getPolygon();
 
-				if (!p.intersects(pass_through_area))
+				if (not p.intersects(pass_through_area))
 				{
 					body.shape(0).setFilter(filter);
 
@@ -106,7 +106,7 @@ void Player::onCollision(ObjectBase& object, const P2Collision& collision)
 		{
 			if (Scaffold* scaffold = dynamic_cast<Scaffold*>(&object))
 			{
-				if (!scaffold->canPassThrough()) return;
+				if (not scaffold->canPassThrough()) return;
 			}
 		}
 
@@ -120,7 +120,7 @@ void Player::onCollision(ObjectBase& object, const P2Collision& collision)
 
 			filter = body.shape(0).getFilter();
 
-			if (!(filter.maskBits & pass_through_category)) return;
+			if (not (filter.maskBits & pass_through_category)) return;
 
 			body.shape(0).setFilter({
 				filter.categoryBits,
@@ -132,7 +132,7 @@ void Player::onCollision(ObjectBase& object, const P2Collision& collision)
 
 void Player::onDamaged(int32 amount)
 {
-	if (!damaged)
+	if (not damaged)
 	{
 		CharacterBase::onDamaged(amount);
 

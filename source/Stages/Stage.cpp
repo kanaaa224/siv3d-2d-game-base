@@ -23,7 +23,7 @@ void Stage::update()
 
 			for (const auto& object : objects)
 			{
-				if (!object->getBody()) continue;
+				if (not object->getBody()) continue;
 
 				     if (object->getBody().id() == pair.a) objectA = object;
 				else if (object->getBody().id() == pair.b) objectB = object;
@@ -39,11 +39,11 @@ void Stage::update()
 		}
 	}
 
-	if (!objects_deletion.isEmpty())
+	if (not objects_deletion.isEmpty())
 	{
 		objects.remove_if([this](ObjectBase* object)
 		{
-			if (!objects_deletion.contains(object)) return false;
+			if (not objects_deletion.contains(object)) return false;
 
 			delete object;
 

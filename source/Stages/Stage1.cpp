@@ -205,7 +205,7 @@ void Stage1::update()
 {
 	Stage::update();
 
-	if (!generated_rooms.size())
+	if (not generated_rooms.size())
 	{
 		generate(0);
 
@@ -266,7 +266,7 @@ void Stage1::update()
 	}
 	else
 	{
-		if (!player_respawned)
+		if (not player_respawned)
 		{
 			SetTimeout([this] { player_spawn = true; }, 1s);
 

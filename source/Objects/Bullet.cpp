@@ -63,7 +63,7 @@ void Bullet::onCollision(ObjectBase& object, const P2Collision&)
 
 	if (object.getBody().getBodyType() == P2BodyType::Static) body.release();
 
-	if (!hit) effect.add<Effect4>(current_position);
+	if (not hit) effect.add<Effect4>(current_position);
 
 	hit = true;
 }

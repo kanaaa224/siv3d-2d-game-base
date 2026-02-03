@@ -13,7 +13,7 @@ public:
 
 	template <class T, class... Args>
 	void createObject(Args&&... args) { static_assert(std::is_base_of<ObjectBase, T>::value); objects << new T(world, std::forward<Args>(args)...); }
-	void deleteObject(ObjectBase* object) { if (object && !objects_deletion.contains(object)) objects_deletion << object; }
+	void deleteObject(ObjectBase* object) { if (object && not objects_deletion.contains(object)) objects_deletion << object; }
 
 	static void DeleteInstance();
 	static void NewInstance();

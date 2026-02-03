@@ -42,7 +42,7 @@ void EnemyBase::draw() const
 
 void EnemyBase::onDamaged(int32 amount)
 {
-	if (!damaged)
+	if (not damaged)
 	{
 		addHP(-amount);
 

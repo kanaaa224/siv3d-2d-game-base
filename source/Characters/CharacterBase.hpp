@@ -24,6 +24,6 @@ protected:
 
 	virtual void die() { destroy(); }
 
-	virtual void onDamaged(int32 amount) { addHP(-amount); if (!hp) die(); }
+	virtual void onDamaged(int32 amount) { addHP(-amount); if (not hp) die(); }
 	virtual void onHealed (int32 amount) { addHP( amount); }
 };

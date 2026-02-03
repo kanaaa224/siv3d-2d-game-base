@@ -36,7 +36,7 @@ void Game::update()
 {
 	static bool pause = false;
 
-	if (KeyP.down()) pause = !pause;
+	if (KeyP.down()) pause = not pause;
 
 	if (pause) return;
 

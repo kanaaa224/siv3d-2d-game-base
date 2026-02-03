@@ -74,13 +74,13 @@ namespace TimerUtils
 
 		for (auto& task : GetTasks())
 		{
-			if (!task.done && (runningTime - task.lastTime) >= task.delayTime)
+			if (not task.done && (runningTime - task.lastTime) >= task.delayTime)
 			{
 				task.lastTime = runningTime;
 
 				pendingCalls.push_back(task.func);
 
-				if (!task.repeat) task.done = true;
+				if (not task.repeat) task.done = true;
 			}
 		}
 

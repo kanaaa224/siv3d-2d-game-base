@@ -36,7 +36,7 @@ void Enemy2::update()
 {
 	EnemyBase::update();
 
-	if (!damaged)
+	if (not damaged)
 	{
 		if (Abs(player_position.x - current_position.x) <= Scene::Width() / 2) body.setVelocity({ Sign(player_position.x - current_position.x) * speed, body.getVelocity().y });
 	}
