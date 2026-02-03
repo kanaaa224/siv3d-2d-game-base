@@ -7,20 +7,20 @@ struct Particle
 	Vec2 start, velocity;
 };
 
-struct SparkEffect : IEffect
+struct Effect4 : IEffect
 {
 	Array<Particle> particles;
 
-	explicit SparkEffect(const Vec2& start) : particles(Random(10, 25))
+	explicit Effect4(const Vec2& position) : particles(Random(10, 25))
 	{
 		for (auto& particle : particles)
 		{
-			particle.start    = (start + RandomVec2(12.0));
+			particle.start    = (position + RandomVec2(12.0));
 			particle.velocity = (RandomVec2(1.0) * Random(100.0));
 		}
 	}
 
-	bool update(double t) override
+	bool update(double t = 0.0) override
 	{
 		for (const auto& particle : particles)
 		{

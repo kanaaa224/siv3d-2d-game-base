@@ -1,6 +1,6 @@
 ﻿# include "Bullet.hpp"
-# include "../Effects/TouchEffect.hpp"
-# include "../Effects/SparkEffect.hpp"
+# include "../Effects/Effect3.hpp"
+# include "../Effects/Effect4.hpp"
 # include "../Characters/EnemyBase.hpp"
 # include "../Utils/TimerUtils.hpp"
 
@@ -33,7 +33,7 @@ Bullet::Bullet(P2World& world, const Vec2& position, const Vec2& direction, doub
 
 	body.applyLinearImpulse(direction.normalized() * 20);
 
-	effect.add<TouchEffect>(position);
+	effect.add<Effect3>(position, direction.normalized());
 }
 
 void Bullet::update()
@@ -63,7 +63,7 @@ void Bullet::onCollision(ObjectBase& object, const P2Collision&)
 
 	if (object.getBody().getBodyType() == P2BodyType::Static) body.release();
 
-	if (!hit) effect.add<SparkEffect>(current_position);
+	if (!hit) effect.add<Effect4>(current_position);
 
 	hit = true;
 }
