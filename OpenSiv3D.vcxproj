@@ -126,6 +126,7 @@
     <ClCompile Include="source\Characters\Player.cpp" />
     <ClCompile Include="source\Main.cpp" />
     <ClCompile Include="source\Objects\Bullet.cpp" />
+    <ClCompile Include="source\Objects\Ceiling.cpp" />
     <ClCompile Include="source\Objects\Crate.cpp" />
     <ClCompile Include="source\Objects\Ground.cpp" />
     <ClCompile Include="source\Objects\ObjectBase.cpp" />
@@ -359,6 +360,7 @@
     <ClInclude Include="source\Effects\Effect3.hpp" />
     <ClInclude Include="source\Effects\Effect4.hpp" />
     <ClInclude Include="source\Objects\Bullet.hpp" />
+    <ClInclude Include="source\Objects\Ceiling.hpp" />
     <ClInclude Include="source\Objects\Crate.hpp" />
     <ClInclude Include="source\Objects\Ground.hpp" />
     <ClInclude Include="source\Objects\ObjectBase.hpp" />

@@ -5,6 +5,7 @@
 # include "../Objects/Scaffold.hpp"
 # include "../Objects/Ground.hpp"
 # include "../Objects/Wall.hpp"
+# include "../Objects/Ceiling.hpp"
 # include "../Characters/Enemy1.hpp"
 # include "../Characters/Enemy2.hpp"
 # include "../UI/PlayerHUD.hpp"
@@ -187,7 +188,7 @@ void Stage1::generate(int32 template_index = 0)
 		SizeF{ room.bottom().length() - (generated_rooms.size() ? passage_width : 0), terrain_thickness }
 	);
 
-	createObject<Terrain>(
+	createObject<Ceiling>(
 		room.topCenter() - Vec2{ (passage_width / 2), (terrain_thickness / 2) },
 		SizeF{ room.top().length() - passage_width, terrain_thickness }
 	);

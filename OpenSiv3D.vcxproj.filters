@@ -156,6 +156,9 @@
     <ClCompile Include="source\Objects\Bullet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="source\Objects\Ceiling.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="source\Objects\Crate.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -891,6 +894,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="source\Objects\Bullet.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Objects\Ceiling.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="source\Objects\Crate.hpp">
